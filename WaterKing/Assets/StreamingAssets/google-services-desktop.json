@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "516529873546",
+    "project_id": "waterking-220c3",
+    "storage_bucket": "waterking-220c3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:516529873546:android:6c8ea38316075756a9c373",
+        "android_client_info": {
+          "package_name": "com.BlancoBliss.WaterKing"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "516529873546-aju03p8u5lrrettn8gm9j3c75ruvoln0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSFyv7m8_NyDmdfpPa89W4kaTeR4V2QOc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "516529873546-aju03p8u5lrrettn8gm9j3c75ruvoln0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
