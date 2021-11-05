@@ -24,7 +24,7 @@
 
 public static class GPGSIds
 {
-        public const string leaderboard_the_water_king = "CgkImsyr44YeEAIQAQ"; // <GPGSID>
+        public const string leaderboard_the_water_king = "CgkI8-m11c8ZEAIQAQ"; // <GPGSID>
 
 }
 
