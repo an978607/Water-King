@@ -36,7 +36,11 @@ public class score : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreText.text = player_score.ToString();
+        if (scoreText != null)
+        {
+            scoreText.text = player_score.ToString();
+
+        }
 
         if (winScreen.activeSelf == true)
         {
