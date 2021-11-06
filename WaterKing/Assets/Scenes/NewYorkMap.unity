@@ -4028,6 +4028,7 @@ GameObject:
   - component: {fileID: 1169759463}
   - component: {fileID: 1169759465}
   - component: {fileID: 1169759464}
+  - component: {fileID: 1169759466}
   m_Layer: 0
   m_Name: Fuel
   m_TagString: Untagged
@@ -4094,6 +4095,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1169759462}
   m_CullTransparentMesh: 0
+--- !u!114 &1169759466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169759462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8277907ebb7304489e0bda0b0d43d21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1193468737
 GameObject:
   m_ObjectHideFlags: 0
