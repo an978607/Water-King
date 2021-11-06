@@ -98,7 +98,7 @@ public class TriviaManager : MonoBehaviour
         }
         else
         {
-            triviaResult.GetComponentInChildren<Text>().text = "Wrong Answer";
+            triviaResult.GetComponentInChildren<Text>().text = "Wrong";
         }
     }
 
