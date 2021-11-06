@@ -35,6 +35,7 @@ public class Timer : MonoBehaviour
                 else
                 {
                     endScreen.SetActive(true);
+                    Time.timeScale = 0f;
                 }
             }
         }
