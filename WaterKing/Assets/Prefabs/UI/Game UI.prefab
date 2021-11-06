@@ -4292,6 +4292,7 @@ GameObject:
   - component: {fileID: 2846252411371096374}
   - component: {fileID: 2846252411371096331}
   - component: {fileID: 2846252411371096328}
+  - component: {fileID: 1933366814}
   m_Layer: 5
   m_Name: Score
   m_TagString: Score
@@ -4356,6 +4357,30 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1933366814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2846252411371096375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7715776bba9775349ab8939ae9b7b24e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 2846252411378379869}
+  originalscoreWin: {fileID: 2846252411384397526}
+  originalscoreLose: {fileID: 2846252411384397526}
+  finalScoreWin: {fileID: 2846252409919613006}
+  finalScoreLose: {fileID: 2846252411133842750}
+  multiplierWin: {fileID: 2846252411255136948}
+  multiplierFail: {fileID: 2846252410980562529}
+  winScreen: {fileID: 2846252411137650636}
+  failScreen: {fileID: 2846252409985885589}
+  player_score: 1
+  multiplied_score: 0
+  multiplier: 1
 --- !u!1 &2846252411378379867
 GameObject:
   m_ObjectHideFlags: 0
