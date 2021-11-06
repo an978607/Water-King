@@ -45,8 +45,8 @@ public class score : MonoBehaviour
             multiplierWin.text = multiplier.ToString();
             if (playerDataManager.GetScoreAtLocation("Central Park") < player_score)
             {
-                playerDataManager.UpdateScoreAtLocation(player_score, "Central Park");
                 UpdateTotalScore();
+                playerDataManager.UpdateScoreAtLocation(player_score, "Central Park");
             }
 
         }
@@ -57,8 +57,8 @@ public class score : MonoBehaviour
             multiplierFail.text = multiplier.ToString();
             if (playerDataManager.GetScoreAtLocation("Central Park") < player_score)
             {
-                playerDataManager.UpdateScoreAtLocation(player_score, "Central Park");
                 UpdateTotalScore();
+                playerDataManager.UpdateScoreAtLocation(player_score, "Central Park");  
             }
         }
     }
