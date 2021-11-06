@@ -109,4 +109,5 @@ public class TriviaManager : MonoBehaviour
         int randomIndex = Random.Range(0, trivias.Count);
         return trivias[randomIndex];
     }
+
 }
