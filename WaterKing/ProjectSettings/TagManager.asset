@@ -3,7 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - TriviaDatabase
+  - EventDatabase
+  - ObstacleDatabase
+  - ItemDatabase
+  - VehicleDatabase
+  - UpgradesUIContent
+  - EventsUIContent
+  - CentralParkLevelBanner
+  - Currency
+  - HighScore
   layers:
   - Default
   - TransparentFX
