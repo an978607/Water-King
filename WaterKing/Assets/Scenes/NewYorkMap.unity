@@ -2268,6 +2268,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 635449292}
   m_CullTransparentMesh: 0
+--- !u!1 &669561641 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3380741360258767106, guid: 4df2a7d27bfa5af40ac80c61eabdb03c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3380741360101030574}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &669561648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669561641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8277907ebb7304489e0bda0b0d43d21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &670328634
 GameObject:
   m_ObjectHideFlags: 0
@@ -7194,6 +7212,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 995841383}
     m_Modifications:
+    - target: {fileID: 717420548163752882, guid: 4df2a7d27bfa5af40ac80c61eabdb03c,
+        type: 3}
+      propertyPath: m_TagString
+      value: HighScore
+      objectReference: {fileID: 0}
     - target: {fileID: 3380741358867488885, guid: 4df2a7d27bfa5af40ac80c61eabdb03c,
         type: 3}
       propertyPath: m_Text
@@ -7389,6 +7412,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3380741360258767106, guid: 4df2a7d27bfa5af40ac80c61eabdb03c,
+        type: 3}
+      propertyPath: m_TagString
+      value: CentralParkLevelBanner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4df2a7d27bfa5af40ac80c61eabdb03c, type: 3}

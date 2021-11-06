@@ -13,6 +13,7 @@ TagManager:
   - EventsUIContent
   - CentralParkLevelBanner
   - Currency
+  - HighScore
   layers:
   - Default
   - TransparentFX
