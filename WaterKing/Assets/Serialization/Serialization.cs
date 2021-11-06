@@ -10,7 +10,6 @@ public class Serialization
         PostAPIDatabase post = new PostAPIDatabase();
         string json = JsonUtility.ToJson(vehicles);
         Debug.Log("Serializing vehicles");
-        SaveJSON("Vehicles", json);
         post.postVehicle(json);
        
     }
@@ -20,7 +19,6 @@ public class Serialization
         PostAPIDatabase post = new PostAPIDatabase();
         string json = JsonUtility.ToJson(triviaListClass);
         Debug.Log("Serializing trivia");
-        SaveJSON("Trivia", json);
         post.postTrivia(json);
     }
 
@@ -29,7 +27,6 @@ public class Serialization
         PostAPIDatabase post = new PostAPIDatabase();
         string json = JsonUtility.ToJson(obstacles);
         Debug.Log("Serializing obstacles");
-        SaveJSON("Obstacles", json);
         post.postObstacle(json);
     }
 
@@ -38,7 +35,6 @@ public class Serialization
         PostAPIDatabase post = new PostAPIDatabase();
         string json = JsonUtility.ToJson(items);
         Debug.Log("Serializing items");
-        SaveJSON("Items", json);
         post.postItem(json);
     }
 
@@ -47,10 +43,10 @@ public class Serialization
         PostAPIDatabase post = new PostAPIDatabase();
         string json = JsonUtility.ToJson(events);
         Debug.Log("Serializing events");
-        SaveJSON("Events", json);
         post.postEvent(json);
     }
 
+    // Local testing only
     private static string SaveJSON(string type, string json)
     {
         File.WriteAllText(Application.dataPath + "/Resources/" + type + ".json", json);
