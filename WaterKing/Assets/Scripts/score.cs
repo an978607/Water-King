@@ -77,7 +77,7 @@ public class score : MonoBehaviour
     {
         player_score = player_score + 1;
         multiplied_score = player_score * multiplier;
-        Debug.Log(player_score);
-        Debug.Log(multiplied_score);
+        //Debug.Log(player_score);
+        //Debug.Log(multiplied_score);
     }
 }

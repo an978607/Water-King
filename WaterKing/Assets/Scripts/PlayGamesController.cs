@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 using UnityEngine.SocialPlatforms;
@@ -25,6 +25,7 @@ public class PlayGamesController : MonoBehaviour {
             if(success == true)
             {
                 Debug.Log("Logged in to Google Play");
+                // this is for testing SceneManager.LoadScene("leaderboard");
             }
             else 
             {
