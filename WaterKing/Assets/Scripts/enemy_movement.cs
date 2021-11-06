@@ -18,7 +18,7 @@ public class enemy_movement : MonoBehaviour
         // moves enemy object to the left
         if(Time.timeScale == 1f)
         {
-            transform.Translate((float)-0.07, 0, 0);
+            transform.Translate((float)-10*Time.deltaTime, 0, 0);
         }
 
         // if it gets off screen it will remove the object

@@ -12,8 +12,6 @@ public class Trivia_Actions : MonoBehaviour
         triviaManager = gameObject.GetComponent<TriviaManager>();
     }
 
-   
-
     // Start is called before the first frame update
     void Start()
     {
