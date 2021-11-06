@@ -49,9 +49,9 @@ public class PlayGamesController : MonoBehaviour {
         });
     }
 
-   // public static void ShowLeaderboardUI()
-   // {
-      //  PlayGamesPlatform.Instance.ShowLeaderboardUI(GPGSIds.leaderboard_high_score);
-   // }
+    public static void ShowLeaderboardUI()
+    {
+        PlayGamesPlatform.Instance.ShowLeaderboardUI(GPGSIds.leaderboard_the_water_king);
+    }
 
 }
