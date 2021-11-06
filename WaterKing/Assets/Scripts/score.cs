@@ -12,9 +12,9 @@ public class score : MonoBehaviour
     public Text multiplierFail;
     public GameObject winScreen;
     public GameObject failScreen;
-    public int player_score = 1;
+    public int player_score = 0;
     public int multiplied_score = 0;
-    public int multiplier = 1;
+    public int multiplier = 3;
     GameObject playerObject;
     PlayerDataManager playerDataManager;
 
@@ -40,7 +40,7 @@ public class score : MonoBehaviour
 
         if (winScreen.activeSelf == true)
         {
-            finalScoreWin.text = player_score.ToString();
+            finalScoreWin.text = multiplied_score.ToString();
             originalscoreWin.text = player_score.ToString();
             multiplierWin.text = multiplier.ToString();
             if (playerDataManager.GetScoreAtLocation("Central Park") < player_score)
@@ -48,11 +48,11 @@ public class score : MonoBehaviour
                 playerDataManager.UpdateScoreAtLocation(player_score, "Central Park");
                 UpdateTotalScore();
             }
-           
+
         }
-        if(failScreen.activeSelf == true)
+        if (failScreen.activeSelf == true)
         {
-            finalScoreLose.text = player_score.ToString();
+            finalScoreLose.text = multiplied_score.ToString();
             originalscoreLose.text = player_score.ToString();
             multiplierFail.text = multiplier.ToString();
             if (playerDataManager.GetScoreAtLocation("Central Park") < player_score)
@@ -75,7 +75,9 @@ public class score : MonoBehaviour
 
     public void Enemy_Destroyed()
     {
-        player_score = player_score + multiplier * 1;
-        multiplier = multiplier + 1;
+        player_score = player_score + 1;
+        multiplied_score = player_score * multiplier;
+        Debug.Log(player_score);
+        Debug.Log(multiplied_score);
     }
 }

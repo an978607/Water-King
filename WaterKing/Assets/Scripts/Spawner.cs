@@ -43,7 +43,7 @@ public class Spawner : MonoBehaviour
             }
         }
             // select a random float from 1 to 3
-            float delay = Random.Range(3f, 4f);
+            float delay = Random.Range(2f, 4f);
 
             // recursive call SpawnObject, "delay" randomly deplay the first enemy for 1 to 3 seconds
             Invoke("SpawnObject", delay);
