@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class TriviaManager : MonoBehaviour
 {
     private GameObject triviaDatabaseObject;
+    private GameObject fuelGameObject;
+    private Fuel fuel;
     private PlayerDataManager playerDataManager;
     private TriviaDatabase triviaDatabase;
     private GameObject triviaUIContent;
@@ -20,6 +22,14 @@ public class TriviaManager : MonoBehaviour
     private void Awake()
     {
         playerDataManager = gameObject.GetComponent<PlayerDataManager>();
+        fuelGameObject = GameObject.FindGameObjectWithTag("Fuel");
+        if (fuelGameObject == null)
+        {
+            Debug.LogError("TriviaManager: Unable to find Fuel object");
+            return;
+        }
+
+        fuel = fuelGameObject.GetComponent<Fuel>();
 
         triviaDatabaseObject = GameObject.FindGameObjectWithTag("TriviaDatabase");
 
@@ -84,7 +94,7 @@ public class TriviaManager : MonoBehaviour
             Debug.Log(trivia.GetCorrectAnswer());
             Debug.Log(trivia.AnswerList[answerNum - 1]);
             triviaResult.GetComponentInChildren<Text>().text = "Correct";
-            // Add to Fuel
+            fuel.AddEnergy(1);
         }
         else
         {

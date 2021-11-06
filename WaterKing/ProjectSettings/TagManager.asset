@@ -23,6 +23,7 @@ TagManager:
   - TriviaAnswer1
   - LevelLoader
   - FuelWarning
+  - Fuel
   layers:
   - Default
   - TransparentFX
