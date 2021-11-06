@@ -8,6 +8,7 @@ public class Fuel : MonoBehaviour
 {
     [SerializeField] Text energyText;
     [SerializeField] Text timerText;
+    [SerializeField] GameObject Trivia;
 
     private int maxEnergy = 3;
     private int currentEnergy;
@@ -18,10 +19,12 @@ public class Fuel : MonoBehaviour
 
     private bool isRestoring = false;
     private PlayerDataManager playerDataManager;
+    LevelLoader level;
 
     private void Awake()
     {
         playerDataManager = gameObject.GetComponent<PlayerDataManager>();
+        level = GameObject.FindGameObjectWithTag("LevelLoader").GetComponent<LevelLoader>();
     }
 
     void Start()
@@ -39,12 +42,13 @@ public class Fuel : MonoBehaviour
         }
     }
 
-    public void UseEnergy()
+    public void UseEnergy(int scene)
     {
         if(currentEnergy >= 1)
         {
             currentEnergy--;
             UpdateEnergy();
+            level.LoadNextLevel(scene);
             if(isRestoring == false)
             {
                 if(currentEnergy + 1 == maxEnergy)
@@ -58,6 +62,9 @@ public class Fuel : MonoBehaviour
 
         else 
         {
+            //Trigger Trivia
+            Trivia.SetActive(true);
+            
             Debug.Log("Insufficient Energy");
         }
     }

@@ -321,7 +321,7 @@ PrefabInstance:
     - target: {fileID: 7886634211855863071, guid: a9134e3b328aaef4aac403ea5e4bb1c9,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9134e3b328aaef4aac403ea5e4bb1c9, type: 3}
@@ -3287,6 +3287,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5686340911530790302, guid: 56783c87b822b7e4da4c6c9a2988f6d8,
+        type: 3}
+      propertyPath: m_TagString
+      value: FuelWarning
+      objectReference: {fileID: 0}
     - target: {fileID: 5686340911530790303, guid: 56783c87b822b7e4da4c6c9a2988f6d8,
         type: 3}
       propertyPath: m_Pivot.x
@@ -3481,7 +3486,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 886921919}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11604993}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &886921919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3837,6 +3853,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686340911530790302, guid: 56783c87b822b7e4da4c6c9a2988f6d8,
+        type: 3}
+      propertyPath: m_TagString
+      value: FuelWarning
       objectReference: {fileID: 0}
     - target: {fileID: 5686340911530790303, guid: 56783c87b822b7e4da4c6c9a2988f6d8,
         type: 3}
@@ -4806,6 +4827,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   energyText: {fileID: 1843226772}
   timerText: {fileID: 1193468739}
+  Trivia: {fileID: 11604993}
 --- !u!1 &1193468737
 GameObject:
   m_ObjectHideFlags: 0
@@ -4932,6 +4954,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686340911530790302, guid: 56783c87b822b7e4da4c6c9a2988f6d8,
+        type: 3}
+      propertyPath: m_TagString
+      value: FuelWarning
       objectReference: {fileID: 0}
     - target: {fileID: 5686340911530790303, guid: 56783c87b822b7e4da4c6c9a2988f6d8,
         type: 3}
@@ -6845,6 +6872,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5686340911530790302, guid: 56783c87b822b7e4da4c6c9a2988f6d8,
+        type: 3}
+      propertyPath: m_TagString
+      value: FuelWarning
+      objectReference: {fileID: 0}
     - target: {fileID: 5686340911530790303, guid: 56783c87b822b7e4da4c6c9a2988f6d8,
         type: 3}
       propertyPath: m_Pivot.x
@@ -7176,6 +7208,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686340911530790302, guid: 56783c87b822b7e4da4c6c9a2988f6d8,
+        type: 3}
+      propertyPath: m_TagString
+      value: FuelWarning
       objectReference: {fileID: 0}
     - target: {fileID: 5686340911530790303, guid: 56783c87b822b7e4da4c6c9a2988f6d8,
         type: 3}
@@ -7788,32 +7825,47 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5686340911171627523, guid: 56783c87b822b7e4da4c6c9a2988f6d8,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686340911171627523, guid: 56783c87b822b7e4da4c6c9a2988f6d8,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686340911171627523, guid: 56783c87b822b7e4da4c6c9a2988f6d8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5686340911171627523, guid: 56783c87b822b7e4da4c6c9a2988f6d8,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 73974179}
+      objectReference: {fileID: 1169759467}
     - target: {fileID: 5686340911171627523, guid: 56783c87b822b7e4da4c6c9a2988f6d8,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1169759467}
-    - target: {fileID: 5686340911171627523, guid: 56783c87b822b7e4da4c6c9a2988f6d8,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadNextLevel
       objectReference: {fileID: 0}
     - target: {fileID: 5686340911171627523, guid: 56783c87b822b7e4da4c6c9a2988f6d8,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: UseEnergy
       objectReference: {fileID: 0}
     - target: {fileID: 5686340911171627523, guid: 56783c87b822b7e4da4c6c9a2988f6d8,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: LoadNextLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686340911171627523, guid: 56783c87b822b7e4da4c6c9a2988f6d8,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686340911171627523, guid: 56783c87b822b7e4da4c6c9a2988f6d8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5686340911530790302, guid: 56783c87b822b7e4da4c6c9a2988f6d8,
@@ -7825,6 +7877,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686340911530790302, guid: 56783c87b822b7e4da4c6c9a2988f6d8,
+        type: 3}
+      propertyPath: m_TagString
+      value: FuelWarning
       objectReference: {fileID: 0}
     - target: {fileID: 5686340911530790303, guid: 56783c87b822b7e4da4c6c9a2988f6d8,
         type: 3}
