@@ -3222,7 +3222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecb64db6ec14dc54dac69e9edd4658e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeValue: 30
+  timeValue: 100
   timeText: {fileID: 2846252411013636619}
   endScreen: {fileID: 2846252411137650636}
   brandMenu: {fileID: 2846252409617192924}
@@ -3488,7 +3488,7 @@ GameObject:
   - component: {fileID: 2846252411096384448}
   - component: {fileID: 2846252411096384453}
   - component: {fileID: 2846252411096384450}
-  - component: {fileID: 2846252411096384451}
+  - component: {fileID: 904453975}
   m_Layer: 5
   m_Name: Player Information
   m_TagString: Score
@@ -3556,7 +3556,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2846252411096384451
+--- !u!114 &904453975
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3568,15 +3568,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7715776bba9775349ab8939ae9b7b24e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
-  originalscoreWin: {fileID: 0}
-  originalscoreLose: {fileID: 0}
-  finalScoreWin: {fileID: 0}
-  finalScoreLose: {fileID: 0}
-  multiplierWin: {fileID: 0}
-  multiplierFail: {fileID: 0}
-  winScreen: {fileID: 0}
-  failScreen: {fileID: 0}
+  scoreText: {fileID: 2846252411378379869}
+  originalscoreWin: {fileID: 2846252409929533121}
+  originalscoreLose: {fileID: 2846252411384397526}
+  finalScoreWin: {fileID: 2846252409919613006}
+  finalScoreLose: {fileID: 2846252411133842750}
+  multiplierWin: {fileID: 2846252411255136948}
+  multiplierFail: {fileID: 2846252410980562529}
+  winScreen: {fileID: 2846252411137650636}
+  failScreen: {fileID: 2846252409985885589}
   player_score: 1
   multiplied_score: 0
   multiplier: 1
@@ -4292,7 +4292,6 @@ GameObject:
   - component: {fileID: 2846252411371096374}
   - component: {fileID: 2846252411371096331}
   - component: {fileID: 2846252411371096328}
-  - component: {fileID: 2846252411371096329}
   m_Layer: 5
   m_Name: Score
   m_TagString: Score
@@ -4357,30 +4356,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2846252411371096329
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2846252411371096375}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7715776bba9775349ab8939ae9b7b24e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 2846252411378379869}
-  originalscoreWin: {fileID: 2846252409929533121}
-  originalscoreLose: {fileID: 2846252411384397526}
-  finalScoreWin: {fileID: 2846252409919613006}
-  finalScoreLose: {fileID: 2846252411133842750}
-  multiplierWin: {fileID: 2846252411255136948}
-  multiplierFail: {fileID: 2846252410980562529}
-  winScreen: {fileID: 2846252411137650636}
-  failScreen: {fileID: 2846252409985885589}
-  player_score: 1
-  multiplied_score: 0
-  multiplier: 1
 --- !u!1 &2846252411378379867
 GameObject:
   m_ObjectHideFlags: 0
