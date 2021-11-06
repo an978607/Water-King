@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class TriviaManager : MonoBehaviour
 {
     private GameObject triviaDatabaseObject;
+    private GameObject fuelGameObject;
+    private Fuel fuel;
+    private PlayerDataManager playerDataManager;
     private TriviaDatabase triviaDatabase;
     private GameObject triviaUIContent;
     private GameObject triviaQuestionObject;
@@ -13,9 +16,21 @@ public class TriviaManager : MonoBehaviour
     private GameObject triviaAnswer2Object;
     private GameObject triviaAnswer3Object;
     private GameObject triviaAnswer4Object;
+    [SerializeField] private GameObject triviaResult;
+    private Trivia trivia;
 
     private void Awake()
     {
+        playerDataManager = gameObject.GetComponent<PlayerDataManager>();
+        fuelGameObject = GameObject.FindGameObjectWithTag("Fuel");
+        if (fuelGameObject == null)
+        {
+            Debug.LogError("TriviaManager: Unable to find Fuel object");
+            return;
+        }
+
+        fuel = fuelGameObject.GetComponent<Fuel>();
+
         triviaDatabaseObject = GameObject.FindGameObjectWithTag("TriviaDatabase");
 
         if (triviaDatabaseObject == null)
@@ -69,9 +84,23 @@ public class TriviaManager : MonoBehaviour
         }
 
         UpdateUIWithTriviaQuestion();
-
     }
-
+    
+    public void CheckIfAnswerIsCorrect(int answerNum)
+    {
+        triviaResult.SetActive(true);
+        if (trivia.GetCorrectAnswer() == trivia.AnswerList[answerNum - 1])
+        {
+            Debug.Log(trivia.GetCorrectAnswer());
+            Debug.Log(trivia.AnswerList[answerNum - 1]);
+            triviaResult.GetComponentInChildren<Text>().text = "Correct";
+            fuel.AddEnergy(1);
+        }
+        else
+        {
+            triviaResult.GetComponentInChildren<Text>().text = "Wrong Answer";
+        }
+    }
 
     public void UpdateUIWithTriviaQuestion()
     {
@@ -83,7 +112,7 @@ public class TriviaManager : MonoBehaviour
 
         List<Trivia> trivias = (triviaDatabase.triviaListClass.list);
 
-        Trivia trivia = SelectTriviaQuestionFromList(trivias);
+        trivia = SelectTriviaQuestionFromList(trivias);
 
         triviaQuestionObject.GetComponent<Text>().text = trivia.question;
 
@@ -109,5 +138,4 @@ public class TriviaManager : MonoBehaviour
         int randomIndex = Random.Range(0, trivias.Count);
         return trivias[randomIndex];
     }
-
 }

@@ -144,6 +144,11 @@ public class Fuel : MonoBehaviour
         }
     }
 
+    public void AddEnergy(int amount)
+    {
+        currentEnergy += amount;
+    }
+
     private void Load()
     {
         currentEnergy = playerDataManager.GetFuelAmount();
