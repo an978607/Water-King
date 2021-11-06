@@ -46,6 +46,7 @@ public class score : MonoBehaviour
             if (playerDataManager.GetScoreAtLocation("Central Park") < player_score)
             {
                 playerDataManager.UpdateScoreAtLocation(player_score, "Central Park");
+                UpdateTotalScore();
             }
            
         }
@@ -57,7 +58,18 @@ public class score : MonoBehaviour
             if (playerDataManager.GetScoreAtLocation("Central Park") < player_score)
             {
                 playerDataManager.UpdateScoreAtLocation(player_score, "Central Park");
+                UpdateTotalScore();
             }
+        }
+    }
+
+    private void UpdateTotalScore()
+    {
+        int scoreAtLocation = playerDataManager.GetScoreAtLocation("Central Park");
+        if (scoreAtLocation < player_score)
+        {
+            int scoreOffset = player_score - scoreAtLocation;
+            playerDataManager.AddToTotalScore(scoreOffset);
         }
     }
 

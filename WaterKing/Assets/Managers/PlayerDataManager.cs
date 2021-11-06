@@ -39,7 +39,7 @@ public class PlayerDataManager : MonoBehaviour
                     }
                     else
                     {
-                        textComponentsInMapPin[i].text = "High Score: " + GetScoreAtLocation("Central Park").ToString();
+                        textComponentsInMapPin[i].text = GetScoreAtLocation("Central Park").ToString();
                     }
                 }
             }
@@ -51,7 +51,6 @@ public class PlayerDataManager : MonoBehaviour
         {
             CurrentAmountObject.GetComponent<Text>().text = GetCurrency().ToString();
         }
-
     }
 
     void Update()
@@ -63,7 +62,6 @@ public class PlayerDataManager : MonoBehaviour
     public void UpdateScoreAtLocation(int updatedScore, string location)
     {
         player.scoreAtLocation1 = updatedScore;
-
     }
     public int GetScoreAtLocation(string location) // TODO
     {
@@ -74,6 +72,7 @@ public class PlayerDataManager : MonoBehaviour
     public void AddToTotalScore(int addToScoreAmount)
     {
         player.totalScore += addToScoreAmount;
+        PlayGamesController.PostToLeaderboard(player.totalScore);
     }
     public int GetTotalScore()
     {
