@@ -52,10 +52,10 @@ public class PlayerDataManager : MonoBehaviour
     public void UpdateMapLevelBanners()
     {
         // Set Initial Map Pin Level Banner status
-        if(base.gameObject.name == "Level Banner")
+        if(gameObject.name == "Level Banner")
         {
-            string parentName = base.gameObject.transform.parent.name;
-            unlockedGoButton = base.gameObject.transform.Find("Go Button (Unlocked)").gameObject;
+            string parentName = gameObject.transform.parent.name;
+            unlockedGoButton = gameObject.transform.Find("Go Button (Unlocked)").gameObject;
             if (unlockedGoButton == null)
             {
                 Debug.LogError("PlayerDataManager: Unable to find unlocked go button");
