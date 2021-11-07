@@ -13,6 +13,10 @@ public class PlayerDataManager : MonoBehaviour
     GameObject unlockedGoButton;
     GameObject lockedGoButton;
     GameObject lockedItem;
+    [SerializeField] private GameObject shopItemPrefab;
+    [SerializeField] private bool isShop;
+    private GameObject locationsUIContent;
+    const string PRICE_ZERO_TEXT = "UNLOCKED";
 
     private void Awake()
     {
@@ -75,6 +79,18 @@ public class PlayerDataManager : MonoBehaviour
             }
         }
 
+        if (isShop)
+        {
+            locationsUIContent = GameObject.FindGameObjectWithTag("LocationsUIContent");
+            if (locationsUIContent == null)
+            {
+                Debug.LogError("PlayerDataManager: Unable to find UpgradesUIContent object");
+                return;
+            }
+
+            CreateLocationShopItemList();
+        }
+
         // Set Initial Currency Amount in Shop UI
         CurrentAmountObject = GameObject.FindGameObjectWithTag("Currency");
         if (CurrentAmountObject != null)
@@ -86,6 +102,39 @@ public class PlayerDataManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void CreateLocationShopItemList()
+    {
+        for (int i = 0; i < player.locations.Count; i++)
+        {
+            Text[] textArray;
+            Image[] imageArray;
+            GameObject prefabInstance;
+            int price = player.locations[i].price;
+
+            prefabInstance = Instantiate(shopItemPrefab);
+            textArray = prefabInstance.GetComponentsInChildren<Text>();
+            textArray[0].text = player.locations[i].name;
+            textArray[1].text = string.Empty;
+
+            imageArray = prefabInstance.GetComponentsInChildren<Image>();
+            if (imageArray.Length > 1)
+            {
+                imageArray[1].sprite = Resources.Load<Sprite>("ShopSprites/" + player.locations[i].name);
+            }
+
+            if (price == 0)
+            {
+                textArray[2].text = PRICE_ZERO_TEXT;
+            }
+            else
+            {
+                textArray[2].text = price.ToString();
+            }
+
+            prefabInstance.transform.SetParent(locationsUIContent.transform, false);
+        }
     }
 
     // Individual Location Scores
