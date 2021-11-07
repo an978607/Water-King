@@ -22,7 +22,7 @@ public class Player
     string locName = "Central Park,Time Square,Public Library,Empire State,5th Ave,High Line";
     string unlock = "1,0,0,0,0,0";
     string scor = "0,3143,23,45,55,63";
-    string pric = "0,540,800,1300,2500,4000";
+    string pric = "0,5,800,1300,2500,4000";
     public Player()
     {
         ParseLocations();

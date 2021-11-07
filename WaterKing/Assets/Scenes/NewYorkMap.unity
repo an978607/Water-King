@@ -571,7 +571,7 @@ PrefabInstance:
     - target: {fileID: 1891598642032824628, guid: 8caecdb9a79110844a9e298f8caa49fe,
         type: 3}
       propertyPath: m_Name
-      value: Locations Pannel
+      value: Locations Panel
       objectReference: {fileID: 0}
     - target: {fileID: 1891598642032824628, guid: 8caecdb9a79110844a9e298f8caa49fe,
         type: 3}
@@ -7565,7 +7565,7 @@ PrefabInstance:
     - target: {fileID: 1891598642032824628, guid: 8caecdb9a79110844a9e298f8caa49fe,
         type: 3}
       propertyPath: m_Name
-      value: Events Pannel
+      value: Events Panel
       objectReference: {fileID: 0}
     - target: {fileID: 1891598642032824628, guid: 8caecdb9a79110844a9e298f8caa49fe,
         type: 3}
@@ -9625,7 +9625,7 @@ PrefabInstance:
     - target: {fileID: 1891598642032824628, guid: 8caecdb9a79110844a9e298f8caa49fe,
         type: 3}
       propertyPath: m_Name
-      value: Upgrades Pannel
+      value: Upgrades Panel
       objectReference: {fileID: 0}
     - target: {fileID: 1891598642032824628, guid: 8caecdb9a79110844a9e298f8caa49fe,
         type: 3}

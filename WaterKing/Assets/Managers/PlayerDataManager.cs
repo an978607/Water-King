@@ -15,7 +15,7 @@ public class PlayerDataManager : MonoBehaviour
     [SerializeField] private GameObject shopItemPrefab;
     [SerializeField] private bool isShop;
     private GameObject locationsUIContent;
-    const string PRICE_ZERO_TEXT = "UNLOCKED";
+    public static string PRICE_ZERO_TEXT = "UNLOCKED";
 
     private void Awake()
     {
@@ -49,7 +49,7 @@ public class PlayerDataManager : MonoBehaviour
         
     }
 
-    void UpdateMapLevelBanners()
+    public void UpdateMapLevelBanners()
     {
         // Set Initial Map Pin Level Banner status
         if(base.gameObject.name == "Level Banner")
@@ -131,12 +131,18 @@ public class PlayerDataManager : MonoBehaviour
                 imageArray[1].sprite = Resources.Load<Sprite>("ShopSprites/" + location.Value.name);
             }
 
-            if (price == 0)
+            if (location.Value.isUnlocked)
             {
                 textArray[2].text = PRICE_ZERO_TEXT;
+                prefabInstance.GetComponentInChildren<Button>().interactable = false;
             }
             else
             {
+                if (price > GetCurrency())
+                {
+                    prefabInstance.GetComponentInChildren<Button>().interactable = false;
+                }
+
                 textArray[2].text = price.ToString();
             }
 
@@ -185,11 +191,11 @@ public class PlayerDataManager : MonoBehaviour
     {
         player.currency += addToCurrencyAmount;
     }
-    public void SubtractFromCurrency(int subtractFromCurrencyAmount)
+    public static void SubtractFromCurrency(int subtractFromCurrencyAmount)
     {
         player.currency -= subtractFromCurrencyAmount;
     }
-    public int GetCurrency()
+    public static int GetCurrency()
     {
         return player.currency;
     }
