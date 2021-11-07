@@ -15,6 +15,7 @@ public class ShopManager : MonoBehaviour
         Text titleNameText = titleName.GetComponent<Text>();
         Button button = gameObject.GetComponent<Button>();
         Text buttonText = gameObject.GetComponentInChildren<Text>();
+        string parentPrefabTag = gameObject.transform.parent.tag;
 
         switch (parentPanelObject.name)
         {
@@ -31,20 +32,77 @@ public class ShopManager : MonoBehaviour
                     location.isUnlocked = true;
                     buttonText.text = PlayerDataManager.PRICE_ZERO_TEXT;
                     button.interactable = false;
+                    UpdateCurrencyUI();
                 }
                 return;
 
             case "Upgrades Panel":
-                // TODO: Implement Upgrades Purchase
+                int upgradePrice = int.Parse(buttonText.text);
+
+                if (upgradePrice > playerCurrency)
+                {
+                    button.interactable = false;
+                    return;
+                }
+                else
+                {
+                    PlayerDataManager.SubtractFromCurrency(upgradePrice);
+                    // TODO: Unlock Upgrade in player data ************
+                    if (parentPrefabTag == "ShopVehicle")
+                    {
+                        Debug.LogWarning("ShopVehicle");
+                    }
+                    else if (parentPrefabTag == "ShopUpgradeItem")
+                    {
+                        Debug.LogWarning("ShopUpgradeItem");
+                    }
+
+                    buttonText.text = PlayerDataManager.PRICE_ZERO_TEXT;
+                    button.interactable = false;
+                    UpdateCurrencyUI();
+                }
                 return;
 
             case "Events Panel":
-                // TODO: Implement Events Purchase
+                int eventPrice = int.Parse(buttonText.text);
+
+                if (eventPrice > playerCurrency)
+                {
+                    button.interactable = false;
+                    return;
+                }
+                else
+                {
+                    PlayerDataManager.SubtractFromCurrency(eventPrice);
+                    // TODO: Unlock Event in player data ********
+                    buttonText.text = PlayerDataManager.PRICE_ZERO_TEXT;
+                    button.interactable = false;
+                    UpdateCurrencyUI();
+                }
                 return;
             default:
                 return;
-
         }
 
+    }
+
+    private void UpdateCurrencyUI()
+    {
+        GameObject currencyObject = GameObject.FindGameObjectWithTag("Currency");
+        
+        if (currencyObject == null)
+        {
+            Debug.LogError("ShopManager: Unable to find currency object");
+            return;
+        }
+
+        Text currencyText = currencyObject.GetComponent<Text>();
+        if (currencyText == null)
+        {
+            Debug.LogError("ShopManager: Unable to find currency text component");
+            return;
+        }
+        
+        currencyText.text = PlayerDataManager.GetCurrency().ToString();
     }
 }

@@ -25,6 +25,8 @@ TagManager:
   - Fuel
   - PlayerDatabase
   - LocationsUIContent
+  - ShopVehicle
+  - ShopItem
   layers:
   - Default
   - TransparentFX
