@@ -159,7 +159,8 @@ public class Fuel : MonoBehaviour
 
     private void Save()
     {
-        playerDataManager.SetFuelAmount(currentEnergy);
+        PlayerDataManager.player.fuelAmount = currentEnergy;
+       // playerDataManager.SetFuelAmount(currentEnergy);
         PlayerPrefs.SetString("nextEnergyTime", nextEnergyTime.ToString());
         playerDataManager.SetLastEnergyUpdateTime(lastEnergyTime);
     }
