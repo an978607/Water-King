@@ -34,7 +34,7 @@ public class Trivia
 
     public string GetCorrectAnswer()
     {
-        return AnswerList[correctAnswer];
+        return AnswerList[correctAnswer-1];
     }
 
     public int GetReward()

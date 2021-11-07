@@ -27,6 +27,9 @@ TagManager:
   - LocationsUIContent
   - ShopVehicle
   - ShopUpgradeItem
+  - LocationInfo
+  - VehicleInfo
+  - UpgradesInfo
   layers:
   - Default
   - TransparentFX
