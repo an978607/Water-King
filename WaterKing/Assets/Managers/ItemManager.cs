@@ -75,6 +75,7 @@ public class ItemManager : MonoBehaviour
                 textArray[2].text = price.ToString();
             }
 
+            prefabInstance.tag = "ShopUpgradeItem";
             prefabInstance.transform.SetParent(upgradesUIContent.transform, false);
         }
     }
