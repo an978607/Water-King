@@ -19,10 +19,10 @@ public class Player
     [System.NonSerialized] public int scoreAtLocation1; // Temporary
 
     // TODO: Remove ********
-    string locName = "Central Park,Empire State,Times Square";
-    string unlock = "1,0,0";
-    string scor = "0,3143,23";
-    string pric = "0,540,800";
+    string locName = "Central Park,Time Square,Public Library,Empire State,5th Ave,High Line";
+    string unlock = "1,0,0,0,0,0";
+    string scor = "0,3143,23,0,0,0";
+    string pric = "0,540,800,1300,2500,4000";
     public Player()
     {
         ParseLocations();
