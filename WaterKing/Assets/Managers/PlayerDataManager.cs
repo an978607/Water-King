@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class PlayerDataManager : MonoBehaviour
 {
     public static Player player;
-    GameObject MapPinsLevelBanner;
     GameObject CurrentAmountObject;
     Text[] textComponentsInMapPin;
     GameObject unlockedGoButton;
@@ -20,64 +19,6 @@ public class PlayerDataManager : MonoBehaviour
 
     private void Awake()
     {
-        // Set Initial Map Pin Level Banner High Score
-        MapPinsLevelBanner = GameObject.FindGameObjectWithTag("CentralParkLevelBanner");
-        if (MapPinsLevelBanner != null)
-        {
-            unlockedGoButton = MapPinsLevelBanner.transform.Find("Go Button (Unlocked)").gameObject;
-            if (unlockedGoButton == null)
-            {
-                Debug.LogError("PlayerDataManager: Unable to find unlocked go button");
-                return;
-            }
-
-            lockedGoButton = MapPinsLevelBanner.transform.Find("Go Button (locked)").gameObject;
-            if (lockedGoButton == null)
-            {
-                Debug.LogError("PlayerDataManager: Unable to find locked go button");
-                return;
-            }
-
-
-            lockedItem = MapPinsLevelBanner.transform.Find("Locked Item").gameObject;
-            if (lockedItem == null)
-            {
-                Debug.LogError("PlayerDataManager: Unable to find locked item");
-                return;
-            }
-            
-            // Set Lock status of locations
-            if (player.locations[0].isUnlocked)
-            {
-                unlockedGoButton.SetActive(true);
-                lockedGoButton.SetActive(false);
-                lockedItem.SetActive(false);
-            }
-            else
-            {
-                unlockedGoButton.SetActive(false);
-                lockedGoButton.SetActive(true);
-                lockedItem.SetActive(true);
-            }
-
-            textComponentsInMapPin = MapPinsLevelBanner.GetComponentsInChildren<Text>();
-
-            for (int i = 0; i < textComponentsInMapPin.Length; i++)
-            {
-                // TODO: Specify location ****************************
-                if (textComponentsInMapPin[i].CompareTag("HighScore"))
-                {
-                    if (player.scoreAtLocation1 == 0)
-                    {
-                        textComponentsInMapPin[i].text = string.Empty;
-                    }
-                    else
-                    {
-                        textComponentsInMapPin[i].text = GetScoreAtLocation("Central Park").ToString();
-                    }
-                }
-            }
-        }
 
         if (isShop)
         {
@@ -89,6 +30,10 @@ public class PlayerDataManager : MonoBehaviour
             }
 
             CreateLocationShopItemList();
+        }
+        else
+        {
+            UpdateMapLevelBanners();
         }
 
         // Set Initial Currency Amount in Shop UI
@@ -104,24 +49,86 @@ public class PlayerDataManager : MonoBehaviour
         
     }
 
+    void UpdateMapLevelBanners()
+    {
+        // Set Initial Map Pin Level Banner status
+        if(base.gameObject.name == "Level Banner")
+        {
+            string parentName = base.gameObject.transform.parent.name;
+            unlockedGoButton = base.gameObject.transform.Find("Go Button (Unlocked)").gameObject;
+            if (unlockedGoButton == null)
+            {
+                Debug.LogError("PlayerDataManager: Unable to find unlocked go button");
+                return;
+            }
+
+            lockedGoButton = gameObject.transform.Find("Go Button (locked)").gameObject;
+            if (lockedGoButton == null)
+            {
+                Debug.LogError("PlayerDataManager: Unable to find locked go button");
+                return;
+            }
+
+
+            lockedItem = gameObject.transform.Find("Locked Item").gameObject;
+            if (lockedItem == null)
+            {
+                Debug.LogError("PlayerDataManager: Unable to find locked item");
+                return;
+            }
+
+            // Set Lock status of locations
+            if (player.locations[parentName].isUnlocked)
+            {
+                unlockedGoButton.SetActive(true);
+                lockedGoButton.SetActive(false);
+                lockedItem.SetActive(false);
+            }
+            else
+            {
+                unlockedGoButton.SetActive(false);
+                lockedGoButton.SetActive(true);
+                lockedItem.SetActive(true);
+            }
+
+            textComponentsInMapPin = gameObject.GetComponentsInChildren<Text>();
+
+            for (int i = 0; i < textComponentsInMapPin.Length; i++)
+            {
+                // TODO: Specify location ****************************
+                if (textComponentsInMapPin[i].CompareTag("HighScore"))
+                {
+                    if (player.locations[parentName].score == 0)
+                    {
+                        textComponentsInMapPin[i].text = string.Empty;
+                    }
+                    else
+                    {
+                        textComponentsInMapPin[i].text = GetScoreAtLocation(parentName).ToString();
+                    }
+                }
+            }
+        }
+    }
+
     void CreateLocationShopItemList()
     {
-        for (int i = 0; i < player.locations.Count; i++)
+        foreach (KeyValuePair<string, Location> location in player.locations)
         {
             Text[] textArray;
             Image[] imageArray;
             GameObject prefabInstance;
-            int price = player.locations[i].price;
+            int price = location.Value.price;
 
             prefabInstance = Instantiate(shopItemPrefab);
             textArray = prefabInstance.GetComponentsInChildren<Text>();
-            textArray[0].text = player.locations[i].name;
+            textArray[0].text = location.Value.name;
             textArray[1].text = string.Empty;
 
             imageArray = prefabInstance.GetComponentsInChildren<Image>();
             if (imageArray.Length > 1)
             {
-                imageArray[1].sprite = Resources.Load<Sprite>("ShopSprites/" + player.locations[i].name);
+                imageArray[1].sprite = Resources.Load<Sprite>("ShopSprites/" + location.Value.name);
             }
 
             if (price == 0)
@@ -134,17 +141,17 @@ public class PlayerDataManager : MonoBehaviour
             }
 
             prefabInstance.transform.SetParent(locationsUIContent.transform, false);
-        }
+        }   
     }
 
     // Individual Location Scores
     public void UpdateScoreAtLocation(int updatedScore, string location)
     {
-        player.scoreAtLocation1 = updatedScore;
+        player.locations[location].score = updatedScore;
     }
     public int GetScoreAtLocation(string location) // TODO
     {
-        return player.scoreAtLocation1;
+        return player.locations[location].score;
     }
 
     // Total Score

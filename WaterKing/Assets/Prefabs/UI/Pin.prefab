@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5638400037957868947}
   m_Layer: 0
   m_Name: HIgh Score
-  m_TagString: Untagged
+  m_TagString: HighScore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1072,6 +1072,7 @@ GameObject:
   - component: {fileID: 3380741360258767134}
   - component: {fileID: 3380741360258767135}
   - component: {fileID: 1733744582954964539}
+  - component: {fileID: 2835345998629918250}
   m_Layer: 0
   m_Name: Level Banner
   m_TagString: Untagged
@@ -1200,3 +1201,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2835345998629918250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3380741360258767106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8277907ebb7304489e0bda0b0d43d21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopItemPrefab: {fileID: 0}
+  isShop: 0

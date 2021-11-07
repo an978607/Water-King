@@ -13,7 +13,7 @@ public class Player
     [SerializeField] private string locationName;
     [SerializeField] private bool isUnlocked;
     [SerializeField] private int score;
-    [System.NonSerialized] public List<Location> locations;
+    [System.NonSerialized] public Dictionary<string, Location> locations;
 
     // Score at each location
     [System.NonSerialized] public int scoreAtLocation1; // Temporary
@@ -21,7 +21,7 @@ public class Player
     // TODO: Remove ********
     string locName = "Central Park,Time Square,Public Library,Empire State,5th Ave,High Line";
     string unlock = "1,0,0,0,0,0";
-    string scor = "0,3143,23,0,0,0";
+    string scor = "0,3143,23,45,55,63";
     string pric = "0,540,800,1300,2500,4000";
     public Player()
     {
@@ -30,7 +30,7 @@ public class Player
 
     public void ParseLocations()
     {
-        locations = new List<Location>();
+        locations = new Dictionary<string, Location>();
 
         // Split Strings
         string[] locationString = locName.Split(','); // TODO: UPDATE to correct variable ********
@@ -41,7 +41,7 @@ public class Player
         // Add locations to list
         for (int i = 0; i < locationString.Length; i++)
         {
-            locations.Add(new Location(i, locationString[i], Convert.ToBoolean(int.Parse(unlockString[i])), int.Parse(scoreString[i]), int.Parse(priceString[i])));
+            locations.Add(locationString[i], new Location(i, locationString[i], Convert.ToBoolean(int.Parse(unlockString[i])), int.Parse(scoreString[i]), int.Parse(priceString[i])));
         }
     }
 
