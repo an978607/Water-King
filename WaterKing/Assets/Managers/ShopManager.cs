@@ -35,13 +35,11 @@ public class ShopManager : MonoBehaviour
                 return;
 
             case "Upgrades Panel":
-                Debug.LogWarning(parentPanelObject.name);
-
+                // TODO: Implement Upgrades Purchase
                 return;
 
             case "Events Panel":
-                Debug.LogWarning(parentPanelObject.name);
-
+                // TODO: Implement Events Purchase
                 return;
             default:
                 return;
