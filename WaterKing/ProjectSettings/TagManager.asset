@@ -30,6 +30,7 @@ TagManager:
   - LocationInfo
   - VehicleInfo
   - UpgradesInfo
+  - BrandsInfo
   layers:
   - Default
   - TransparentFX

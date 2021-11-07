@@ -14,10 +14,18 @@ public class score : MonoBehaviour
     public GameObject failScreen;
     public int player_score = 0;
     public int multiplied_score = 0;
-    public int multiplier = 3;
+
+
+    //variables that go into finding score multiplyer
+    public float score_multiplyer;
+    private float locationScore;
+    private float brandScore;
+    private int storage = 0;
+
     GameObject playerObject;
     PlayerDataManager playerDataManager;
-
+    VehicleInfo vehicle;
+    LocationInfo location;
     private void Awake()
     {
         playerObject = GameObject.FindGameObjectWithTag("Player");
@@ -30,8 +38,12 @@ public class score : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //
+        //find level information 
+        location = GameObject.FindGameObjectWithTag("LocationInfo").GetComponent<LocationInfo>();
+        locationScore = location.getScoreBonus();
+        Debug.Log("Location score on start is " + locationScore);
     }
+
 
     // Update is called once per frame
     void Update()
@@ -42,7 +54,7 @@ public class score : MonoBehaviour
         {
             finalScoreWin.text = multiplied_score.ToString();
             originalscoreWin.text = player_score.ToString();
-            multiplierWin.text = multiplier.ToString();
+            multiplierWin.text = score_multiplyer.ToString();
             if (playerDataManager.GetScoreAtLocation("Central Park") < player_score)
             {
                 UpdateTotalScore();
@@ -54,13 +66,24 @@ public class score : MonoBehaviour
         {
             finalScoreLose.text = multiplied_score.ToString();
             originalscoreLose.text = player_score.ToString();
-            multiplierFail.text = multiplier.ToString();
+            multiplierFail.text = score_multiplyer.ToString();
             if (playerDataManager.GetScoreAtLocation("Central Park") < player_score)
             {
                 UpdateTotalScore();
                 playerDataManager.UpdateScoreAtLocation(player_score, "Central Park");  
             }
         }
+    }
+
+    public void setBrandScore(float Set)
+    {
+        brandScore = Set;
+        Debug.Log("Brand Score has been set to " + brandScore);
+    }
+
+    public void CalculateMultiplyer()
+    {
+        score_multiplyer = brandScore + locationScore;
     }
 
     private void UpdateTotalScore()
@@ -75,9 +98,11 @@ public class score : MonoBehaviour
 
     public void Enemy_Destroyed()
     {
+        //calcuate multiplyer 
+        CalculateMultiplyer();
+
+        //apply it to score
         player_score = player_score + 1;
-        multiplied_score = player_score * multiplier;
-        //Debug.Log(player_score);
-        //Debug.Log(multiplied_score);
+        multiplied_score = (int)(player_score * score_multiplyer);
     }
 }

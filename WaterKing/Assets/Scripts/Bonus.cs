@@ -6,8 +6,8 @@ public class Bonus : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] float timerBonus;
-    [SerializeField] float scoreBonus;
-    [SerializeField] float cashBonus;
+    [SerializeField] int livesBonus;
+    [SerializeField] int storageBonus;
 
     void Start()
     {
@@ -24,5 +24,13 @@ public class Bonus : MonoBehaviour
     public float getTimerBonus()
     {
         return timerBonus;
+    }
+    public int getLivesBonus()
+    {
+        return livesBonus ;
+    }
+    public float getstorageBonus()
+    {
+        return storageBonus;
     }
 }

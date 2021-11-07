@@ -6,13 +6,21 @@ using UnityEngine.SceneManagement;
 public class Brand : MonoBehaviour
 {
     [SerializeField] GameObject brandMenu;
-    private float cashBonus = 0;
-    private float ScoreBonus = 0;
-    private int Lives = 0;
+
+    //places it can make changes to 
+    score score;
+    player_hit_detection lives;
+    // Cash cash
+
     void Start()
     {
         brandMenu.SetActive(true);
-        //Time.timeScale = 0f;
+
+        //this can make changes in 3 game elements (cash, Health, and Score)
+        score = GameObject.FindGameObjectWithTag("Score").GetComponent<score>();
+        lives = GameObject.FindGameObjectWithTag("VehicleInfo").GetComponent<player_hit_detection>();
+
+
     }
 
     public void Resume()
@@ -24,31 +32,18 @@ public class Brand : MonoBehaviour
     //brands player Chooses
     public void LibertyWater()
     {
-        cashBonus = 1.1f;
+        Debug.Log("Player Choose Liberty Water");
     }
 
     public void MiAgua() 
     {
-        ScoreBonus = 1.1f;
+        lives.setmiAgua(2);
+        Debug.Log("Player Choose MiAgua");
     }
 
     public void CarribeanBlue()
     {
-        Lives = 2;
-    }
-
-    public float getCashBonus()
-    {
-        return cashBonus;
-    }    
-
-    public float getScoreBonus()
-    {
-        return ScoreBonus;
-    }
-
-    public int getLivesBonus()
-    {
-        return Lives;
+        Debug.Log("Player Choose Carribean");
+        score.setBrandScore(1.1f);
     }
 }
