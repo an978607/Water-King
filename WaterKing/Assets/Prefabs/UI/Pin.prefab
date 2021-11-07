@@ -569,7 +569,7 @@ GameObject:
   - component: {fileID: 3380741359159642675}
   - component: {fileID: 3380741359159642674}
   m_Layer: 0
-  m_Name: ' Go Button (locked)'
+  m_Name: Go Button (locked)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -952,7 +952,7 @@ GameObject:
   - component: {fileID: 3380741360174019160}
   - component: {fileID: 3380741360174019163}
   m_Layer: 0
-  m_Name: ' Go Button (Unlocked)'
+  m_Name: Go Button (Unlocked)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

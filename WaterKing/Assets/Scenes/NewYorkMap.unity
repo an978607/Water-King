@@ -4713,6 +4713,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 3380741360174019165, guid: 4df2a7d27bfa5af40ac80c61eabdb03c,
+        type: 3}
+      propertyPath: m_Name
+      value: Go Button (Unlocked)
+      objectReference: {fileID: 0}
     - target: {fileID: 3380741360258767106, guid: 4df2a7d27bfa5af40ac80c61eabdb03c,
         type: 3}
       propertyPath: m_IsActive

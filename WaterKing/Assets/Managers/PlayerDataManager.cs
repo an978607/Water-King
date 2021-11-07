@@ -10,6 +10,9 @@ public class PlayerDataManager : MonoBehaviour
     GameObject MapPinsLevelBanner;
     GameObject CurrentAmountObject;
     Text[] textComponentsInMapPin;
+    GameObject unlockedGoButton;
+    GameObject lockedGoButton;
+    GameObject lockedItem;
 
     private void Awake()
     {
@@ -17,11 +20,47 @@ public class PlayerDataManager : MonoBehaviour
         MapPinsLevelBanner = GameObject.FindGameObjectWithTag("CentralParkLevelBanner");
         if (MapPinsLevelBanner != null)
         {
+            unlockedGoButton = MapPinsLevelBanner.transform.Find("Go Button (Unlocked)").gameObject;
+            if (unlockedGoButton == null)
+            {
+                Debug.LogError("PlayerDataManager: Unable to find unlocked go button");
+                return;
+            }
+
+            lockedGoButton = MapPinsLevelBanner.transform.Find("Go Button (locked)").gameObject;
+            if (lockedGoButton == null)
+            {
+                Debug.LogError("PlayerDataManager: Unable to find locked go button");
+                return;
+            }
+
+
+            lockedItem = MapPinsLevelBanner.transform.Find("Locked Item").gameObject;
+            if (lockedItem == null)
+            {
+                Debug.LogError("PlayerDataManager: Unable to find locked item");
+                return;
+            }
+            
+            // Set Lock status of locations
+            if (player.locations[0].isUnlocked)
+            {
+                unlockedGoButton.SetActive(true);
+                lockedGoButton.SetActive(false);
+                lockedItem.SetActive(false);
+            }
+            else
+            {
+                unlockedGoButton.SetActive(false);
+                lockedGoButton.SetActive(true);
+                lockedItem.SetActive(true);
+            }
+
             textComponentsInMapPin = MapPinsLevelBanner.GetComponentsInChildren<Text>();
 
             for (int i = 0; i < textComponentsInMapPin.Length; i++)
             {
-                // TODO: Specify location
+                // TODO: Specify location ****************************
                 if (textComponentsInMapPin[i].CompareTag("HighScore"))
                 {
                     if (player.scoreAtLocation1 == 0)

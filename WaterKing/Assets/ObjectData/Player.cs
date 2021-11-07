@@ -20,7 +20,7 @@ public class Player
 
     // TODO: Remove ********
     string locName = "Central Park,Empire State,Times Square";
-    string unlock = "0,1,1";
+    string unlock = "1,0,0";
     string scor = "0,3143,23";
 
     public Player()
