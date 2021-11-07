@@ -22,7 +22,7 @@ public class Player
     string locName = "Central Park,Empire State,Times Square";
     string unlock = "1,0,0";
     string scor = "0,3143,23";
-
+    string pric = "0,540,800";
     public Player()
     {
         ParseLocations();
@@ -36,11 +36,12 @@ public class Player
         string[] locationString = locName.Split(','); // TODO: UPDATE to correct variable ********
         string[] unlockString = unlock.Split(',');
         string[] scoreString = scor.Split(',');
+        string[] priceString = pric.Split(',');
 
         // Add locations to list
         for (int i = 0; i < locationString.Length; i++)
         {
-            locations.Add(new Location(locationString[i], Convert.ToBoolean(int.Parse(unlockString[i])), int.Parse(scoreString[i])));
+            locations.Add(new Location(i, locationString[i], Convert.ToBoolean(int.Parse(unlockString[i])), int.Parse(scoreString[i]), int.Parse(priceString[i])));
         }
     }
 
