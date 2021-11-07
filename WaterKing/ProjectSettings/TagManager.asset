@@ -31,6 +31,10 @@ TagManager:
   - VehicleInfo
   - UpgradesInfo
   - BrandsInfo
+  - originalScore
+  - finalScore
+  - ScoreMultiplyer
+  - Cash
   layers:
   - Default
   - TransparentFX

@@ -882,7 +882,7 @@ GameObject:
   - component: {fileID: 2846252409919613006}
   m_Layer: 5
   m_Name: FINAL SCORE
-  m_TagString: Untagged
+  m_TagString: finalScore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -960,7 +960,7 @@ GameObject:
   - component: {fileID: 2846252409929533121}
   m_Layer: 5
   m_Name: posted Score
-  m_TagString: Untagged
+  m_TagString: originalScore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3566,7 +3566,6 @@ MonoBehaviour:
   failScreen: {fileID: 2846252409985885589}
   player_score: 1
   multiplied_score: 0
-  multiplier: 1
 --- !u!1 &2846252411121308358
 GameObject:
   m_ObjectHideFlags: 0
@@ -4205,7 +4204,7 @@ GameObject:
   - component: {fileID: 2846252411255136948}
   m_Layer: 5
   m_Name: posted multiplyer
-  m_TagString: Untagged
+  m_TagString: ScoreMultiplyer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4369,7 +4368,6 @@ MonoBehaviour:
   failScreen: {fileID: 2846252409985885589}
   player_score: 1
   multiplied_score: 0
-  multiplier: 1
 --- !u!1 &2846252411378379867
 GameObject:
   m_ObjectHideFlags: 0
@@ -5055,7 +5053,7 @@ GameObject:
   - component: {fileID: 9074359611867504199}
   m_Layer: 5
   m_Name: Coins Made
-  m_TagString: Untagged
+  m_TagString: Cash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

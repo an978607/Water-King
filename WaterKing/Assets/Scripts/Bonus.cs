@@ -4,22 +4,16 @@ using UnityEngine;
 
 public class Bonus : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // Serialized for testing purposes switch to private once connected database 
     [SerializeField] float timerBonus;
     [SerializeField] int livesBonus;
     [SerializeField] int storageBonus;
 
     void Start()
     {
-        //these should be based on whether or not the player has purchased a bonus
-        Debug.Log(timerBonus);
+        //these should be based on whether or not the player has purchased a bonus from the shop
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public float getTimerBonus()
     {
@@ -29,7 +23,7 @@ public class Bonus : MonoBehaviour
     {
         return livesBonus ;
     }
-    public float getstorageBonus()
+    public int getstorageBonus()
     {
         return storageBonus;
     }

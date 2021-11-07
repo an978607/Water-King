@@ -77,6 +77,7 @@ public class player_hit_detection : MonoBehaviour
 
         //add it to lives and update UI
         lives = lives + brandBonus;
+
         //update UI 
         life.text = lives.ToString();
     }
