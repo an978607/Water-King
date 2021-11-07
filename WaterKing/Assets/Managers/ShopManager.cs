@@ -7,6 +7,7 @@ public class ShopManager : MonoBehaviour
 {
     public void TryPurchase()
     {
+        
         int playerCurrency = PlayerDataManager.GetCurrency();
         
         GameObject parentPanelObject = gameObject.transform.parent.parent.parent.gameObject;

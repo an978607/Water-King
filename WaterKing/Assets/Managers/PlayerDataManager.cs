@@ -31,10 +31,6 @@ public class PlayerDataManager : MonoBehaviour
 
             CreateLocationShopItemList();
         }
-        else
-        {
-            UpdateMapLevelBanners();
-        }
 
         // Set Initial Currency Amount in Shop UI
         CurrentAmountObject = GameObject.FindGameObjectWithTag("Currency");
