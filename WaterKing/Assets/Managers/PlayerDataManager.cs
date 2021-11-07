@@ -6,22 +6,13 @@ using UnityEngine.UI;
 
 public class PlayerDataManager : MonoBehaviour
 {
-    static Player player;
+    public static Player player;
     GameObject MapPinsLevelBanner;
     GameObject CurrentAmountObject;
     Text[] textComponentsInMapPin;
 
     private void Awake()
     {
-        if (player == null)
-        {
-            player = new Player();
-            player.currency = 25;
-            player.fuelAmount = 3;
-            player.lastEnegeryUpdateTime = DateTime.Now;
-            player.scoreAtLocation1 = 0;
-        }
-
         // Set Initial Map Pin Level Banner High Score
         MapPinsLevelBanner = GameObject.FindGameObjectWithTag("CentralParkLevelBanner");
         if (MapPinsLevelBanner != null)
