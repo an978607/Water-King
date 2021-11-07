@@ -24,6 +24,8 @@ TagManager:
   - LevelLoader
   - FuelWarning
   - Fuel
+  - PlayerDatabase
+  - LocationsUIContent
   layers:
   - Default
   - TransparentFX
