@@ -10,8 +10,9 @@ public class Serialization
         PostAPIDatabase post = new PostAPIDatabase();
         string json = JsonUtility.ToJson(vehicles);
         Debug.Log("Serializing vehicles");
-        post.postVehicle(json);
-       
+        SaveJSON("Vehicles", json);
+        post.PostVehicle(json);
+
     }
 
     public static void Serialize(TriviaDatabase.TriviaListClass triviaListClass)
@@ -19,7 +20,8 @@ public class Serialization
         PostAPIDatabase post = new PostAPIDatabase();
         string json = JsonUtility.ToJson(triviaListClass);
         Debug.Log("Serializing trivia");
-        post.postTrivia(json);
+        SaveJSON("Trivia", json);
+        post.PostTrivia(json);
     }
 
     public static void Serialize(ObstacleDatabase.Obstacles obstacles)
@@ -27,7 +29,8 @@ public class Serialization
         PostAPIDatabase post = new PostAPIDatabase();
         string json = JsonUtility.ToJson(obstacles);
         Debug.Log("Serializing obstacles");
-        post.postObstacle(json);
+        SaveJSON("Obstacles", json);
+        post.PostObstacle(json);
     }
 
     public static void Serialize(ItemDatabase.Items items)
@@ -35,7 +38,8 @@ public class Serialization
         PostAPIDatabase post = new PostAPIDatabase();
         string json = JsonUtility.ToJson(items);
         Debug.Log("Serializing items");
-        post.postItem(json);
+        SaveJSON("Items", json);
+        post.PostItem(json);
     }
 
     public static void Serialize(EventDatabase.Events events)
@@ -43,10 +47,20 @@ public class Serialization
         PostAPIDatabase post = new PostAPIDatabase();
         string json = JsonUtility.ToJson(events);
         Debug.Log("Serializing events");
-        post.postEvent(json);
+        SaveJSON("Events", json);
+        post.PostEvent(json);
     }
 
-    // Local testing only
+    public static void Serialize(PlayerDatabase.Players player)
+    {
+        PostAPIDatabase post = new PostAPIDatabase();
+        string json = JsonUtility.ToJson(player);
+        //string json = "{\"currency\": 5,\"fuelAmount\": 3,\"totalScore\": 0,\"upgrade\":1,\"time\":2.4,\"protection\":2,\"price\":32}";
+        Debug.Log("Serializing players");
+        SaveJSON("Players", json);
+        post.PostPlayer(json);
+    }
+
     private static string SaveJSON(string type, string json)
     {
         File.WriteAllText(Application.dataPath + "/Resources/" + type + ".json", json);
