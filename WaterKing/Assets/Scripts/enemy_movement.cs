@@ -9,7 +9,7 @@ public class enemy_movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        call = FindObjectOfType<score>();
+        call = GameObject.FindGameObjectWithTag("Score").GetComponent<score>();
     }
 
     // Update is called once per frame

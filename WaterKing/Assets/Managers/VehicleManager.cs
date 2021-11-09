@@ -75,6 +75,7 @@ public class VehicleManager : MonoBehaviour
                 textArray[2].text = price.ToString();
             }
 
+            prefabInstance.tag = "ShopVehicle";
             prefabInstance.transform.SetParent(upgradesUIContent.transform, false);
         }
     }

@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class UiController : MonoBehaviour
 {
-    //public InputField scoreInputField;
-    //public Text errorText;
-    // Start is called before the first frame update
+    public InputField scoreInputField;
+    public Text errorText;
+    //Start is called before the first frame update
     void Start()
     {
         //errorText.text = "";
@@ -16,25 +16,25 @@ public class UiController : MonoBehaviour
     public void OnButtonPostToLeaderboard()
     {
         Debug.Log("Posting score to leaderboard");
-        // errorText.text = "";
+         errorText.text = "";
 
-        //if(string.IsNullOrEmpty(scoreInputField.text))
-        //{
-        // errorText.text = "Error: please enter a value";
-        // return;
-        //}
-        // else 
-        // {
-        // long scoreToPost;
-        // if(long.TryParse(scoreInputField.text, out scoreToPost))
-        // {
-        // PlayGamesController.PostToLeaderboard(scoreToPost);
-        // }
-        //  else 
-        //  {
-        //  errorText.text = "Error! :(";
-        // }
-        //  }
+        if(string.IsNullOrEmpty(scoreInputField.text))
+        {
+         errorText.text = "Error: please enter a value";
+         return;
+        }
+         else 
+         {
+         long scoreToPost;
+         if(long.TryParse(scoreInputField.text, out scoreToPost))
+         {
+         PlayGamesController.PostToLeaderboard(scoreToPost);
+         }
+          else 
+          {
+          errorText.text = "Error! :(";
+         }
+          }
     }
 
     public void OnButtonShowLeaderboard()

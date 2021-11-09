@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 using UnityEngine.SocialPlatforms;
@@ -17,14 +17,22 @@ public class PlayGamesController : MonoBehaviour {
 
     void AuthenticateUser()
     {
-        PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().Build();
+        PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder()
+            //.RequestServerAuthCode(false)
+            // get requeset id
+            .RequestIdToken()
+            .Build();
+
         PlayGamesPlatform.InitializeInstance(config);
         PlayGamesPlatform.Activate();
+
         Social.localUser.Authenticate((bool success) =>
         {
             if(success == true)
             {
                 Debug.Log("Logged in to Google Play");
+                Debug.Log(Social.localUser.id);
+                // this is for testing SceneManager.LoadScene("leaderboard");
             }
             else 
             {

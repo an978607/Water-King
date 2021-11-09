@@ -9,19 +9,26 @@ public class player_hit_detection : MonoBehaviour
     public Text life;
     public GameObject failScreen;
     public player_movement state;
-    public int lives;
-    GameObject score;
-    public score num;
+    private int lives = 3;
+    private int miAgua;
+    private int bonusLives;
+    score score;
+    Bonus upgrades;
+    
+
 
     private void Awake()
     {
-        score = GameObject.FindGameObjectWithTag("Score");
+        score = GameObject.FindGameObjectWithTag("Score").GetComponent<score>();
         if (score == null)
         {
             return;
         }
 
-        num = score.GetComponent<score>();
+        //get the lives upgrades and add it to the base of 3 
+        upgrades = GameObject.FindGameObjectWithTag("UpgradesInfo").GetComponent<Bonus>();
+        bonusLives = upgrades.getLivesBonus();
+        lives = lives + bonusLives;
     }
 
     // Start is called before the first frame update
@@ -55,7 +62,6 @@ public class player_hit_detection : MonoBehaviour
         this.gameObject.GetComponent<Renderer>().material.color = Color.red;
         time = 1;
         lives = lives - 1;
-        num.multiplier = 1;
         life.text = lives.ToString();
 
         if(lives == 0) 
@@ -63,5 +69,16 @@ public class player_hit_detection : MonoBehaviour
             Time.timeScale = 0f;
             failScreen.SetActive(true);
         }
+    }
+
+    public void setmiAgua(int brandBonus)
+    {
+        miAgua = brandBonus;
+
+        //add it to lives and update UI
+        lives = lives + brandBonus;
+
+        //update UI 
+        life.text = lives.ToString();
     }
 }
