@@ -10,7 +10,10 @@ public class ItemDatabase : MonoBehaviour
     private void Awake()
     {
         itemDatabaseObject = GameObject.FindGameObjectWithTag("ItemDatabase");
-        BuildDatabase();
+        if (items == null)
+        {
+            BuildDatabase();
+        }
     }
 
     public static GameObject GetItemDatabaseObject() => itemDatabaseObject;

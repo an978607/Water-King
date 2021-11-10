@@ -11,13 +11,17 @@ public class VehicleDatabase : MonoBehaviour
     private void Awake()
     {
         vehicleDatabaseObject = GameObject.FindGameObjectWithTag("VehicleDatabase");
-        BuildDatabase();
+        if (vehicles == null)
+        {
+            BuildDatabase();
+        }
     }
 
     public static GameObject GetVehicleDatabaseObject() => vehicleDatabaseObject;
 
     private void BuildDatabase()
     {
+
         // Call Remote Connection endpoint
         string json = "{\"list\":" + GetAPIDatabase.GetVehicles() + "}";
         // Convert json to list

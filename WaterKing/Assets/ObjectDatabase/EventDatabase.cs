@@ -9,7 +9,10 @@ public class EventDatabase : MonoBehaviour
     private void Awake()
     {
         eventDatabaseObject = GameObject.FindGameObjectWithTag("EventDatabase");
-        BuildDatabase();
+        if (events == null)
+        {
+            BuildDatabase();
+        }
     }
 
     public static GameObject GetEventDatabaseObject() => eventDatabaseObject;
