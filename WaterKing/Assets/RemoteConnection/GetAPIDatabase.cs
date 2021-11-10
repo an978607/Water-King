@@ -222,7 +222,7 @@ public static class GetAPIDatabase
         }
     }
 
-    // Retreive all players from the database
+    // NOTE: This retreives one player from the database, not multiple
     // Endpoint: http://waterkinggame.com/LAMPAPI/get_players.php
     public static string GetPlayers()
     {
@@ -241,4 +241,65 @@ public static class GetAPIDatabase
             return null;
         }
     }
+
+    // Retreive items for one player from the database
+    // Endpoint: http://waterkinggame.com/LAMPAPI/get_playeritems.php
+    public static string GetPlayerItems()
+    {
+        string strURL = String.Format("http://{0}/LAMPAPI/{1}.php", "waterkinggame.com", "get_playeritems");
+        try
+        {
+            WebClient wc = new WebClient();
+            wc.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; " +
+                                  "Windows NT 5.2; .NET CLR 1.0.3705;)");
+            string strJsonResult = (string)wc.DownloadString(strURL);
+            return strJsonResult;
+        }
+        catch (System.Exception ex)
+        {
+            Console.WriteLine("{0} . error occured", ex);
+            return null;
+        }
+    }
+
+    // Retreive events for one player from the database
+    // Endpoint: http://waterkinggame.com/LAMPAPI/get_playerevents.php
+    public static string GetPlayerEvents()
+    {
+        string strURL = String.Format("http://{0}/LAMPAPI/{1}.php", "waterkinggame.com", "get_playerevents.php");
+        try
+        {
+            WebClient wc = new WebClient();
+            wc.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; " +
+                                  "Windows NT 5.2; .NET CLR 1.0.3705;)");
+            string strJsonResult = (string)wc.DownloadString(strURL);
+            return strJsonResult;
+        }
+        catch (System.Exception ex)
+        {
+            Console.WriteLine("{0} . error occured", ex);
+            return null;
+        }
+    }
+
+    // Retreive vehicles for one player from the database
+    // Endpoint: http://waterkinggame.com/LAMPAPI/get_playervehicles.php
+    public static string GetPlayerVehicles()
+    {
+        string strURL = String.Format("http://{0}/LAMPAPI/{1}.php", "waterkinggame.com", "get_playervehicles.php");
+        try
+        {
+            WebClient wc = new WebClient();
+            wc.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; " +
+                                  "Windows NT 5.2; .NET CLR 1.0.3705;)");
+            string strJsonResult = (string)wc.DownloadString(strURL);
+            return strJsonResult;
+        }
+        catch (System.Exception ex)
+        {
+            Console.WriteLine("{0} . error occured", ex);
+            return null;
+        }
+    }
+
 }

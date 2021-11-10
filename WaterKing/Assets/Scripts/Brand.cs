@@ -33,6 +33,7 @@ public class Brand : MonoBehaviour
     public void LibertyWater()
     {
         Debug.Log("Player Choose Liberty Water");
+        score.setBrandCash(1f);
     }
 
     public void MiAgua() 
@@ -44,6 +45,6 @@ public class Brand : MonoBehaviour
     public void CarribeanBlue()
     {
         Debug.Log("Player Choose Carribean");
-        score.setBrandScore(1.1f);
+        score.setBrandScore(1f);
     }
 }
