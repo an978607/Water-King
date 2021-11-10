@@ -3,12 +3,12 @@ using System.Net;
 using System.Net.NetworkInformation;
 using UnityEngine;
 
-public class PutAPIDatabase : MonoBehaviour
+public static class PutAPIDatabase
 {
 
     // Update Locations info for player
     // Endpoint for updating locations: http://waterkinggame.com/LAMPAPI/update_locations.php
-    public void UpdateLocations(string strJsonInput)
+    public static void UpdateLocations(string strJsonInput)
     {
         string strURL = String.Format("http://{0}/LAMPAPI/{1}.php", "waterkinggame.com", "update_locations");
         try
@@ -29,7 +29,7 @@ public class PutAPIDatabase : MonoBehaviour
 
     // Update Player info
     // Endpoint for updating player info: http://waterkinggame.com/LAMPAPI/update_player.php
-    public void UpdatePlayer(string strJsonInput)
+    public static void UpdatePlayer(string strJsonInput)
     {
         string strURL = String.Format("http://{0}/LAMPAPI/{1}.php", "waterkinggame.com", "update_player");
         try

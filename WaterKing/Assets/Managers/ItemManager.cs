@@ -44,7 +44,7 @@ public class ItemManager : MonoBehaviour
 
         if (itemDatabase.items == null || itemDatabase.items.list == null)
         {
-            Debug.LogError("ItemManager: Vehicles null when creating shop list");
+            Debug.LogError("ItemManager: ittems null when creating shop list");
             return;
         }
 
