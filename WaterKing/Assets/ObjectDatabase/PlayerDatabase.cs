@@ -18,21 +18,9 @@ public class PlayerDatabase : MonoBehaviour
 
     public void GetPlayerFromDatabase()
     {
-        // This string successfully gets players from the database
-        //string json = "{\"list\":" + GetAPIDatabase.GetPlayers() + "}";
         string json = GetAPIDatabase.GetPlayers();
         PlayerDataManager.player = Deserialization.DeserializePlayer(json);
         PlayerDataManager.player.ParseData();
-
-        // TODO *******************
-        //if (PlayerDataManager.player == null) // TODO: REMOVE *************************
-        //{
-        //    PlayerDataManager.player = new Player();
-        //    PlayerDataManager.player.currency = 25;
-        //    PlayerDataManager.player.fuelAmount = 3;
-        //    PlayerDataManager.player.lastEnegeryUpdateTime = DateTime.Now;
-        //    PlayerDataManager.player.scoreAtLocation1 = 0;
-        //}
     }
 
     [System.Serializable]
