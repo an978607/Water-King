@@ -213,10 +213,10 @@ public class PlayerDataManager : MonoBehaviour
     // Energy Update Time
     public void SetLastEnergyUpdateTime(DateTime dateTime)
     {
-        player.lastEnegeryUpdateTime = dateTime;
+        player.lastEnergyUpdateTime = dateTime;
     }
     public DateTime GetLastEnergyUpdateTime()
     {
-        return player.lastEnegeryUpdateTime;
+        return player.lastEnergyUpdateTime;
     }
 }

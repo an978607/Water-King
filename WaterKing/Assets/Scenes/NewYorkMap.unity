@@ -4937,7 +4937,7 @@ PrefabInstance:
     - target: {fileID: 3380741358867488885, guid: 4df2a7d27bfa5af40ac80c61eabdb03c,
         type: 3}
       propertyPath: m_Text
-      value: Time Square
+      value: Times Square
       objectReference: {fileID: 0}
     - target: {fileID: 3380741358867488887, guid: 4df2a7d27bfa5af40ac80c61eabdb03c,
         type: 3}
@@ -5147,7 +5147,7 @@ PrefabInstance:
     - target: {fileID: 3380741359802035271, guid: 4df2a7d27bfa5af40ac80c61eabdb03c,
         type: 3}
       propertyPath: m_Name
-      value: Time Square
+      value: Times Square
       objectReference: {fileID: 0}
     - target: {fileID: 3380741360072112716, guid: 4df2a7d27bfa5af40ac80c61eabdb03c,
         type: 3}

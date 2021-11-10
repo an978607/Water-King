@@ -9,23 +9,10 @@ public class VehicleManager : MonoBehaviour
     [SerializeField] private bool isShop;
 
     const string PRICE_ZERO_TEXT = "UNLOCKED";
-
-    private GameObject vehicleDatabaseObject;
-    private VehicleDatabase vehicleDatabase;
     private GameObject upgradesUIContent;
 
     private void Awake()
     {
-        vehicleDatabaseObject = GameObject.FindGameObjectWithTag("VehicleDatabase");
-
-        if (vehicleDatabaseObject == null)
-        {
-            Debug.LogError("VehicleManager: Unable to find VehicleDatabase object");
-            return;
-        }
-
-        vehicleDatabase = vehicleDatabaseObject.GetComponent<VehicleDatabase>();
-
         if (isShop)
         {
             upgradesUIContent = GameObject.FindGameObjectWithTag("UpgradesUIContent");
@@ -42,31 +29,31 @@ public class VehicleManager : MonoBehaviour
     void CreateVehicleShopItemList()
     {
 
-        if (vehicleDatabase.vehicles == null || vehicleDatabase.vehicles.list == null)
+        if (VehicleDatabase.vehicles == null)
         {
             Debug.LogError("VehicleManager: Vehicles null when creating shop list");
             return;
         }
 
-        for (int i = 0; i < vehicleDatabase.vehicles.list.Count; i++)
+        foreach (KeyValuePair<string, Vehicle> vehicle in VehicleDatabase.vehicles)
         {
             Text[] textArray;
             Image[] imageArray;
             GameObject prefabInstance;
-            int price = vehicleDatabase.vehicles.list[i].price;
+            int price = vehicle.Value.price;
 
             prefabInstance = Instantiate(shopItemPrefab);
             textArray = prefabInstance.GetComponentsInChildren<Text>();
-            textArray[0].text = vehicleDatabase.vehicles.list[i].name;
-            textArray[1].text = vehicleDatabase.vehicles.list[i].description;
+            textArray[0].text = vehicle.Value.name;
+            textArray[1].text = vehicle.Value.description;
 
             imageArray = prefabInstance.GetComponentsInChildren<Image>();
             if (imageArray.Length > 1)
             {
-                imageArray[1].sprite = Resources.Load<Sprite>("ShopSprites/" + vehicleDatabase.vehicles.list[i].name);
+                imageArray[1].sprite = Resources.Load<Sprite>("ShopSprites/" + vehicle.Value.name);
             }
             
-            if (price == 0)
+            if (vehicle.Value.GetUnlockedStatus())
             {
                 textArray[2].text = PRICE_ZERO_TEXT;
             }

@@ -6,7 +6,7 @@ using UnityEngine;
 public class Event
 {
     [SerializeField] private int id;
-    public string name;
+    public string Name;
     public string description;
     public int price;
     [SerializeField] private bool isUnlocked;
@@ -18,7 +18,7 @@ public class Event
     {
         this.id = id;
         this.isUnlocked = isUnlocked;
-        this.name = name;
+        this.Name = name;
         this.description = description;
         this.price = price;
         EventSprite = Resources.Load<Sprite>("EventSprites/" + name);

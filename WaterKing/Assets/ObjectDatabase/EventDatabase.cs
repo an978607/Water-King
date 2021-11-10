@@ -5,7 +5,7 @@ using UnityEngine;
 public class EventDatabase : MonoBehaviour
 {
     private static GameObject eventDatabaseObject;
-    public Events events;
+    public static Dictionary<string, Event> events;
     private void Awake()
     {
         eventDatabaseObject = GameObject.FindGameObjectWithTag("EventDatabase");
@@ -17,7 +17,17 @@ public class EventDatabase : MonoBehaviour
     private void BuildDatabase()
     {
         string json = "{\"list\":" + GetAPIDatabase.GetEvents() + "}";
-        events.list = Deserialization.DeserializeEvents(json);
+        List<Event> eventList = Deserialization.DeserializeEvents(json);
+        events = new Dictionary<string, Event>();
+        foreach(Event e in eventList)
+        {
+            if (events.ContainsKey(e.Name))
+            {
+                Debug.LogError("EventDatabase: Unable to add duplicate event, check remote database");
+                continue;
+            }
+            events.Add(e.Name, e);
+        }
     }
 
     [System.Serializable]

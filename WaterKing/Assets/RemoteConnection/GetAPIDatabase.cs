@@ -266,7 +266,7 @@ public static class GetAPIDatabase
     // Endpoint: http://waterkinggame.com/LAMPAPI/get_playerevents.php
     public static string GetPlayerEvents()
     {
-        string strURL = String.Format("http://{0}/LAMPAPI/{1}.php", "waterkinggame.com", "get_playerevents.php");
+        string strURL = String.Format("http://{0}/LAMPAPI/{1}.php", "waterkinggame.com", "get_playerevents");
         try
         {
             WebClient wc = new WebClient();
@@ -286,7 +286,7 @@ public static class GetAPIDatabase
     // Endpoint: http://waterkinggame.com/LAMPAPI/get_playervehicles.php
     public static string GetPlayerVehicles()
     {
-        string strURL = String.Format("http://{0}/LAMPAPI/{1}.php", "waterkinggame.com", "get_playervehicles.php");
+        string strURL = String.Format("http://{0}/LAMPAPI/{1}.php", "waterkinggame.com", "get_playervehicles");
         try
         {
             WebClient wc = new WebClient();

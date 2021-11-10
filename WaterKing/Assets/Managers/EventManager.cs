@@ -9,23 +9,10 @@ public class EventManager : MonoBehaviour
     [SerializeField] private bool isShop;
 
     const string PRICE_ZERO_TEXT = "UNLOCKED";
-
-    private GameObject eventDatabaseObject;
-    private EventDatabase eventDatabase;
     private GameObject eventsUIContent;
 
     private void Awake()
     {
-        eventDatabaseObject = GameObject.FindGameObjectWithTag("EventDatabase");
-
-        if (eventDatabaseObject == null)
-        {
-            Debug.LogError("EventManager: Unable to find EventDatabase object");
-            return;
-        }
-
-        eventDatabase = eventDatabaseObject.GetComponent<EventDatabase>();
-
         if (isShop)
         {
             eventsUIContent = GameObject.FindGameObjectWithTag("EventsUIContent");
@@ -41,32 +28,31 @@ public class EventManager : MonoBehaviour
 
     void CreateEventShopItemList()
     {
-
-        if (eventDatabase.events == null || eventDatabase.events.list == null)
+        if (EventDatabase.events == null)
         {
             Debug.LogError("EventManager: Events null when creating shop list");
             return;
         }    
 
-        for (int i = 0; i < eventDatabase.events.list.Count; i++)
+       foreach (KeyValuePair<string, Event> eventObj in EventDatabase.events)
         {
             Text[] textArray;
             Image[] imageArray;
             GameObject prefabInstance;
-            int price = eventDatabase.events.list[i].price;
+            int price = eventObj.Value.price;
 
             prefabInstance = Instantiate(shopItemPrefab);
             textArray = prefabInstance.GetComponentsInChildren<Text>();
-            textArray[0].text = eventDatabase.events.list[i].name;
-            textArray[1].text = eventDatabase.events.list[i].description;
+            textArray[0].text = eventObj.Value.Name;
+            textArray[1].text = eventObj.Value.description;
 
             imageArray = prefabInstance.GetComponentsInChildren<Image>();
             if (imageArray.Length > 1)
             {
-                imageArray[1].sprite = Resources.Load<Sprite>("ShopSprites/" + eventDatabase.events.list[i].name);
+                imageArray[1].sprite = Resources.Load<Sprite>("ShopSprites/" + eventObj.Value.Name);
             }
 
-            if (price == 0)
+            if (eventObj.Value.GetUnlockedStatus())
             {
                 textArray[2].text = PRICE_ZERO_TEXT;
             }

@@ -41,4 +41,22 @@ public static class Deserialization
         Player player = JsonUtility.FromJson<Player>(json);
         return player;
     }
+
+    public static PlayerItems DeserializePlayerItems(string json)
+    {
+        PlayerItems playerItems = JsonUtility.FromJson<PlayerItems>(json);
+        return playerItems;
+    }
+
+    public static PlayerVehicles DeserializePlayerVehicles(string json)
+    {
+        PlayerVehicles playerVehicles = JsonUtility.FromJson<PlayerVehicles>(json);
+        return playerVehicles;
+    }
+
+    public static PlayerEvents DeserializePlayerEvents(string json)
+    {
+        PlayerEvents playerEvents = JsonUtility.FromJson<PlayerEvents>(json);
+        return playerEvents;
+    }
 }

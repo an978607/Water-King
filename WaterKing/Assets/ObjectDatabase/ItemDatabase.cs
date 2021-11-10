@@ -5,7 +5,7 @@ using UnityEngine;
 public class ItemDatabase : MonoBehaviour
 {
     private static GameObject itemDatabaseObject;
-    public Items items;
+    public static Dictionary<string, Item> items;
 
     private void Awake()
     {
@@ -18,7 +18,18 @@ public class ItemDatabase : MonoBehaviour
     private void BuildDatabase()
     {
         string json = "{\"list\":" + GetAPIDatabase.GetItems() + "}";
-        items.list = Deserialization.DeserializeItems(json);
+        List<Item> itemsList = Deserialization.DeserializeItems(json);
+        items = new Dictionary<string, Item>();
+        foreach (Item i in itemsList)
+        {
+            if (items.ContainsKey(i.name))
+            {
+                Debug.LogError("ItemDatabase: Unable to add duplicate item, check remote database");
+                continue;
+            }
+
+            items.Add(i.name, i);
+        }
     }
 
     [System.Serializable]
