@@ -55,9 +55,15 @@ public class EventManager : MonoBehaviour
             if (eventObj.Value.GetUnlockedStatus())
             {
                 textArray[2].text = PRICE_ZERO_TEXT;
+                prefabInstance.GetComponentInChildren<Button>().interactable = false;
             }
             else
             {
+                if (price > PlayerDataManager.GetCurrency())
+                {
+                    prefabInstance.GetComponentInChildren<Button>().interactable = false;
+                }
+
                 textArray[2].text = price.ToString();
             }
 
