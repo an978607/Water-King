@@ -63,14 +63,19 @@ public class ShopManager : MonoBehaviour
                 else
                 {
                     PlayerDataManager.SubtractFromCurrency(upgradePrice);
-                    // TODO: Unlock Upgrade in player data ************
                     if (parentPrefabTag == "ShopVehicle")
                     {
-                        Debug.LogWarning("ShopVehicle");
+                        Vehicle vehicle = VehicleDatabase.vehicles[titleNameText.text];
+                        vehicle.SetStatusToUnlocked();
+                        buttonText.text = PlayerDataManager.PRICE_ZERO_TEXT;
+                        button.interactable = false;
                     }
                     else if (parentPrefabTag == "ShopUpgradeItem")
                     {
-                        Debug.LogWarning("ShopUpgradeItem");
+                        Item item = ItemDatabase.items[titleNameText.text];
+                        item.SetStatusToUnlocked();
+                        buttonText.text = PlayerDataManager.PRICE_ZERO_TEXT;
+                        button.interactable = false;
                     }
 
                     buttonText.text = PlayerDataManager.PRICE_ZERO_TEXT;
@@ -80,6 +85,7 @@ public class ShopManager : MonoBehaviour
                 return;
 
             case "Events Panel":
+                Event eventObj = EventDatabase.events[titleNameText.text];
                 int eventPrice = int.Parse(buttonText.text);
 
                 if (eventPrice > playerCurrency)
@@ -90,7 +96,7 @@ public class ShopManager : MonoBehaviour
                 else
                 {
                     PlayerDataManager.SubtractFromCurrency(eventPrice);
-                    // TODO: Unlock Event in player data ********
+                    eventObj.SetStatusToUnlocked();
                     buttonText.text = PlayerDataManager.PRICE_ZERO_TEXT;
                     button.interactable = false;
                     UpdateCurrencyUI();
