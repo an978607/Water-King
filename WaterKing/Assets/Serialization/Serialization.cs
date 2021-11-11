@@ -64,16 +64,22 @@ public class Serialization
     // TODO: UPDATE VALUES PASSED *****************
     public static void Serialize(Player player)
     {
-        string json = "{\"currency\":\"" + player.currency + 
-            "\",\"totalScore\":\"" + player.totalScore + 
-            "\",\"lastEnergyUpdateTime\":\"" + player.lastEnergyUpdateTime +
-              "\",\"fuelAmount\":\"" + player.fuelAmount +
-                "\",\"protection\":\"" + player.fuelAmount +
-                  "\",\"upgrade\":\"" + player.totalScore + 
-                  "\",\"time\":\"" + player.totalScore +
-                    "\",\"selectedVehicle\":\"" + player.totalScore + "\"}";
-        Debug.Log("Serializing player");
-        PostAPIDatabase.PostPlayer(json);
+        if (player != null)
+        {
+            string json = "{\"currency\":\"" + player.currency + 
+                "\",\"totalScore\":\"" + player.totalScore + 
+                "\",\"lastEnergyUpdateTime\":\"" + player.lastEnergyUpdateTime.ToString("yyyy-MM-dd HH:mm:ss") +
+                "\",\"fuelAmount\":\"" + player.fuelAmount +
+                "\",\"protection\":\"" + player.protection +
+                "\",\"upgrade\":\"" + player.upgrade + 
+                "\",\"time\":\"" + player.time +
+                "\",\"selectedVehicle\":\"" + player.selectedVehicle +
+                "\"}";
+            Debug.Log("Serializing player");
+            Debug.LogWarning(json);
+            PutAPIDatabase.UpdatePlayer(json);
+        }
+
     }
 
     public static void Serialize(Location location)

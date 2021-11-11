@@ -11,6 +11,11 @@ public class Player
     public int fuelAmount;
     public DateTime lastEnergyUpdateTime;
     public int totalScore;
+    public int protection;
+    public int upgrade;
+    public float time;
+    public string selectedVehicle;
+
     [SerializeField] private string locationName;
     [SerializeField] private string isUnlocked;
     [SerializeField] private string score;
