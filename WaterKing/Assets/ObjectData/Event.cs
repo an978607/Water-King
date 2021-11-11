@@ -14,9 +14,8 @@ public class Event
     [System.NonSerialized]
     private Sprite EventSprite;
 
-    public Event(int id, bool isUnlocked, string name, string description, int price)
+    public Event(bool isUnlocked, string name, string description, int price)
     {
-        this.id = id;
         this.isUnlocked = isUnlocked;
         this.Name = name;
         this.description = description;

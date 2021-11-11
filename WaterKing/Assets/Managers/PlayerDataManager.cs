@@ -150,6 +150,7 @@ public class PlayerDataManager : MonoBehaviour
     public void UpdateScoreAtLocation(int updatedScore, string location)
     {
         player.locations[location].score = updatedScore;
+        SavePlayerData(player.locations[location]);
     }
     public int GetScoreAtLocation(string location) // TODO
     {
@@ -219,4 +220,31 @@ public class PlayerDataManager : MonoBehaviour
     {
         return player.lastEnergyUpdateTime;
     }
+
+    public static void SavePlayerData(Vehicle vehicle)
+    {
+        Serialization.Serialize(vehicle);
+    }
+
+    public static void SavePlayerData(Item item)
+    {
+        Serialization.Serialize(item);
+    }
+
+    public static void SavePlayerData(Event eventObj)
+    {
+        Serialization.Serialize(eventObj);
+    }
+
+    public static void SavePlayerData(Location location)
+    {
+       Serialization.Serialize(location);
+    }
+
+    public void SavePlayer()
+    {
+
+    }
+
+
 }

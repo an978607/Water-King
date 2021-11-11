@@ -49,6 +49,7 @@ public class ShopManager : MonoBehaviour
                     buttonText.text = PlayerDataManager.PRICE_ZERO_TEXT;
                     button.interactable = false;
                     UpdateCurrencyUI();
+                    PlayerDataManager.SavePlayerData(location);
                 }
                 return;
 
@@ -69,6 +70,7 @@ public class ShopManager : MonoBehaviour
                         vehicle.SetStatusToUnlocked();
                         buttonText.text = PlayerDataManager.PRICE_ZERO_TEXT;
                         button.interactable = false;
+                        PlayerDataManager.SavePlayerData(vehicle);
                     }
                     else if (parentPrefabTag == "ShopUpgradeItem")
                     {
@@ -76,6 +78,7 @@ public class ShopManager : MonoBehaviour
                         item.SetStatusToUnlocked();
                         buttonText.text = PlayerDataManager.PRICE_ZERO_TEXT;
                         button.interactable = false;
+                        PlayerDataManager.SavePlayerData(item);
                     }
 
                     buttonText.text = PlayerDataManager.PRICE_ZERO_TEXT;
@@ -100,6 +103,7 @@ public class ShopManager : MonoBehaviour
                     buttonText.text = PlayerDataManager.PRICE_ZERO_TEXT;
                     button.interactable = false;
                     UpdateCurrencyUI();
+                    PlayerDataManager.SavePlayerData(eventObj);
                 }
                 return;
             default:

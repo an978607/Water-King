@@ -63,7 +63,7 @@ public class DataEditor : EditorWindow
             vehicleNameText = EditorGUILayout.TextField("Name:", vehicleNameText);
             vehicleDescriptionText = EditorGUILayout.TextField("Description:", itemDescriptionText);
             vehiclePrice = EditorGUILayout.IntField("Price:", vehiclePrice);
-            vehicleSprite = (Sprite)EditorGUILayout.ObjectField("Sprite:", vehicleSprite, typeof(Sprite), false, GUILayout.Height(EditorGUIUtility.singleLineHeight));
+            //vehicleSprite = (Sprite)EditorGUILayout.ObjectField("Sprite:", vehicleSprite, typeof(Sprite), false, GUILayout.Height(EditorGUIUtility.singleLineHeight));
             isVehicleUnlocked = EditorGUILayout.Toggle("Unlocked:", isVehicleUnlocked);
             vehicleSpeed = EditorGUILayout.Slider("Speed", vehicleSpeed, 0, 100);
 
@@ -73,9 +73,8 @@ public class DataEditor : EditorWindow
 
             if (GUILayout.Button("Add", GUILayout.Width(100), GUILayout.Height(30)))
             {
-                VehicleDatabase.Vehicles vehicles = VehicleDatabase.Vehicles.GetInstance();
-                vehicles.list.Add(new Vehicle(vehicles.list.Count, isVehicleUnlocked, vehicleSpeed, vehicleNameText, vehicleDescriptionText, vehiclePrice));
-                Serialization.Serialize(vehicles);
+                Vehicle vehicle = new Vehicle(isVehicleUnlocked, vehicleSpeed, vehicleNameText, vehicleDescriptionText, vehiclePrice);
+                Serialization.SerializeNewVehicle(vehicle);
                 vehicleNameText = "";
                 vehicleDescriptionText = "";
                 vehiclePrice = 0;
@@ -96,36 +95,36 @@ public class DataEditor : EditorWindow
         EditorGUILayout.EndFoldoutHeaderGroup();
 
         // Obstacle Group
-        isShowNewObstacle = EditorGUILayout.BeginFoldoutHeaderGroup(isShowNewObstacle, "New Obstacle");
+        //isShowNewObstacle = EditorGUILayout.BeginFoldoutHeaderGroup(isShowNewObstacle, "New Obstacle");
 
-        if (isShowNewObstacle)
-        {
-            obstacleNameText = EditorGUILayout.TextField("Name:", obstacleNameText);
-            obstacleHitPoints = EditorGUILayout.IntSlider("Hit Points", obstacleHitPoints, 0, 100);
+        //if (isShowNewObstacle)
+        //{
+        //    obstacleNameText = EditorGUILayout.TextField("Name:", obstacleNameText);
+        //    obstacleHitPoints = EditorGUILayout.IntSlider("Hit Points", obstacleHitPoints, 0, 100);
 
-            GUILayout.Space(20);
-            EditorGUILayout.BeginHorizontal();
-            GUILayout.Space(20);
+        //    GUILayout.Space(20);
+        //    EditorGUILayout.BeginHorizontal();
+        //    GUILayout.Space(20);
 
-            if (GUILayout.Button("Add", GUILayout.Width(100), GUILayout.Height(30)))
-            {
-                ObstacleDatabase.Obstacles obstacles = ObstacleDatabase.Obstacles.GetInstance();
-                obstacles.list.Add(new Obstacle(obstacles.list.Count, obstacleNameText, obstacleHitPoints));
-                Serialization.Serialize(obstacles);
-                obstacleNameText = "";
-                obstacleHitPoints = 0;
-                Debug.Log("Serialized Obstacle");
-            }
+        //    if (GUILayout.Button("Add", GUILayout.Width(100), GUILayout.Height(30)))
+        //    {
+        //        ObstacleDatabase.Obstacles obstacles = ObstacleDatabase.Obstacles.GetInstance();
+        //        obstacles.list.Add(new Obstacle(obstacles.list.Count, obstacleNameText, obstacleHitPoints));
+        //        Serialization.Serialize(obstacles);
+        //        obstacleNameText = "";
+        //        obstacleHitPoints = 0;
+        //        Debug.Log("Serialized Obstacle");
+        //    }
 
-            EditorGUILayout.EndHorizontal();
-            GUILayout.Space(7);
-        }
+        //    EditorGUILayout.EndHorizontal();
+        //    GUILayout.Space(7);
+        //}
 
-        Rect rect2 = EditorGUILayout.BeginHorizontal();
-        Handles.color = Color.black;
-        Handles.DrawLine(new Vector2(rect2.x - 15, rect2.y), new Vector2(rect2.width + 15, rect2.y));
-        EditorGUILayout.EndHorizontal();
-        EditorGUILayout.EndFoldoutHeaderGroup();
+        //Rect rect2 = EditorGUILayout.BeginHorizontal();
+        //Handles.color = Color.black;
+        //Handles.DrawLine(new Vector2(rect2.x - 15, rect2.y), new Vector2(rect2.width + 15, rect2.y));
+        //EditorGUILayout.EndHorizontal();
+        //EditorGUILayout.EndFoldoutHeaderGroup();
 
         // Item Group
         isShowNewItem = EditorGUILayout.BeginFoldoutHeaderGroup(isShowNewItem, "New Item");
@@ -143,9 +142,8 @@ public class DataEditor : EditorWindow
 
             if (GUILayout.Button("Add", GUILayout.Width(100), GUILayout.Height(30)))
             {
-                ItemDatabase.Items items = ItemDatabase.Items.GetInstance();
-                items.list.Add(new Item(items.list.Count, isItemUnlocked, itemNameText, itemDescriptionText, itemPrice));
-                Serialization.Serialize(items);
+                Item item = new Item(isItemUnlocked, itemNameText, itemDescriptionText, itemPrice);
+                Serialization.SerializeNewItem(item);
                 itemNameText = "";
                 itemDescriptionText = "";
                 itemPrice = 0;
@@ -163,7 +161,7 @@ public class DataEditor : EditorWindow
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.EndFoldoutHeaderGroup();
 
-        // Trivia Group
+        // Trivia Group (Not tested - should be rewritten slightly to send properly)
         isShowNewTrivia = EditorGUILayout.BeginFoldoutHeaderGroup(isShowNewTrivia, "New Trivia");
 
         if (isShowNewTrivia)
@@ -248,9 +246,8 @@ public class DataEditor : EditorWindow
 
             if (GUILayout.Button("Add", GUILayout.Width(100), GUILayout.Height(30)))
             {
-                EventDatabase.Events events = EventDatabase.Events.GetInstance();
-                events.list.Add(new Event(events.list.Count, isEventUnlocked, eventNameText, eventDescriptionText, eventPrice));
-                Serialization.Serialize(events);
+                Event eventObj = new Event(isEventUnlocked, eventNameText, eventDescriptionText, eventPrice);
+                Serialization.SerializeNewEvent(eventObj);
                 eventNameText = "";
                 eventDescriptionText = "";
                 eventPrice = 0;

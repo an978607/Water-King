@@ -13,9 +13,8 @@ public class Item
 
     private Sprite ItemSprite;
 
-    public Item(int id, bool isUnlocked, string name, string description, int price)
+    public Item(bool isUnlocked, string name, string description, int price)
     {
-        this.id = id;
         this.isUnlocked = isUnlocked;
         this.name = name;
         this.description = description;
