@@ -62,4 +62,9 @@ public class PlayGamesController : MonoBehaviour {
         PlayGamesPlatform.Instance.ShowLeaderboardUI(GPGSIds.leaderboard_the_water_king);
     }
 
+    public static void SignOut() 
+    {
+        PlayGamesPlatform.Instance.SignOut();
+    }
+
 }
