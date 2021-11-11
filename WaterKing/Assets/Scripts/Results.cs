@@ -9,7 +9,7 @@ public class Results : MonoBehaviour
     public Text finalScore;
     public Text originalScore;
     public Text multiplyer;
-
+    private int finalscore;
     PlayerDataManager player;
 
 
@@ -28,19 +28,21 @@ public class Results : MonoBehaviour
         //generate cash 
         Score.CalculateCashMultiplyer();
         Score.generateCash();
+        finalscore = Score.getFinalScore();
 
         //post to UI
         coins.text = Score.getCash().ToString();
-        finalScore.text = Score.getFinalScore().ToString();
+        finalScore.text = finalscore.ToString();
         originalScore.text = Score.getOriginalScore().ToString();
         multiplyer.text = Score.getMultiplyer().ToString();
 
         player.AddToCurrency(Score.getCash());
+        player.AddToTotalScore(finalscore);
 
-        if (player.GetScoreAtLocation("Central Park") < Score.getFinalScore())
+        if (player.GetScoreAtLocation("Central Park") < finalscore)
         {
             Score.UpdateTotalScore();
-            player.UpdateScoreAtLocation(Score.getFinalScore(), "Central Park");
+            player.UpdateScoreAtLocation(finalscore, "Central Park");
         }
     }
 }
