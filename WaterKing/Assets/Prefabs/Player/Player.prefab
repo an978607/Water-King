@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shopItemPrefab: {fileID: 0}
   isShop: 0
+  isDeliveryScene: 1
 --- !u!1001 &3573241666253716513
 PrefabInstance:
   m_ObjectHideFlags: 0

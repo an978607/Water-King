@@ -14,6 +14,7 @@ public class PlayerDataManager : MonoBehaviour
     GameObject lockedItem;
     [SerializeField] private GameObject shopItemPrefab;
     [SerializeField] private bool isShop;
+    [SerializeField] private bool isDeliveryScene;
     private GameObject locationsUIContent;
     public static string UNLOCKED_TEXT = "UNLOCKED";
 
@@ -45,6 +46,22 @@ public class PlayerDataManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        if (isDeliveryScene)
+        {
+            Transform playerVehicle = gameObject.transform.Find(player.selectedVehicle);
+            if (playerVehicle != null)
+            {
+                playerVehicle.gameObject.SetActive(true);
+            }
+            else
+            {
+                Debug.LogError("PlayerDataManager: Unable to find playerVehicle in delivery scene");
+            }
+        }
+
+    }
     void Update()
     {
         

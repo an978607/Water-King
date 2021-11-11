@@ -1427,6 +1427,11 @@ PrefabInstance:
       propertyPath: failScreen
       value: 
       objectReference: {fileID: 835455420}
+    - target: {fileID: 5265445938164782375, guid: 3dd89642e5580134a9012ea8e782bb44,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5426244116209894016, guid: 3dd89642e5580134a9012ea8e782bb44,
         type: 3}
       propertyPath: life
