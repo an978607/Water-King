@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class EventDatabase : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class EventDatabase : MonoBehaviour
         string json = "{\"list\":" + GetAPIDatabase.GetEvents() + "}";
         List<Event> eventList = Deserialization.DeserializeEvents(json);
         events = new Dictionary<string, Event>();
-        foreach(Event e in eventList)
+        foreach(Event e in eventList.OrderBy(key => key.price))
         {
             if (events.ContainsKey(e.Name))
             {

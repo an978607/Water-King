@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 [System.Serializable]
 public class Player
@@ -61,6 +62,8 @@ public class Player
             }
             locations.Add(locationString[i], new Location(i, locationString[i], Convert.ToBoolean(int.Parse(unlockString[i])), int.Parse(scoreString[i]), int.Parse(priceString[i])));
         }
+
+        locations.OrderBy(key => key.Value.price);
     }
     
     private void ParseVehicles()

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Linq;
 public class ItemDatabase : MonoBehaviour
 {
     private static GameObject itemDatabaseObject;
@@ -23,7 +23,7 @@ public class ItemDatabase : MonoBehaviour
         string json = "{\"list\":" + GetAPIDatabase.GetItems() + "}";
         List<Item> itemsList = Deserialization.DeserializeItems(json);
         items = new Dictionary<string, Item>();
-        foreach (Item i in itemsList)
+        foreach (Item i in itemsList.OrderBy(key => key.price))
         {
             if (items.ContainsKey(i.name))
             {

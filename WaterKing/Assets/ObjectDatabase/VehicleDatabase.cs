@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using SimpleJSON;
+using System.Linq;
 
 public class VehicleDatabase : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class VehicleDatabase : MonoBehaviour
         List<Vehicle> vehicleList = Deserialization.DeserializeVehicles(json);
         vehicles = new Dictionary<string, Vehicle>();
 
-        foreach (Vehicle v in vehicleList)
+        foreach (Vehicle v in vehicleList.OrderBy(key => key.price))
         {
             if (vehicles.ContainsKey(v.name))
             {
