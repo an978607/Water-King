@@ -100,7 +100,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -12}
+  m_Offset: {x: -0.4, y: -12}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -149,8 +149,6 @@ MonoBehaviour:
   life: {fileID: 0}
   failScreen: {fileID: 0}
   state: {fileID: 8852757570068414114}
-  lives: 3
-  num: {fileID: 0}
 --- !u!114 &8852757570068414114
 MonoBehaviour:
   m_ObjectHideFlags: 0
