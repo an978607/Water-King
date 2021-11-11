@@ -69,7 +69,8 @@ public class Serialization
             "\",\"lastEnergyUpdateTime\":\"" + player.lastEnergyUpdateTime +
               "\",\"fuelAmount\":\"" + player.fuelAmount +
                 "\",\"protection\":\"" + player.fuelAmount +
-                  "\",\"upgrade\":\"" + player.totalScore +
+                  "\",\"upgrade\":\"" + player.totalScore + 
+                  "\",\"time\":\"" + player.totalScore +
                     "\",\"selectedVehicle\":\"" + player.totalScore + "\"}";
         Debug.Log("Serializing player");
         PostAPIDatabase.PostPlayer(json);
@@ -83,26 +84,26 @@ public class Serialization
     }
     public static void Serialize(Vehicle vehicle)
     {
-        string json = "{\"vehicles\":\"" + vehicle.name + "\",\"visUnlocked\":\"" + Convert.ToInt32(vehicle.GetUnlockedStatus()) + "\"}";
+        string json = "{\"vehicleName\":\"" + vehicle.name + "\",\"isUnlocked\":\"" + Convert.ToInt32(vehicle.GetUnlockedStatus()) + "\",\"selectedVehicle\":\"" + vehicle.name + "\"}";
         Debug.Log(json);
         Debug.Log("Serializing vehicle");
-        //PutAPIDatabase.UpdatePlayerItems(json);
+        PutAPIDatabase.UpdatePlayerVehicles(json);
     }
 
     public static void Serialize(Item item)
     {
-        string json = "{\"items\":\"" + item.name + "\",\"iisUnlocked\":\"" + Convert.ToInt32(item.GetUnlockedStatus()) + "\"}";
+        string json = "{\"itemName\":\"" + item.name + "\",\"isUnlocked\":\"" + Convert.ToInt32(item.GetUnlockedStatus()) + "\"}";
         Debug.Log(json);
         Debug.Log("Serializing item");
-        //PutAPIDatabase.UpdatePlayerItems(json);
+        PutAPIDatabase.UpdatePlayerItems(json);
     }
 
     public static void Serialize(Event eventObj)
     {
-        string json = "{\"events\":\"" + eventObj.Name + "\",\"eisUnlocked\":\"" + Convert.ToInt32(eventObj.GetUnlockedStatus()) + "\"}";
+        string json = "{\"eventName\":\"" + eventObj.Name + "\",\"isUnlocked\":\"" + Convert.ToInt32(eventObj.GetUnlockedStatus()) + "\"}";
         Debug.Log(json);
         Debug.Log("Serializing event");
-        //PutAPIDatabase.UpdatePlayerItems(json);
+        PutAPIDatabase.UpdatePlayerEvents(json);
     }
 
     private static string SaveJSON(string type, string json)
