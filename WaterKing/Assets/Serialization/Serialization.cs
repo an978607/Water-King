@@ -42,10 +42,26 @@ public class Serialization
         string json = "{\"name\":\"" + item.name +
             "\",\"description\":\"" + item.description +
             "\",\"isUnlocked\":\"" + Convert.ToInt32(item.GetUnlockedStatus())
-            + "\",\"price\":\"" + item.price + "\"}";
+            + "\",\"price\":\"" + item.price +
+            "\",\"count\":\"" + item.count + "\"}";
         Debug.Log("Serializing items");
+        Debug.Log(json);
         //SaveJSON("Items", json);
         PostAPIDatabase.PostItem(json);
+    }
+
+    public static void SerializeUpdatedItem(Item item)
+    {
+        //string json = JsonUtility.ToJson(items);
+        string json = "{\"name\":\"" + item.name +
+            "\",\"isUnlocked\":\"" + Convert.ToInt32(item.GetUnlockedStatus())
+            + "\",\"price\":\"" + item.price +
+            "\",\"count\":\"" + item.count + "\"}";
+        Debug.Log("Serializing items");
+        Debug.Log(json);
+        //SaveJSON("Items", json);
+        PutAPIDatabase.UpdateItems(json);
+
     }
 
     public static void SerializeNewEvent(Event eventObj)
@@ -76,7 +92,6 @@ public class Serialization
                 "\",\"selectedVehicle\":\"" + player.selectedVehicle +
                 "\"}";
             Debug.Log("Serializing player");
-            Debug.LogWarning(json);
             PutAPIDatabase.UpdatePlayer(json);
         }
 
@@ -98,7 +113,10 @@ public class Serialization
 
     public static void Serialize(Item item)
     {
-        string json = "{\"itemName\":\"" + item.name + "\",\"isUnlocked\":\"" + Convert.ToInt32(item.GetUnlockedStatus()) + "\"}";
+        string json = "{\"count\":\"" + item.count + 
+            "\",\"isUnlocked\":\"" + 
+            Convert.ToInt32(item.GetUnlockedStatus()) +
+             "\",\"itemName\":\"" + item.name + "\"}";
         Debug.Log(json);
         Debug.Log("Serializing item");
         PutAPIDatabase.UpdatePlayerItems(json);

@@ -28,6 +28,27 @@ public static class PutAPIDatabase
         }
     }
 
+    // Update items info: http://waterkinggame.com/LAMPAPI/update_items.php
+    // It expects the fields "price", "count", "isUnlocked", and "name".
+    public static void UpdateItems(string strJsonInput)
+    {
+        string strURL = String.Format("http://{0}/LAMPAPI/{1}.php", "waterkinggame.com", "update_items");
+        try
+        {
+            WebClient wc = new WebClient();
+            wc.Headers[HttpRequestHeader.ContentType] = "application/json";
+
+            string strJsonResult = (string)wc.UploadString(strURL, "PUT", strJsonInput);
+
+            Debug.Log(strJsonResult);
+        }
+        catch (System.Exception ex)
+        {
+            Console.WriteLine("{0} String failed to upload.", ex);
+        }
+    }
+
+
     // Update Player info
     // Endpoint for updating player info: http://waterkinggame.com/LAMPAPI/update_player.php
     public static void UpdatePlayer(string strJsonInput)

@@ -9,6 +9,9 @@ public class VehicleManager : MonoBehaviour
     [SerializeField] private bool isShop;
 
     const string PRICE_ZERO_TEXT = "UNLOCKED";
+    public static string SELECTED_TEXT = "SELECTED";
+    public static string SELECT_TEXT = "SELECT";
+    public static Dictionary<string, GameObject> vehiclePrefabs;
     private GameObject upgradesUIContent;
 
     private void Awake()
@@ -22,6 +25,7 @@ public class VehicleManager : MonoBehaviour
                 return;
             }
 
+            vehiclePrefabs = new Dictionary<string, GameObject>();
             CreateVehicleShopItemList();
         }
     }
@@ -55,8 +59,15 @@ public class VehicleManager : MonoBehaviour
             
             if (vehicle.Value.GetUnlockedStatus())
             {
-                textArray[2].text = PRICE_ZERO_TEXT;
-                prefabInstance.GetComponentInChildren<Button>().interactable = false;
+                if (PlayerDataManager.player.selectedVehicle == vehicle.Value.name)
+                {
+                    textArray[2].text = SELECTED_TEXT;
+                    prefabInstance.GetComponentInChildren<Button>().interactable = false;
+                }
+                else
+                {
+                    textArray[2].text = SELECT_TEXT;
+                }
             }
             else
             {
@@ -70,6 +81,7 @@ public class VehicleManager : MonoBehaviour
 
             prefabInstance.tag = "ShopVehicle";
             prefabInstance.transform.SetParent(upgradesUIContent.transform, false);
+            vehiclePrefabs.Add(vehicle.Value.name, prefabInstance);
         }
     }
 }

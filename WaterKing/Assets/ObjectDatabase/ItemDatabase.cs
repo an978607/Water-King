@@ -31,6 +31,7 @@ public class ItemDatabase : MonoBehaviour
                 continue;
             }
 
+            i.maxCount = i.count;
             items.Add(i.name, i);
         }
     }

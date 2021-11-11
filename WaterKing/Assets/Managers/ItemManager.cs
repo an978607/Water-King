@@ -60,12 +60,17 @@ public class ItemManager : MonoBehaviour
             }
             else
             {
-                if (price > PlayerDataManager.GetCurrency())
+                int itemPrice = price;
+                if (item.Value.count > 1)
+                {
+                    itemPrice = ShopManager.GetNextPrice(price, item.Value.count);
+                }
+                textArray[2].text = itemPrice.ToString();
+                if (itemPrice > PlayerDataManager.GetCurrency())
                 {
                     prefabInstance.GetComponentInChildren<Button>().interactable = false;
                 }
 
-                textArray[2].text = price.ToString();
             }
 
             prefabInstance.tag = "ShopUpgradeItem";

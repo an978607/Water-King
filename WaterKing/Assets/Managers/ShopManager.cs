@@ -46,7 +46,7 @@ public class ShopManager : MonoBehaviour
                 {
                     PlayerDataManager.SubtractFromCurrency(location.price);
                     location.isUnlocked = true;
-                    buttonText.text = PlayerDataManager.PRICE_ZERO_TEXT;
+                    buttonText.text = PlayerDataManager.UNLOCKED_TEXT;
                     button.interactable = false;
                     UpdateCurrencyUI();
                     PlayerDataManager.SavePlayerData(location);
@@ -68,21 +68,32 @@ public class ShopManager : MonoBehaviour
                     {
                         Vehicle vehicle = VehicleDatabase.vehicles[titleNameText.text];
                         vehicle.SetStatusToUnlocked();
-                        buttonText.text = PlayerDataManager.PRICE_ZERO_TEXT;
-                        button.interactable = false;
+                        SelectVehicle();
                         PlayerDataManager.SavePlayerData(vehicle);
                     }
                     else if (parentPrefabTag == "ShopUpgradeItem")
                     {
                         Item item = ItemDatabase.items[titleNameText.text];
-                        item.SetStatusToUnlocked();
-                        buttonText.text = PlayerDataManager.PRICE_ZERO_TEXT;
-                        button.interactable = false;
+                        item.count++;
+                        if (item.count > item.maxCount)
+                        {
+                            item.SetStatusToUnlocked();
+                            buttonText.text = PlayerDataManager.UNLOCKED_TEXT;
+                            button.interactable = false;
+                        }
+                        else
+                        {
+                            int newPrice = GetNextPrice(item.price, item.count);
+                            buttonText.text = newPrice.ToString();
+                            if (newPrice > PlayerDataManager.GetCurrency())
+                            {
+                                button.interactable = false;
+                            }
+                        }
+
                         PlayerDataManager.SavePlayerData(item);
                     }
 
-                    buttonText.text = PlayerDataManager.PRICE_ZERO_TEXT;
-                    button.interactable = false;
                     UpdateCurrencyUI();
                 }
                 return;
@@ -100,10 +111,62 @@ public class ShopManager : MonoBehaviour
                 {
                     PlayerDataManager.SubtractFromCurrency(eventPrice);
                     eventObj.SetStatusToUnlocked();
-                    buttonText.text = PlayerDataManager.PRICE_ZERO_TEXT;
+                    buttonText.text = PlayerDataManager.UNLOCKED_TEXT;
                     button.interactable = false;
                     UpdateCurrencyUI();
                     PlayerDataManager.SavePlayerData(eventObj);
+                }
+                return;
+            default:
+                return;
+        }
+    }
+
+    private void SelectVehicle()
+    {
+        string previousSelectedVehicle = PlayerDataManager.player.selectedVehicle;
+        GameObject parentPanelObject = gameObject.transform.parent.parent.parent.gameObject;
+        GameObject titleName = gameObject.transform.parent.Find("TITLE").gameObject;
+        Text titleNameText = titleName.GetComponent<Text>();
+        Button button = gameObject.GetComponent<Button>();
+        Text buttonText = gameObject.GetComponentInChildren<Text>();
+        string parentPrefabTag = gameObject.transform.parent.tag;
+
+        GameObject prevSelectedVehiclePrefab = VehicleManager.vehiclePrefabs[previousSelectedVehicle];
+        Transform prevBuyButtonTransform = prevSelectedVehiclePrefab.transform.Find("Buy Button");
+
+        if (prevBuyButtonTransform == null)
+        {
+            Debug.LogError("ShopManager: Unable to find the previous selected buy button transform");
+            return;
+        }
+
+        Text prevSelectedButtonText = prevBuyButtonTransform.GetComponentInChildren<Text>();
+        if (prevSelectedButtonText == null)
+        {
+            Debug.LogError("ShopManager: Unable to find the previous selected buy button text");
+            return;
+        }
+
+        Button prevSelectedButton = prevBuyButtonTransform.GetComponent<Button>();
+        if (prevSelectedButton == null)
+        {
+            Debug.LogError("ShopManager: Unable to find the previous selected buy button");
+            return;
+        }
+
+        switch (parentPanelObject.name)
+        {
+            case "Upgrades Panel":
+                if (parentPrefabTag == "ShopVehicle")
+                {
+                    Vehicle vehicle = VehicleDatabase.vehicles[titleNameText.text];
+                    prevSelectedButtonText.text = VehicleManager.SELECT_TEXT;
+                    button.interactable = false;
+                    PlayerDataManager.player.selectedVehicle = vehicle.name;
+                    buttonText.text = VehicleManager.SELECTED_TEXT;
+                    prevSelectedButton.interactable = true;
+                    PlayerDataManager.SavePlayer();
                 }
                 return;
             default:
@@ -133,6 +196,14 @@ public class ShopManager : MonoBehaviour
 
     public void AskConfirmPurchase()
     {
+        // Select new vehicle and update UI instead of purchase
+        if (gameObject.GetComponentInChildren<Text>().text == VehicleManager.SELECT_TEXT)
+        {
+            SelectVehicle();
+            return;
+        }
+
+        // Confirm Purchase
         Transform backgroundTransform = GetConfirmBackgroundTransform();
         if (backgroundTransform == null)
         {
@@ -176,7 +247,7 @@ public class ShopManager : MonoBehaviour
 
         confirmButton.onClick.AddListener(PurchaseConfirmed);
         confirmButton.onClick.AddListener(delegate { RemoveConfirmScreenButtonListeners(confirmButton, closeButton); });
-        closeButton.onClick.AddListener(delegate {RemoveConfirmScreenButtonListeners(confirmButton, closeButton);});
+        closeButton.onClick.AddListener(delegate { RemoveConfirmScreenButtonListeners(confirmButton, closeButton); });
     }
 
     private Transform GetConfirmBackgroundTransform()
@@ -238,5 +309,16 @@ public class ShopManager : MonoBehaviour
     private void PurchaseConfirmed()
     {
         TryPurchase();
+    }
+
+    public static int GetNextPrice(int startingPrice, int count)
+    {
+        int newPrice = startingPrice;
+        for (int i = 0; i < count - 1; i++)
+        {
+            newPrice *= 2;
+        }
+
+        return newPrice;
     }
 }

@@ -9,11 +9,13 @@ public class PlayerItems
     [SerializeField] private int player_id;
     [SerializeField] private string items;
     [SerializeField] private string iisUnlocked;
+    [SerializeField] private string count;
 
     public void ParseData()
     {
         string[] itemString = items.Split(','); // TODO: UPDATE to correct variable ********
         string[] unlockString = iisUnlocked.Split(',');
+        string[] countString = count.Split(',');
 
         for (int i = 0; i < itemString.Length; i++)
         {
@@ -30,6 +32,8 @@ public class PlayerItems
             {
                 item.SetStatusToUnlocked();
             }
+
+            item.count = int.Parse(countString[i]);
         }
     }
 }

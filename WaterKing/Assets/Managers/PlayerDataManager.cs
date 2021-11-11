@@ -15,7 +15,7 @@ public class PlayerDataManager : MonoBehaviour
     [SerializeField] private GameObject shopItemPrefab;
     [SerializeField] private bool isShop;
     private GameObject locationsUIContent;
-    public static string PRICE_ZERO_TEXT = "UNLOCKED";
+    public static string UNLOCKED_TEXT = "UNLOCKED";
 
     private void OnApplicationPause(bool pause)
     {
@@ -134,7 +134,7 @@ public class PlayerDataManager : MonoBehaviour
 
             if (location.Value.isUnlocked)
             {
-                textArray[2].text = PRICE_ZERO_TEXT;
+                textArray[2].text = UNLOCKED_TEXT;
                 prefabInstance.GetComponentInChildren<Button>().interactable = false;
             }
             else
