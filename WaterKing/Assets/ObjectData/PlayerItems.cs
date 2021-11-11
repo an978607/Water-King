@@ -22,7 +22,7 @@ public class PlayerItems
 
             if (item == null)
             {
-                Debug.LogError("PlayerItems: Unable to find item name in ItemDatabase");
+                Debug.LogError("PlayerItems: Unable to find item name in ItemDatabase -> " + itemString[i]);
                 continue;
             }
             bool unlocked = Convert.ToBoolean(int.Parse(unlockString[i]));

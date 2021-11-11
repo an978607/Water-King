@@ -14,7 +14,6 @@ public class Serialization
             "\",\"isUnlocked\":\"" + Convert.ToInt32(vehicle.GetUnlockedStatus())
             + "\",\"price\":\"" + vehicle.price + "\",\"speed\":\""  + vehicle.GetSpeed() + "\"}";
         Debug.Log("Serializing vehicles");
-        Debug.Log(json);
         //SaveJSON("Vehicles", json);
         PostAPIDatabase.PostVehicle(json);
 
@@ -62,9 +61,16 @@ public class Serialization
         PostAPIDatabase.PostEvent(json);
     }
 
+    // TODO: UPDATE VALUES PASSED *****************
     public static void Serialize(Player player)
     {
-        string json = JsonUtility.ToJson(player);
+        string json = "{\"currency\":\"" + player.currency + 
+            "\",\"totalScore\":\"" + player.totalScore + 
+            "\",\"lastEnergyUpdateTime\":\"" + player.lastEnergyUpdateTime +
+              "\",\"fuelAmount\":\"" + player.fuelAmount +
+                "\",\"protection\":\"" + player.fuelAmount +
+                  "\",\"upgrade\":\"" + player.totalScore +
+                    "\",\"selectedVehicle\":\"" + player.totalScore + "\"}";
         Debug.Log("Serializing player");
         PostAPIDatabase.PostPlayer(json);
     }
@@ -72,7 +78,6 @@ public class Serialization
     public static void Serialize(Location location)
     {
         string json = "{\"locationName\":\"" + location.name + "\",\"score\":\"" + location.score + "\",\"isUnlocked\":\"" + Convert.ToInt32(location.isUnlocked) + "\"}";
-        Debug.Log(json);
         Debug.Log("Serializing location");
         PutAPIDatabase.UpdateLocations(json);
     }

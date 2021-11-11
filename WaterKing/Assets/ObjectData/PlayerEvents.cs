@@ -22,7 +22,7 @@ public class PlayerEvents
 
             if (eventObj == null)
             {
-                Debug.LogError("PlayerEvents: Unable to find event name in EventDatabase");
+                Debug.LogError("PlayerEvents: Unable to find event name in EventDatabase -> " + eventString[i]);
                 continue;
             }
             bool unlocked = Convert.ToBoolean(int.Parse(unlockString[i]));

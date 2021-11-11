@@ -26,7 +26,7 @@ public class EventDatabase : MonoBehaviour
         {
             if (events.ContainsKey(e.Name))
             {
-                Debug.LogError("EventDatabase: Unable to add duplicate event, check remote database");
+                Debug.LogError("EventDatabase: Unable to add duplicate event, check remote database -> " + e.Name);
                 continue;
             }
             events.Add(e.Name, e);

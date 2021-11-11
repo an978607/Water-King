@@ -27,7 +27,7 @@ public class ItemDatabase : MonoBehaviour
         {
             if (items.ContainsKey(i.name))
             {
-                Debug.LogError("ItemDatabase: Unable to add duplicate item, check remote database");
+                Debug.LogError("ItemDatabase: Unable to add duplicate item, check remote database -> " + i.name);
                 continue;
             }
 

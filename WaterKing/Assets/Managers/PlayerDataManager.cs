@@ -221,6 +221,11 @@ public class PlayerDataManager : MonoBehaviour
         return player.lastEnergyUpdateTime;
     }
 
+    public static void SavePlayer()
+    {
+        Serialization.Serialize(player);
+    }
+
     public static void SavePlayerData(Vehicle vehicle)
     {
         Serialization.Serialize(vehicle);
@@ -240,11 +245,4 @@ public class PlayerDataManager : MonoBehaviour
     {
        Serialization.Serialize(location);
     }
-
-    public void SavePlayer()
-    {
-
-    }
-
-
 }

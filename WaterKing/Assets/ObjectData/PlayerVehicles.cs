@@ -22,7 +22,7 @@ public class PlayerVehicles
 
             if (vehicle == null)
             {
-                Debug.LogError("PlayerVehicle: Unable to find vehicle name in VehicleDatabase");
+                Debug.LogError("PlayerVehicle: Unable to find vehicle name in VehicleDatabase -> " + vehicleString[i]);
                 continue;
             }
             bool unlocked = Convert.ToBoolean(int.Parse(unlockString[i]));

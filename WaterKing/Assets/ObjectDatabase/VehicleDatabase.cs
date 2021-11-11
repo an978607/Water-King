@@ -32,7 +32,7 @@ public class VehicleDatabase : MonoBehaviour
         {
             if (vehicles.ContainsKey(v.name))
             {
-                Debug.LogError("VehicleDatabase: Unable to add duplicate vehicle, check remote database");
+                Debug.LogError("VehicleDatabase: Unable to add duplicate vehicle, check remote database -> " + v.name);
                 continue;
             }
 
