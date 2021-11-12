@@ -447,7 +447,7 @@ PrefabInstance:
     - target: {fileID: 7886634211855863071, guid: a9134e3b328aaef4aac403ea5e4bb1c9,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9134e3b328aaef4aac403ea5e4bb1c9, type: 3}
@@ -631,17 +631,17 @@ PrefabInstance:
     - target: {fileID: 1891598641388862675, guid: 8caecdb9a79110844a9e298f8caa49fe,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891598641388862675, guid: 8caecdb9a79110844a9e298f8caa49fe,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.99492013
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891598641388862675, guid: 8caecdb9a79110844a9e298f8caa49fe,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.005079806
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891598641646722301, guid: 8caecdb9a79110844a9e298f8caa49fe,
         type: 3}
@@ -667,6 +667,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Value
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1891598641800877731, guid: 8caecdb9a79110844a9e298f8caa49fe,
+        type: 3}
+      propertyPath: m_Direction
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1891598641887319494, guid: 8caecdb9a79110844a9e298f8caa49fe,
         type: 3}
@@ -2450,9 +2455,10 @@ GameObject:
   - component: {fileID: 478352937}
   - component: {fileID: 478352936}
   - component: {fileID: 478352935}
+  - component: {fileID: 478352938}
   m_Layer: 0
   m_Name: Random Event
-  m_TagString: Untagged
+  m_TagString: Event
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2538,6 +2544,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 2
   m_TargetDisplay: 0
+--- !u!114 &478352938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478352933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a520a4723c05964589b6265b819ea74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &497558737
 GameObject:
   m_ObjectHideFlags: 0
@@ -4462,7 +4480,7 @@ GameObject:
   - component: {fileID: 921853246}
   m_Layer: 0
   m_Name: Details
-  m_TagString: Untagged
+  m_TagString: EventText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8324,17 +8342,17 @@ PrefabInstance:
     - target: {fileID: 1891598641388862675, guid: 8caecdb9a79110844a9e298f8caa49fe,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891598641388862675, guid: 8caecdb9a79110844a9e298f8caa49fe,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.99492013
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891598641388862675, guid: 8caecdb9a79110844a9e298f8caa49fe,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.005079806
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891598641646722301, guid: 8caecdb9a79110844a9e298f8caa49fe,
         type: 3}
@@ -8360,6 +8378,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Value
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1891598641800877731, guid: 8caecdb9a79110844a9e298f8caa49fe,
+        type: 3}
+      propertyPath: m_Direction
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1891598641887319494, guid: 8caecdb9a79110844a9e298f8caa49fe,
         type: 3}
