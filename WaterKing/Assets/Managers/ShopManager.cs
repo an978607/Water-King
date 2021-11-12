@@ -131,6 +131,19 @@ public class ShopManager : MonoBehaviour
                     button.interactable = false;
                     UpdateCurrencyUI();
                     PlayerDataManager.SavePlayerData(eventObj);
+                    if (eventObj.Name == "Promotion")
+                    {
+                        ShopEvent.Promotion();
+                    }
+                    else if (eventObj.Name == "Advertisement")
+                    {
+                        ShopEvent.Advertisement();
+                    }
+                    else if (eventObj.Name == "Rival Company Shutdown")
+                    {
+                        ShopEvent.RivalShutdown();
+                    }
+
                 }
                 return;
             default:
