@@ -9,7 +9,8 @@ public class ShopManager : MonoBehaviour
     {
         
         int playerCurrency = PlayerDataManager.GetCurrency();
-        
+
+        Transform UI = gameObject.transform.root;
         GameObject parentPanelObject = gameObject.transform.parent.parent.parent.gameObject;
         GameObject titleName = gameObject.transform.parent.Find("TITLE").gameObject;
         Text titleNameText = titleName.GetComponent<Text>();
@@ -30,6 +31,15 @@ public class ShopManager : MonoBehaviour
             Debug.LogError("ShopManager: Unable to find confirm purchase transform");
             return;
         }
+
+        Transform shopEventTransform = UI.Find("Random Event");
+        if (shopEventTransform == null)
+        {
+            Debug.LogError("ShopManager:: Unable to find object Random Event");
+            return;
+        }
+
+        ShopEvent shopEvent = shopEventTransform.gameObject.GetComponent<ShopEvent>();
 
         confirmPurchaseTransform.gameObject.SetActive(false);
 
@@ -133,15 +143,15 @@ public class ShopManager : MonoBehaviour
                     PlayerDataManager.SavePlayerData(eventObj);
                     if (eventObj.Name == "Promotion")
                     {
-                        ShopEvent.Promotion();
+                        shopEvent.Promotion();
                     }
                     else if (eventObj.Name == "Advertisement")
                     {
-                        ShopEvent.Advertisement();
+                        shopEvent.Advertisement();
                     }
                     else if (eventObj.Name == "Rival Company Shutdown")
                     {
-                        ShopEvent.RivalShutdown();
+                        shopEvent.RivalShutdown();
                     }
 
                 }
