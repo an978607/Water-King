@@ -600,6 +600,11 @@ PrefabInstance:
       propertyPath: musicSlider
       value: 
       objectReference: {fileID: 2846252410274507819}
+    - target: {fileID: 8194431382944360808, guid: 75690c3ff2f35e64290f5ad2d06c5156,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 496bc679e943f8643aabdb7dea682221, type: 3}
     - target: {fileID: 8194431382944360809, guid: 75690c3ff2f35e64290f5ad2d06c5156,
         type: 3}
       propertyPath: m_RootOrder
@@ -797,10 +802,28 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 835455421, guid: adb7c903a73e10f438d172cfb7739fd3, type: 3}
+      propertyPath: locationName
+      value: Central Park
+      objectReference: {fileID: 0}
+    - target: {fileID: 1483699891, guid: adb7c903a73e10f438d172cfb7739fd3, type: 3}
+      propertyPath: locationName
+      value: Central Park
+      objectReference: {fileID: 0}
     - target: {fileID: 1868154551065888871, guid: adb7c903a73e10f438d172cfb7739fd3,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1868154552914403715, guid: adb7c903a73e10f438d172cfb7739fd3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2846252409617192924, guid: adb7c903a73e10f438d172cfb7739fd3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2846252409617192927, guid: adb7c903a73e10f438d172cfb7739fd3,
         type: 3}
@@ -906,6 +929,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2846252410962239108, guid: adb7c903a73e10f438d172cfb7739fd3,
+        type: 3}
+      propertyPath: m_Text
+      value: 'MULTIPLYER:'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2846252411038685379, guid: adb7c903a73e10f438d172cfb7739fd3,
+        type: 3}
+      propertyPath: m_Text
+      value: 'MULTIPLYER:'
       objectReference: {fileID: 0}
     - target: {fileID: 2846252411137650639, guid: adb7c903a73e10f438d172cfb7739fd3,
         type: 3}
@@ -1352,6 +1385,11 @@ PrefabInstance:
       propertyPath: failScreen
       value: 
       objectReference: {fileID: 835455420}
+    - target: {fileID: 3731741595726031719, guid: 3dd89642e5580134a9012ea8e782bb44,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3731741596898724961, guid: 3dd89642e5580134a9012ea8e782bb44,
         type: 3}
       propertyPath: life
@@ -1362,6 +1400,16 @@ PrefabInstance:
       propertyPath: failScreen
       value: 
       objectReference: {fileID: 835455420}
+    - target: {fileID: 3731741596898724964, guid: 3dd89642e5580134a9012ea8e782bb44,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3731741596898724989, guid: 3dd89642e5580134a9012ea8e782bb44,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.2
+      objectReference: {fileID: 0}
     - target: {fileID: 5048095636272726184, guid: 3dd89642e5580134a9012ea8e782bb44,
         type: 3}
       propertyPath: m_RootOrder
@@ -1427,11 +1475,6 @@ PrefabInstance:
       propertyPath: failScreen
       value: 
       objectReference: {fileID: 835455420}
-    - target: {fileID: 5265445938164782375, guid: 3dd89642e5580134a9012ea8e782bb44,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5426244116209894016, guid: 3dd89642e5580134a9012ea8e782bb44,
         type: 3}
       propertyPath: life
@@ -1465,6 +1508,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Level Background
+      objectReference: {fileID: 0}
+    - target: {fileID: 7490866772823490800, guid: 641f8da2147fe6e4895ef89ef5ed1dd9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7490866772823490807, guid: 641f8da2147fe6e4895ef89ef5ed1dd9,
         type: 3}

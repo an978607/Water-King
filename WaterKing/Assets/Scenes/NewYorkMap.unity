@@ -178,6 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shopItemPrefab: {fileID: 0}
   isShop: 0
+  isDeliveryScene: 0
 --- !u!114 &11604996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -856,6 +857,7 @@ MonoBehaviour:
   shopItemPrefab: {fileID: 1087142391147754412, guid: fdf79e72ffce838478739ee333794086,
     type: 3}
   isShop: 1
+  isDeliveryScene: 0
 --- !u!1 &196213784
 GameObject:
   m_ObjectHideFlags: 0
@@ -3347,6 +3349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shopItemPrefab: {fileID: 0}
   isShop: 0
+  isDeliveryScene: 0
 --- !u!1 &670328634
 GameObject:
   m_ObjectHideFlags: 0
@@ -4640,6 +4643,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shopItemPrefab: {fileID: 0}
   isShop: 0
+  isDeliveryScene: 0
 --- !u!1001 &958821867
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5970,6 +5974,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shopItemPrefab: {fileID: 0}
   isShop: 0
+  isDeliveryScene: 0
 --- !u!114 &1169759467
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,6 +5,9 @@ using UnityEngine;
 
 public static class PostAPIDatabase
 {
+    //userid = Social.localUser.id
+    //userName = PlayGamesPlatform.Instance.localUser.userName
+    //email = (PlayGamesLocalUser)Social.localUser).Email
 
     // Posts JSON string input of Item to the database
     // Endpoint for Items: http://waterkinggame.com/LAMPAPI/Items.php

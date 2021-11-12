@@ -21,6 +21,7 @@ public class PlayGamesController : MonoBehaviour {
             //.RequestServerAuthCode(false)
             // get requeset id
             .RequestIdToken()
+            .RequestEmail()
             .Build();
 
         PlayGamesPlatform.InitializeInstance(config);
@@ -28,10 +29,14 @@ public class PlayGamesController : MonoBehaviour {
 
         Social.localUser.Authenticate((bool success) =>
         {
-            if(success == true)
-            {
-                Debug.Log("Logged in to Google Play");
-                Debug.Log(Social.localUser.id);
+        if (success == true)
+        {
+            Debug.Log("Logged in to Google Play");
+            //player ID#
+            Debug.Log(Social.localUser.id);
+            //player Username
+            Debug.Log(PlayGamesPlatform.Instance.localUser.userName);
+
                 // this is for testing SceneManager.LoadScene("leaderboard");
             }
             else 
@@ -41,7 +46,6 @@ public class PlayGamesController : MonoBehaviour {
         }
             );
     }
-
     public static void PostToLeaderboard(long newScore)
     {
         Social.ReportScore(newScore, GPGSIds.leaderboard_the_water_king, (bool success) =>
@@ -66,5 +70,4 @@ public class PlayGamesController : MonoBehaviour {
     {
         PlayGamesPlatform.Instance.SignOut();
     }
-
 }
