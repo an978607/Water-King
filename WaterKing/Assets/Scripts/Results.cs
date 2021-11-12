@@ -37,7 +37,7 @@ public class Results : MonoBehaviour
         originalScore.text = Score.getOriginalScore().ToString();
         multiplyer.text = Score.getMultiplyer().ToString();
 
-        player.AddToCurrency(Score.getCash());
+        PlayerDataManager.AddToCurrency(Score.getCash());
         //add score to leader board 
 
         string scoreToPost = finalscore.ToString();

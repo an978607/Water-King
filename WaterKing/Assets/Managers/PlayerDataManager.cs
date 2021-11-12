@@ -208,7 +208,7 @@ public class PlayerDataManager : MonoBehaviour
     }
    
     // Currency
-    public void AddToCurrency(int addToCurrencyAmount)
+    public static void AddToCurrency(int addToCurrencyAmount)
     {
         player.currency += addToCurrencyAmount;
         SavePlayer();
