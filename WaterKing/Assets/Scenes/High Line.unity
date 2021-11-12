@@ -522,8 +522,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da675a6b262dc5c468cfba459776665d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 30
-  cashBonus: 0.01
+  time: 60
+  cashBonus: 0.03
   scoreBonus: 1
 --- !u!4 &1876584649
 Transform:
@@ -801,11 +801,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 835455421, guid: adb7c903a73e10f438d172cfb7739fd3, type: 3}
       propertyPath: locationName
-      value: Central Park
+      value: High Line
       objectReference: {fileID: 0}
     - target: {fileID: 1483699891, guid: adb7c903a73e10f438d172cfb7739fd3, type: 3}
       propertyPath: locationName
-      value: Central Park
+      value: High Line
       objectReference: {fileID: 0}
     - target: {fileID: 1868154551065888871, guid: adb7c903a73e10f438d172cfb7739fd3,
         type: 3}

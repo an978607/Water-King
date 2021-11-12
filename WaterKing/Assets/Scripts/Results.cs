@@ -49,7 +49,7 @@ public class Results : MonoBehaviour
             Debug.Log("Score Posted!");
         }
         //update banner information
-        if (player.GetScoreAtLocation("Central Park") < finalscore)
+        if (player.GetScoreAtLocation(locationName) < finalscore)
         {
             Score.UpdateTotalScore();
             player.UpdateScoreAtLocation(finalscore, locationName);
