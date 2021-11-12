@@ -70,7 +70,7 @@ public class DataEditor : EditorWindow
         if (isShowNewVehicle)
         {
             vehicleNameText = EditorGUILayout.TextField("Name:", vehicleNameText);
-            vehicleDescriptionText = EditorGUILayout.TextField("Description:", itemDescriptionText);
+            vehicleDescriptionText = EditorGUILayout.TextField("Description:", vehicleDescriptionText);
             vehiclePrice = EditorGUILayout.IntField("Price:", vehiclePrice);
             //vehicleSprite = (Sprite)EditorGUILayout.ObjectField("Sprite:", vehicleSprite, typeof(Sprite), false, GUILayout.Height(EditorGUIUtility.singleLineHeight));
             isVehicleUnlocked = EditorGUILayout.Toggle("Unlocked:", isVehicleUnlocked);

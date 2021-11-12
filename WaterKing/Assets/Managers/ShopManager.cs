@@ -91,6 +91,22 @@ public class ShopManager : MonoBehaviour
                             }
                         }
 
+                        if (item.name == "Additional Time")
+                        {
+                            PlayerDataManager.player.time += 0.02f;
+                            Debug.Log("Added time");
+                        }
+                        else if (item.name == "Additional Storage")
+                        {
+                            PlayerDataManager.player.upgrade += 1;
+                            Debug.Log("Added storage");
+                        }
+                        else if (item.name == "Protection")
+                        {
+                            PlayerDataManager.player.protection += 1;
+                            Debug.Log("Added protection");
+                        }
+
                         PlayerDataManager.SavePlayerData(item);
                     }
 
