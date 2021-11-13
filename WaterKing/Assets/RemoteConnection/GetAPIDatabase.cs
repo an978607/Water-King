@@ -224,15 +224,17 @@ public static class GetAPIDatabase
 
     // NOTE: This retreives one player from the database, not multiple
     // Endpoint: http://waterkinggame.com/LAMPAPI/get_players.php
-    public static string GetPlayers()
+    public static string GetPlayers(string strJSONInput)
     {
          string strURL = String.Format("http://{0}/LAMPAPI/{1}.php", "waterkinggame.com", "get_players");
         try
         {
             WebClient wc = new WebClient();
-            wc.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; " +
-                                  "Windows NT 5.2; .NET CLR 1.0.3705;)");
-            string strJsonResult = (string)wc.DownloadString("http://waterkinggame.com/LAMPAPI/get_players.php");
+            wc.Headers[HttpRequestHeader.ContentType] = "application/json";
+
+            //wc.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; " +
+            //                      "Windows NT 5.2; .NET CLR 1.0.3705;)");
+            string strJsonResult = (string)wc.UploadString(strURL, "POST", strJSONInput);
             return strJsonResult;
         }
         catch (System.Exception ex)

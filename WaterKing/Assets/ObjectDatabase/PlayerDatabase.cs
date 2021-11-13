@@ -18,7 +18,17 @@ public class PlayerDatabase : MonoBehaviour
 
     public void GetPlayerFromDatabase()
     {
-        string json = GetAPIDatabase.GetPlayers();
+        string playerIDJSON = "{\"player_id\":\"1\"}";
+        string json = GetAPIDatabase.GetPlayers(playerIDJSON);
+
+        // Create new player
+        //Serialization.SerializeNewPlayerData();
+        //Serialization.SerializeNewPlayerVehicles();
+        //Serialization.SerializeNewPlayerItems();
+        //Serialization.SerializeNewPlayerEvents();
+        // Retry Getting player
+
+
         PlayerDataManager.player = Deserialization.DeserializePlayer(json);
         PlayerDataManager.player.ParseData();
     }

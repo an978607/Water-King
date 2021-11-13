@@ -6,6 +6,38 @@ using System;
 
 public class Serialization
 {
+    // Initialize new player data
+    public static void SerializeNewPlayerData()
+    {
+        string json = "{}";
+        Debug.Log("Serializing New Player Data");
+        PostAPIDatabase.PostPlayer(json);
+    }
+
+    // Initialize new player's vehicles
+    public static void SerializeNewPlayerVehicles()
+    {
+        string json = "{}";
+        Debug.Log("Serializing New Player Vehicles");
+        PostAPIDatabase.PostVehicles(json);
+    }
+
+    // Initialize new player's items
+    public static void SerializeNewPlayerItems()
+    {
+        string json = "{}";
+        Debug.Log("Serializing New Player Items");
+        PostAPIDatabase.PostPlayerItems(json);
+    }
+
+    // Initialize new player's items
+    public static void SerializeNewPlayerEvents()
+    {
+        string json = "{}";
+        Debug.Log("Serializing New Player Events");
+        PostAPIDatabase.PostEvents(json);
+    }
+
     public static void SerializeNewVehicle(Vehicle vehicle)
     {
         //string json = JsonUtility.ToJson(vehicles);
