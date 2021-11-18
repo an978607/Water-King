@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html >
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Water King Leaderboard</title>
+		<link rel="stylesheet" href="../css/styles.css">
+	</head>
+
+<body>
+    <div class="nav-bar">
+        <ul>
+            <li><h2>Water King</h2></li>
+            <li><h2>Welcome</h2></li>
+          <li><a href="/html/account.html"><img src="https://img.icons8.com/material-rounded/24/000000/user.png"/></a></li>
+          <li><a href="../index.html"> Sign Out</a></li>
+        </ul>
+
+    </div>
+    <h1 style="margin-top:90px" class="center">LEADERBOARD</h1>
+    <div class="leaderboard">
+        <table>
+          <tr style="font-size:40px">
+            <th>RANK: </th>
+            <th>NAME: </th>
+            <th>SCORE: </th>
+          </tr>
+          <?php
+         $conn = new mysqli("localhost", "WaterKing", "WaterKing", "WaterKing");
+          if($conn-> connect_error) {
+          die("Connection failed:". $conn-> connect_error);
+          }
+          $sql = "SELECT id,name,score from Leaderboard";
+          $result = $conn-> query($sql);
+
+          if($result-> num_rows > 0) {
+          while ($row = $result-> fetch_assoc()) {
+          echo '<tr style="font-size: 24px;"><td>'. $row["id"] .'</td><td>' . $row["name"] .'</td><td>'. $row["score"] .'</td></tr>';
+          }
+          echo "</table>";
+          }
+          else {
+          echo "0 result";
+          }
+          $conn-> close();
+
+          ?>
+		  <button type="button" class="button">Load More</button>
+        </table>
+    </div>
+    <div class="bottom-bar">
+        <ul>
+            <li><a href="policy.html">Privacy Policy</a></li>
+            <li><a href="https://libertywaterusa.com/">Liberty Water</a></li>
+        </ul>
+    </div>
+</body>
+
+</html>
+
