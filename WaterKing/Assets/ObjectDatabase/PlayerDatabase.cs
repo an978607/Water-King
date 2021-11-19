@@ -18,19 +18,22 @@ public class PlayerDatabase : MonoBehaviour
 
     public void GetPlayerFromDatabase()
     {
-        string playerIDJSON = "{\"player_id\":\"1\"}";
-        string json = GetAPIDatabase.GetPlayers(playerIDJSON);
+        // Check for player with Google Play Info
 
-        // Create new player
+        // Player doesn't exist, create new player
         //Serialization.SerializeNewPlayerData();
         //Serialization.SerializeNewPlayerVehicles();
         //Serialization.SerializeNewPlayerItems();
         //Serialization.SerializeNewPlayerEvents();
+
         // Retry Getting player
 
+        // Get player data
+        string playerIDJSON = "{\"player_id\":\"1\"}";
+        string json = GetAPIDatabase.GetPlayers(playerIDJSON);
 
         PlayerDataManager.player = Deserialization.DeserializePlayer(json);
-        PlayerDataManager.player.ParseData();
+        PlayerDataManager.player.ParseData(playerIDJSON);
     }
 
     [System.Serializable]
