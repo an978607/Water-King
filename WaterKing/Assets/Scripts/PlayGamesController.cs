@@ -29,14 +29,27 @@ public class PlayGamesController : MonoBehaviour {
 
         Social.localUser.Authenticate((bool success) =>
         {
-        if (success == true)
-        {
-            Debug.Log("Logged in to Google Play");
-            //player ID#
-            Debug.Log(Social.localUser.id);
-            //player Username
-            Debug.Log(PlayGamesPlatform.Instance.localUser.userName);
+            if (success == true)
+            {
+                Debug.Log("Logged in to Google Play");
+                //player ID#
+                Debug.Log(Social.localUser.id);
+                //player Username
+                Debug.Log(PlayGamesPlatform.Instance.localUser.userName);
 
+                // Check for player with Google Play Info
+                string playerEmail = "{\"email\":\"" + PlayGamesPlatform.Instance.GetUserEmail() + "\"}";
+                string json = GetAPIDatabase.GetPlayers(playerEmail);
+                Player player = Deserialization.DeserializePlayer(json);
+                if (player.player_id == 0)
+                {
+                    // Player doesn't exist, create new player
+                    Serialization.SerializeNewPlayerData();
+                    Serialization.SerializeNewPlayerLocations();
+                    Serialization.SerializeNewPlayerVehicles();
+                    Serialization.SerializeNewPlayerItems();
+                    Serialization.SerializeNewPlayerEvents();
+                }
                 // this is for testing SceneManager.LoadScene("leaderboard");
             }
             else 

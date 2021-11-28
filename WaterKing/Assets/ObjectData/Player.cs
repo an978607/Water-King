@@ -7,7 +7,7 @@ using System.Linq;
 [System.Serializable]
 public class Player
 {
-    [SerializeField] private int player_id;
+    public int player_id;
     public int currency;
     public int fuelAmount;
     public DateTime lastEnergyUpdateTime;

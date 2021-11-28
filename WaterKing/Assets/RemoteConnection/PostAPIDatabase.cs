@@ -125,6 +125,23 @@ public static class PostAPIDatabase
         }
     }
 
+    // Initialize locations for new player after new player has been added
+    public static void PostLocations()
+    {
+        string strURL = String.Format("http://{0}/LAMPAPI/{1}.php", "waterkinggame.com", "Locations");
+        try
+        {
+            WebClient wc = new WebClient();
+            wc.Headers[HttpRequestHeader.ContentType] = "application/json";
+
+            string strJsonResult = (string)wc.UploadString(strURL, "POST", "");
+        }
+        catch (System.Exception ex)
+        {
+            Console.WriteLine("{0} String failed to upload.", ex);
+        }
+    }
+
     // initializes player items. 
     // use an empty json string like {}
     public static void PostPlayerItems(string strJsonInput)

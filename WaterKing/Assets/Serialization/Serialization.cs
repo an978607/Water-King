@@ -3,17 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System;
+using GooglePlayGames;
 
 public class Serialization
 {
     // Initialize new player data
     public static void SerializeNewPlayerData()
     {
-        string json = "{}";
+        string json = "{\"username\":\""+ PlayGamesPlatform.Instance.localUser.userName  + "\",\"email\":\""+ PlayGamesPlatform.Instance.GetUserEmail() + "\"}";
         Debug.Log("Serializing New Player Data");
         PostAPIDatabase.PostPlayer(json);
     }
 
+    // Initialize new player's locations
+    public static void SerializeNewPlayerLocations()
+    {
+        PostAPIDatabase.PostLocations();
+    }
+    
     // Initialize new player's vehicles
     public static void SerializeNewPlayerVehicles()
     {

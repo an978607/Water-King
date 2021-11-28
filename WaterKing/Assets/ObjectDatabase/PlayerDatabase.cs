@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using GooglePlayGames;
 
 public class PlayerDatabase : MonoBehaviour
 {
@@ -18,21 +19,11 @@ public class PlayerDatabase : MonoBehaviour
 
     public void GetPlayerFromDatabase()
     {
-        // Check for player with Google Play Info
-
-        // Player doesn't exist, create new player
-        //Serialization.SerializeNewPlayerData();
-        //Serialization.SerializeNewPlayerVehicles();
-        //Serialization.SerializeNewPlayerItems();
-        //Serialization.SerializeNewPlayerEvents();
-
-        // Retry Getting player
-
         // Get player data
-        string playerIDJSON = "{\"player_id\":\"1\"}";
-        string json = GetAPIDatabase.GetPlayers(playerIDJSON);
-
+        string playerEmail = "{\"email\":\"" + PlayGamesPlatform.Instance.GetUserEmail() + "\"}";
+        string json = GetAPIDatabase.GetPlayers(playerEmail);
         PlayerDataManager.player = Deserialization.DeserializePlayer(json);
+        string playerIDJSON = "{\"player_id\":\""+ PlayerDataManager.player.player_id +"\"}";
         PlayerDataManager.player.ParseData(playerIDJSON);
     }
 
