@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using GooglePlayGames;
 
 public class PlayerDatabase : MonoBehaviour
 {
@@ -18,9 +19,12 @@ public class PlayerDatabase : MonoBehaviour
 
     public void GetPlayerFromDatabase()
     {
-        string json = GetAPIDatabase.GetPlayers();
+        // Get player data
+        string playerEmail = "{\"email\":\"" + PlayGamesPlatform.Instance.GetUserEmail() + "\"}";
+        string json = GetAPIDatabase.GetPlayers(playerEmail);
         PlayerDataManager.player = Deserialization.DeserializePlayer(json);
-        PlayerDataManager.player.ParseData();
+        string playerIDJSON = "{\"player_id\":\""+ PlayerDataManager.player.player_id +"\"}";
+        PlayerDataManager.player.ParseData(playerIDJSON);
     }
 
     [System.Serializable]

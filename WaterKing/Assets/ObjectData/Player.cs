@@ -7,7 +7,7 @@ using System.Linq;
 [System.Serializable]
 public class Player
 {
-    [SerializeField] private int player_id;
+    public int player_id;
     public int currency;
     public int fuelAmount;
     public DateTime lastEnergyUpdateTime;
@@ -34,12 +34,12 @@ public class Player
     //string unlock = "1,0,0,0,0,0";
     //string scor = "0,3143,23,45,55,63";
     //string pric = "0,5,5,10,2500,4000";
-    public void ParseData()
+    public void ParseData(string json)
     {
         ParseLocations();
-        ParseVehicles();
-        ParseItems();
-        ParseEvents();
+        ParseVehicles(json);
+        ParseItems(json);
+        ParseEvents(json);
     }
 
     private void ParseLocations()
@@ -66,23 +66,23 @@ public class Player
         locations.OrderBy(key => key.Value.price);
     }
     
-    private void ParseVehicles()
+    private void ParseVehicles(string strJSONInput)
     {
-        string json = GetAPIDatabase.GetPlayerVehicles();
+        string json = GetAPIDatabase.GetPlayerVehicles(strJSONInput);
         PlayerVehicles playerVehicles = Deserialization.DeserializePlayerVehicles(json);
         playerVehicles.ParseData();
     }
 
-    private void ParseItems()
+    private void ParseItems(string strJSONInput)
     {
-        string json = GetAPIDatabase.GetPlayerItems();
+        string json = GetAPIDatabase.GetPlayerItems(strJSONInput);
         PlayerItems playerItems = Deserialization.DeserializePlayerItems(json);
         playerItems.ParseData();
     }
 
-    private void ParseEvents()
+    private void ParseEvents(string strJSONInput)
     {
-        string json = GetAPIDatabase.GetPlayerEvents();
+        string json = GetAPIDatabase.GetPlayerEvents(strJSONInput);
         PlayerEvents playerEvents = Deserialization.DeserializePlayerEvents(json);
         playerEvents.ParseData();
     }
