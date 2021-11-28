@@ -193,10 +193,10 @@ namespace Tests
         public void JSON_String_Should_Create_List_Of_Events()
         {
             string json = "{ \"list\":[" +
-                "{ \"id\":0,\"name\":\"EventItem1\",\"description\":\"description1\",\"price\":12,\"isUnlocked\":true}," +
-                "{ \"id\":1,\"name\":\"EventItem2\",\"description\":\"description2\",\"price\":11,\"isUnlocked\":true}," +
-                "{ \"id\":2,\"name\":\"EventItem3\",\"description\":\"description3\",\"price\":13,\"isUnlocked\":false}," +
-                "{ \"id\":3,\"name\":\"EventItem4\",\"description\":\"description4\",\"price\":99,\"isUnlocked\":true}]}";
+                "{ \"id\":0,\"Name\":\"EventItem1\",\"description\":\"description1\",\"price\":12,\"isUnlocked\":true}," +
+                "{ \"id\":1,\"Name\":\"EventItem2\",\"description\":\"description2\",\"price\":11,\"isUnlocked\":true}," +
+                "{ \"id\":2,\"Name\":\"EventItem3\",\"description\":\"description3\",\"price\":13,\"isUnlocked\":false}," +
+                "{ \"id\":3,\"Name\":\"EventItem4\",\"description\":\"description4\",\"price\":99,\"isUnlocked\":true}]}";
 
             string[] descriptions =
             {
@@ -234,7 +234,7 @@ namespace Tests
             for (int i = 0; i < events.Count; i++)
             {
                 Assert.AreEqual(i, events[i].GetEventID()); // Fix
-                Assert.AreEqual(name[i], events[i].name);
+                Assert.AreEqual(name[i], events[i].Name);
                 Assert.AreEqual(descriptions[i], events[i].description);
                 Assert.AreEqual(price[i], events[i].price);
                 Assert.AreEqual(isUnlocked[i], events[i].GetUnlockedStatus());
