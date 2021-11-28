@@ -42,4 +42,11 @@ public class UiController : MonoBehaviour
         Debug.Log("Showing Leaderboard");
         PlayGamesController.ShowLeaderboardUI();
     }
+
+    public void SignOut()
+    {
+        PlayGamesController.SignOut();
+
+        //may also need to reset first play value
+    }
 }

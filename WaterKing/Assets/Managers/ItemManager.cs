@@ -9,23 +9,10 @@ public class ItemManager : MonoBehaviour
     [SerializeField] private bool isShop;
 
     const string PRICE_ZERO_TEXT = "UNLOCKED";
-
-    private GameObject itemDatabaseObject;
-    private ItemDatabase itemDatabase;
     private GameObject upgradesUIContent;
 
     private void Awake()
     {
-        itemDatabaseObject = GameObject.FindGameObjectWithTag("ItemDatabase");
-
-        if (itemDatabaseObject == null)
-        {
-            Debug.LogError("ItemManager: Unable to find ItemDatabase object");
-            return;
-        }
-
-        itemDatabase = itemDatabaseObject.GetComponent<ItemDatabase>();
-
         if (isShop)
         {
             upgradesUIContent = GameObject.FindGameObjectWithTag("UpgradesUIContent");
@@ -42,37 +29,48 @@ public class ItemManager : MonoBehaviour
     void CreateItemShopItemList()
     {
 
-        if (itemDatabase.items == null || itemDatabase.items.list == null)
+        if (ItemDatabase.items == null)
         {
-            Debug.LogError("ItemManager: Vehicles null when creating shop list");
+            Debug.LogError("ItemManager: items null when creating shop list");
             return;
         }
 
-        for (int i = 0; i < itemDatabase.items.list.Count; i++)
+        foreach (KeyValuePair<string, Item> item in ItemDatabase.items)
         {
             Text[] textArray;
             Image[] imageArray;
             GameObject prefabInstance;
-            int price = itemDatabase.items.list[i].price;
+            int price = item.Value.price;
 
             prefabInstance = Instantiate(shopItemPrefab);
             textArray = prefabInstance.GetComponentsInChildren<Text>();
-            textArray[0].text = itemDatabase.items.list[i].name;
-            textArray[1].text = itemDatabase.items.list[i].description;
+            textArray[0].text = item.Value.name;
+            textArray[1].text = item.Value.description;
 
             imageArray = prefabInstance.GetComponentsInChildren<Image>();
             if (imageArray.Length > 1)
             {
-                imageArray[1].sprite = Resources.Load<Sprite>("ShopSprites/" + itemDatabase.items.list[i].name);
+                imageArray[1].sprite = Resources.Load<Sprite>("ShopSprites/" + item.Value.name);
             }
 
-            if (price == 0)
+            if (item.Value.GetUnlockedStatus())
             {
                 textArray[2].text = PRICE_ZERO_TEXT;
+                prefabInstance.GetComponentInChildren<Button>().interactable = false;
             }
             else
             {
-                textArray[2].text = price.ToString();
+                int itemPrice = price;
+                if (item.Value.count > 1)
+                {
+                    itemPrice = ShopManager.GetNextPrice(price, item.Value.count);
+                }
+                textArray[2].text = itemPrice.ToString();
+                if (itemPrice > PlayerDataManager.GetCurrency())
+                {
+                    prefabInstance.GetComponentInChildren<Button>().interactable = false;
+                }
+
             }
 
             prefabInstance.tag = "ShopUpgradeItem";

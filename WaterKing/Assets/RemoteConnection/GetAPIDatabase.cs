@@ -224,15 +224,17 @@ public static class GetAPIDatabase
 
     // NOTE: This retreives one player from the database, not multiple
     // Endpoint: http://waterkinggame.com/LAMPAPI/get_players.php
-    public static string GetPlayers()
+    public static string GetPlayers(string strJSONInput)
     {
          string strURL = String.Format("http://{0}/LAMPAPI/{1}.php", "waterkinggame.com", "get_players");
         try
         {
             WebClient wc = new WebClient();
-            wc.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; " +
-                                  "Windows NT 5.2; .NET CLR 1.0.3705;)");
-            string strJsonResult = (string)wc.DownloadString("http://waterkinggame.com/LAMPAPI/get_players.php");
+            wc.Headers[HttpRequestHeader.ContentType] = "application/json";
+
+            //wc.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; " +
+            //                      "Windows NT 5.2; .NET CLR 1.0.3705;)");
+            string strJsonResult = (string)wc.UploadString(strURL, "POST", strJSONInput);
             return strJsonResult;
         }
         catch (System.Exception ex)
@@ -244,15 +246,13 @@ public static class GetAPIDatabase
 
     // Retreive items for one player from the database
     // Endpoint: http://waterkinggame.com/LAMPAPI/get_playeritems.php
-    public static string GetPlayerItems()
+    public static string GetPlayerItems(string strJSONInput)
     {
         string strURL = String.Format("http://{0}/LAMPAPI/{1}.php", "waterkinggame.com", "get_playeritems");
         try
         {
             WebClient wc = new WebClient();
-            wc.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; " +
-                                  "Windows NT 5.2; .NET CLR 1.0.3705;)");
-            string strJsonResult = (string)wc.DownloadString(strURL);
+            string strJsonResult = (string)wc.UploadString(strURL, "POST", strJSONInput);
             return strJsonResult;
         }
         catch (System.Exception ex)
@@ -264,15 +264,13 @@ public static class GetAPIDatabase
 
     // Retreive events for one player from the database
     // Endpoint: http://waterkinggame.com/LAMPAPI/get_playerevents.php
-    public static string GetPlayerEvents()
+    public static string GetPlayerEvents(string strJSONInput)
     {
-        string strURL = String.Format("http://{0}/LAMPAPI/{1}.php", "waterkinggame.com", "get_playerevents.php");
+        string strURL = String.Format("http://{0}/LAMPAPI/{1}.php", "waterkinggame.com", "get_playerevents");
         try
         {
             WebClient wc = new WebClient();
-            wc.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; " +
-                                  "Windows NT 5.2; .NET CLR 1.0.3705;)");
-            string strJsonResult = (string)wc.DownloadString(strURL);
+            string strJsonResult = (string)wc.UploadString(strURL, "POST", strJSONInput);
             return strJsonResult;
         }
         catch (System.Exception ex)
@@ -284,15 +282,13 @@ public static class GetAPIDatabase
 
     // Retreive vehicles for one player from the database
     // Endpoint: http://waterkinggame.com/LAMPAPI/get_playervehicles.php
-    public static string GetPlayerVehicles()
+    public static string GetPlayerVehicles(string strJSONInput)
     {
-        string strURL = String.Format("http://{0}/LAMPAPI/{1}.php", "waterkinggame.com", "get_playervehicles.php");
+        string strURL = String.Format("http://{0}/LAMPAPI/{1}.php", "waterkinggame.com", "get_playervehicles");
         try
         {
             WebClient wc = new WebClient();
-            wc.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; " +
-                                  "Windows NT 5.2; .NET CLR 1.0.3705;)");
-            string strJsonResult = (string)wc.DownloadString(strURL);
+            string strJsonResult = (string)wc.UploadString(strURL, "POST", strJSONInput);
             return strJsonResult;
         }
         catch (System.Exception ex)

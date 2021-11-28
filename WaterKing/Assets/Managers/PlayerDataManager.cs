@@ -14,8 +14,14 @@ public class PlayerDataManager : MonoBehaviour
     GameObject lockedItem;
     [SerializeField] private GameObject shopItemPrefab;
     [SerializeField] private bool isShop;
+    [SerializeField] private bool isDeliveryScene;
     private GameObject locationsUIContent;
-    public static string PRICE_ZERO_TEXT = "UNLOCKED";
+    public static string UNLOCKED_TEXT = "UNLOCKED";
+
+    private void OnApplicationPause(bool pause)
+    {
+        SavePlayer();   
+    }
 
     private void Awake()
     {
@@ -40,6 +46,22 @@ public class PlayerDataManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        if (isDeliveryScene)
+        {
+            Transform playerVehicle = gameObject.transform.Find(player.selectedVehicle);
+            if (playerVehicle != null)
+            {
+                playerVehicle.gameObject.SetActive(true);
+            }
+            else
+            {
+                Debug.LogError("PlayerDataManager: Unable to find playerVehicle in delivery scene");
+            }
+        }
+
+    }
     void Update()
     {
         
@@ -129,7 +151,7 @@ public class PlayerDataManager : MonoBehaviour
 
             if (location.Value.isUnlocked)
             {
-                textArray[2].text = PRICE_ZERO_TEXT;
+                textArray[2].text = UNLOCKED_TEXT;
                 prefabInstance.GetComponentInChildren<Button>().interactable = false;
             }
             else
@@ -150,6 +172,7 @@ public class PlayerDataManager : MonoBehaviour
     public void UpdateScoreAtLocation(int updatedScore, string location)
     {
         player.locations[location].score = updatedScore;
+        SavePlayerData(player.locations[location]);
     }
     public int GetScoreAtLocation(string location) // TODO
     {
@@ -161,6 +184,8 @@ public class PlayerDataManager : MonoBehaviour
     {
         Debug.Log("sending Score to post");
         player.totalScore += addToScoreAmount;
+
+        SavePlayer();
 
         //convert int to string 
         string scoreToPost = player.totalScore.ToString();
@@ -183,13 +208,15 @@ public class PlayerDataManager : MonoBehaviour
     }
    
     // Currency
-    public void AddToCurrency(int addToCurrencyAmount)
+    public static void AddToCurrency(int addToCurrencyAmount)
     {
         player.currency += addToCurrencyAmount;
+        SavePlayer();
     }
     public static void SubtractFromCurrency(int subtractFromCurrencyAmount)
     {
         player.currency -= subtractFromCurrencyAmount;
+        SavePlayer();
     }
     public static int GetCurrency()
     {
@@ -200,6 +227,7 @@ public class PlayerDataManager : MonoBehaviour
     public void AddToFuel(int addToFuelAmount)
     {
         player.fuelAmount += addToFuelAmount;
+        SavePlayer();
     }
     public int GetFuelAmount()
     {
@@ -208,15 +236,41 @@ public class PlayerDataManager : MonoBehaviour
     public void SetFuelAmount(int fuelAmount)
     {
         player.fuelAmount = fuelAmount;
+        SavePlayer();
     }
 
     // Energy Update Time
     public void SetLastEnergyUpdateTime(DateTime dateTime)
     {
-        player.lastEnegeryUpdateTime = dateTime;
+        player.lastEnergyUpdateTime = dateTime;
     }
     public DateTime GetLastEnergyUpdateTime()
     {
-        return player.lastEnegeryUpdateTime;
+        return player.lastEnergyUpdateTime;
+    }
+
+    public static void SavePlayer()
+    {
+        Serialization.Serialize(player);
+    }
+
+    public static void SavePlayerData(Vehicle vehicle)
+    {
+        Serialization.Serialize(vehicle);
+    }
+
+    public static void SavePlayerData(Item item)
+    {
+        Serialization.Serialize(item);
+    }
+
+    public static void SavePlayerData(Event eventObj)
+    {
+        Serialization.Serialize(eventObj);
+    }
+
+    public static void SavePlayerData(Location location)
+    {
+       Serialization.Serialize(location);
     }
 }

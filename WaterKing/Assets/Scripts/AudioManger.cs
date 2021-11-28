@@ -34,9 +34,8 @@ public class AudioManger : MonoBehaviour
         else
         {
             musicFloat = PlayerPrefs.GetFloat(MusicPref);
-            musicSlider.value = musicFloat;
-
             sfxFloat = PlayerPrefs.GetFloat(SFXPref);
+            musicSlider.value = musicFloat;
             sfxSlider.value = sfxFloat;
         }
     }

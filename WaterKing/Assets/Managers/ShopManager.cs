@@ -9,7 +9,8 @@ public class ShopManager : MonoBehaviour
     {
         
         int playerCurrency = PlayerDataManager.GetCurrency();
-        
+
+        Transform UI = gameObject.transform.root;
         GameObject parentPanelObject = gameObject.transform.parent.parent.parent.gameObject;
         GameObject titleName = gameObject.transform.parent.Find("TITLE").gameObject;
         Text titleNameText = titleName.GetComponent<Text>();
@@ -31,6 +32,15 @@ public class ShopManager : MonoBehaviour
             return;
         }
 
+        Transform shopEventTransform = UI.Find("Random Event");
+        if (shopEventTransform == null)
+        {
+            Debug.LogError("ShopManager:: Unable to find object Random Event");
+            return;
+        }
+
+        ShopEvent shopEvent = shopEventTransform.gameObject.GetComponent<ShopEvent>();
+
         confirmPurchaseTransform.gameObject.SetActive(false);
 
         switch (parentPanelObject.name)
@@ -46,9 +56,10 @@ public class ShopManager : MonoBehaviour
                 {
                     PlayerDataManager.SubtractFromCurrency(location.price);
                     location.isUnlocked = true;
-                    buttonText.text = PlayerDataManager.PRICE_ZERO_TEXT;
+                    buttonText.text = PlayerDataManager.UNLOCKED_TEXT;
                     button.interactable = false;
                     UpdateCurrencyUI();
+                    PlayerDataManager.SavePlayerData(location);
                 }
                 return;
 
@@ -63,23 +74,58 @@ public class ShopManager : MonoBehaviour
                 else
                 {
                     PlayerDataManager.SubtractFromCurrency(upgradePrice);
-                    // TODO: Unlock Upgrade in player data ************
                     if (parentPrefabTag == "ShopVehicle")
                     {
-                        Debug.LogWarning("ShopVehicle");
+                        Vehicle vehicle = VehicleDatabase.vehicles[titleNameText.text];
+                        vehicle.SetStatusToUnlocked();
+                        SelectVehicle();
+                        PlayerDataManager.SavePlayerData(vehicle);
                     }
                     else if (parentPrefabTag == "ShopUpgradeItem")
                     {
-                        Debug.LogWarning("ShopUpgradeItem");
+                        Item item = ItemDatabase.items[titleNameText.text];
+                        item.count++;
+                        if (item.count > item.maxCount)
+                        {
+                            item.SetStatusToUnlocked();
+                            buttonText.text = PlayerDataManager.UNLOCKED_TEXT;
+                            button.interactable = false;
+                        }
+                        else
+                        {
+                            int newPrice = GetNextPrice(item.price, item.count);
+                            buttonText.text = newPrice.ToString();
+                            if (newPrice > PlayerDataManager.GetCurrency())
+                            {
+                                button.interactable = false;
+                            }
+                        }
+
+                        if (item.name == "Additional Time")
+                        {
+                            PlayerDataManager.player.time += 0.02f;
+                            Debug.Log("Added time");
+                        }
+                        else if (item.name == "Additional Storage")
+                        {
+                            PlayerDataManager.player.upgrade += 1;
+                            Debug.Log("Added storage");
+                        }
+                        else if (item.name == "Protection")
+                        {
+                            PlayerDataManager.player.protection += 1;
+                            Debug.Log("Added protection");
+                        }
+
+                        PlayerDataManager.SavePlayerData(item);
                     }
 
-                    buttonText.text = PlayerDataManager.PRICE_ZERO_TEXT;
-                    button.interactable = false;
                     UpdateCurrencyUI();
                 }
                 return;
 
             case "Events Panel":
+                Event eventObj = EventDatabase.events[titleNameText.text];
                 int eventPrice = int.Parse(buttonText.text);
 
                 if (eventPrice > playerCurrency)
@@ -90,10 +136,76 @@ public class ShopManager : MonoBehaviour
                 else
                 {
                     PlayerDataManager.SubtractFromCurrency(eventPrice);
-                    // TODO: Unlock Event in player data ********
-                    buttonText.text = PlayerDataManager.PRICE_ZERO_TEXT;
+                    eventObj.SetStatusToUnlocked();
+                    buttonText.text = PlayerDataManager.UNLOCKED_TEXT;
                     button.interactable = false;
                     UpdateCurrencyUI();
+                    PlayerDataManager.SavePlayerData(eventObj);
+                    if (eventObj.Name == "Promotion")
+                    {
+                        shopEvent.Promotion();
+                    }
+                    else if (eventObj.Name == "Advertisement")
+                    {
+                        shopEvent.Advertisement();
+                    }
+                    else if (eventObj.Name == "Rival Company Shutdown")
+                    {
+                        shopEvent.RivalShutdown();
+                    }
+
+                }
+                return;
+            default:
+                return;
+        }
+    }
+
+    private void SelectVehicle()
+    {
+        string previousSelectedVehicle = PlayerDataManager.player.selectedVehicle;
+        GameObject parentPanelObject = gameObject.transform.parent.parent.parent.gameObject;
+        GameObject titleName = gameObject.transform.parent.Find("TITLE").gameObject;
+        Text titleNameText = titleName.GetComponent<Text>();
+        Button button = gameObject.GetComponent<Button>();
+        Text buttonText = gameObject.GetComponentInChildren<Text>();
+        string parentPrefabTag = gameObject.transform.parent.tag;
+
+        GameObject prevSelectedVehiclePrefab = VehicleManager.vehiclePrefabs[previousSelectedVehicle];
+        Transform prevBuyButtonTransform = prevSelectedVehiclePrefab.transform.Find("Buy Button");
+
+        if (prevBuyButtonTransform == null)
+        {
+            Debug.LogError("ShopManager: Unable to find the previous selected buy button transform");
+            return;
+        }
+
+        Text prevSelectedButtonText = prevBuyButtonTransform.GetComponentInChildren<Text>();
+        if (prevSelectedButtonText == null)
+        {
+            Debug.LogError("ShopManager: Unable to find the previous selected buy button text");
+            return;
+        }
+
+        Button prevSelectedButton = prevBuyButtonTransform.GetComponent<Button>();
+        if (prevSelectedButton == null)
+        {
+            Debug.LogError("ShopManager: Unable to find the previous selected buy button");
+            return;
+        }
+
+        switch (parentPanelObject.name)
+        {
+            case "Upgrades Panel":
+                if (parentPrefabTag == "ShopVehicle")
+                {
+                    Vehicle vehicle = VehicleDatabase.vehicles[titleNameText.text];
+                    prevSelectedButtonText.text = VehicleManager.SELECT_TEXT;
+                    button.interactable = false;
+                    PlayerDataManager.player.selectedVehicle = vehicle.name;
+                    buttonText.text = VehicleManager.SELECTED_TEXT;
+                    prevSelectedButton.interactable = true;
+                    PlayerDataManager.SavePlayer();
                 }
                 return;
             default:
@@ -123,6 +235,14 @@ public class ShopManager : MonoBehaviour
 
     public void AskConfirmPurchase()
     {
+        // Select new vehicle and update UI instead of purchase
+        if (gameObject.GetComponentInChildren<Text>().text == VehicleManager.SELECT_TEXT)
+        {
+            SelectVehicle();
+            return;
+        }
+
+        // Confirm Purchase
         Transform backgroundTransform = GetConfirmBackgroundTransform();
         if (backgroundTransform == null)
         {
@@ -166,7 +286,7 @@ public class ShopManager : MonoBehaviour
 
         confirmButton.onClick.AddListener(PurchaseConfirmed);
         confirmButton.onClick.AddListener(delegate { RemoveConfirmScreenButtonListeners(confirmButton, closeButton); });
-        closeButton.onClick.AddListener(delegate {RemoveConfirmScreenButtonListeners(confirmButton, closeButton);});
+        closeButton.onClick.AddListener(delegate { RemoveConfirmScreenButtonListeners(confirmButton, closeButton); });
     }
 
     private Transform GetConfirmBackgroundTransform()
@@ -228,5 +348,16 @@ public class ShopManager : MonoBehaviour
     private void PurchaseConfirmed()
     {
         TryPurchase();
+    }
+
+    public static int GetNextPrice(int startingPrice, int count)
+    {
+        int newPrice = startingPrice;
+        for (int i = 0; i < count - 1; i++)
+        {
+            newPrice *= 2;
+        }
+
+        return newPrice;
     }
 }

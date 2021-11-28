@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Fuel : MonoBehaviour
 {
+    private static readonly string FirstPlay = "FirstPlay";
+
     [SerializeField] Text energyText;
     [SerializeField] Text timerText;
     [SerializeField] GameObject Trivia;
@@ -19,6 +21,7 @@ public class Fuel : MonoBehaviour
     private bool isRestoring = false;
     private PlayerDataManager playerDataManager;
     LevelLoader level;
+    private int firstPlayInt;
 
     private void Awake()
     {
@@ -28,13 +31,26 @@ public class Fuel : MonoBehaviour
 
     void Start()
     {
-        if(PlayerPrefs.HasKey("currentEnergy"))
+       // if(PlayerPrefs.HasKey("currentEnergy"))
+      //  {
+      //      PlayerPrefs.SetInt("currentEnergy", 3);
+      //      Load();
+      //      StartCoroutine(RestoreEnergy());
+      //  }
+     //   else 
+      //  {
+      //      Load();
+      //      StartCoroutine(RestoreEnergy());
+      //  }
+
+        firstPlayInt = PlayerPrefs.GetInt(FirstPlay);
+
+        if (firstPlayInt == 0)
         {
             PlayerPrefs.SetInt("currentEnergy", 3);
-            Load();
-            StartCoroutine(RestoreEnergy());
+            PlayerPrefs.SetInt(FirstPlay, -1);
         }
-        else 
+        else
         {
             Load();
             StartCoroutine(RestoreEnergy());
@@ -47,16 +63,20 @@ public class Fuel : MonoBehaviour
         {
             currentEnergy--;
             UpdateEnergy();
-            level.LoadNextLevel(scene);
+            //level.LoadNextLevel(scene);
+
             if(isRestoring == false)
             {
                 if(currentEnergy + 1 == maxEnergy)
                 {
-                    nextEnergyTime = AddDurration(DateTime.Now, restoreDuration);
+                    nextEnergyTime = AddDurration(DateTime.Now);
                 }
 
                 StartCoroutine(RestoreEnergy());
             }
+            Save();
+            level.LoadNextLevel(scene);
+
         }
 
         else 
@@ -87,7 +107,7 @@ public class Fuel : MonoBehaviour
                     currentEnergy++;
                     UpdateEnergy();
                     DateTime timeToAdd = lastEnergyTime > nextDateTime ? lastEnergyTime : nextDateTime;
-                    nextDateTime = AddDurration(timeToAdd, restoreDuration);
+                    nextDateTime = AddDurration(timeToAdd);
                 }
 
                 else 
@@ -95,6 +115,7 @@ public class Fuel : MonoBehaviour
                     break;
                 }
             }
+
             if(isEnergyAdding == true)
             {
                 lastEnergyTime = DateTime.Now;
@@ -106,10 +127,11 @@ public class Fuel : MonoBehaviour
             Save();
             yield return null;
         }
+
         isRestoring = false;
     }
 
-    private DateTime AddDurration(DateTime datetime, int duration)
+    private DateTime AddDurration(DateTime datetime)
     {
         return datetime.AddMinutes(30);
     }
@@ -151,17 +173,38 @@ public class Fuel : MonoBehaviour
 
     private void Load()
     {
-        currentEnergy = playerDataManager.GetFuelAmount();
+        //stuff im testing
+        currentEnergy = PlayerPrefs.GetInt("currentEnergy");
         nextEnergyTime = StringtoDate(PlayerPrefs.GetString("nextEnergyTime"));
-        lastEnergyTime = playerDataManager.GetLastEnergyUpdateTime();
+        lastEnergyTime = StringtoDate(PlayerPrefs.GetString("lastEnergyTime"));
+
+
+        //old
+        //currentEnergy = playerDataManager.GetFuelAmount();
+        //nextEnergyTime = StringtoDate(PlayerPrefs.GetString("nextEnergyTime"));
+        //lastEnergyTime = playerDataManager.GetLastEnergyUpdateTime();
 
     }
 
     private void Save()
     {
-        PlayerDataManager.player.fuelAmount = currentEnergy;
-       // playerDataManager.SetFuelAmount(currentEnergy);
+        //stuff im testing
+        PlayerPrefs.SetInt("currentEnergy", currentEnergy);
         PlayerPrefs.SetString("nextEnergyTime", nextEnergyTime.ToString());
-        playerDataManager.SetLastEnergyUpdateTime(lastEnergyTime);
+        PlayerPrefs.SetString("lastEnergyTime", lastEnergyTime.ToString());
+
+
+        //old code 
+        //  PlayerDataManager.player.fuelAmount = currentEnergy;
+        // playerDataManager.SetFuelAmount(currentEnergy);
+        // playerDataManager.SetLastEnergyUpdateTime(lastEnergyTime);
+    }
+
+    public void OnApplicationFocus(bool focus)
+    {
+        if(!focus)
+        {
+            Save();
+        }
     }
 }

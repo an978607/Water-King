@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta charset="UTF-8">
+<title>Water King Login In</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+	<body>
+		<div class="nav-bar"></div>
+		<div><img class="logo" src="/images/WaterKing_Large.png" alt="waterking logo"></div>
+		<div class="login-page">
+			<div class="form">
+				<form action="html/leaderboard.html" method="post">
+					  <input type="text" placeholder="username"name="uname" required/>
+					  <input type="password" placeholder="password" name="password" required/> 
+					  <input type="submit" value="login"/>
+					  <p class="message">Not registered? <a href="html/signup.html">Create an account</a></p>
+					Test login info: 
+					<?php include('./LAMPAPI/Login.php');?>
+				</form>
+			</div>
+			
+		</div>
+	</body>
+</html>

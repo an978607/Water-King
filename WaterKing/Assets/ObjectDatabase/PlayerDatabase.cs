@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using GooglePlayGames;
 
 public class PlayerDatabase : MonoBehaviour
 {
     private static GameObject playerDatabaseObject;
     public Players player;
 
-    private void Awake()
+    private void Start()
     {
         playerDatabaseObject = GameObject.FindGameObjectWithTag("PlayerDatabase");
         GetPlayerFromDatabase();
@@ -18,17 +19,12 @@ public class PlayerDatabase : MonoBehaviour
 
     public void GetPlayerFromDatabase()
     {
-        // This string successfully gets players from the database
-        string json = "{\"list\":" + GetAPIDatabase.GetPlayers() + "}";
-        // PlayerDataManager.player = Deserialization.DeserializePlayer(json); TODO *******************
-        if (PlayerDataManager.player == null) // TODO: REMOVE *************************
-        {
-            PlayerDataManager.player = new Player();
-            PlayerDataManager.player.currency = 25;
-            PlayerDataManager.player.fuelAmount = 3;
-            PlayerDataManager.player.lastEnegeryUpdateTime = DateTime.Now;
-            PlayerDataManager.player.scoreAtLocation1 = 0;
-        }
+        // Get player data
+        string playerEmail = "{\"email\":\"" + PlayGamesPlatform.Instance.GetUserEmail() + "\"}";
+        string json = GetAPIDatabase.GetPlayers(playerEmail);
+        PlayerDataManager.player = Deserialization.DeserializePlayer(json);
+        string playerIDJSON = "{\"player_id\":\""+ PlayerDataManager.player.player_id +"\"}";
+        PlayerDataManager.player.ParseData(playerIDJSON);
     }
 
     [System.Serializable]

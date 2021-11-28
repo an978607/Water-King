@@ -13,9 +13,8 @@ public class Vehicle
     [SerializeField] private float speed;
 
     private Sprite VehicleSprite; // TODO
-    public Vehicle(int id, bool isUnlocked, float speed, string name, string description, int price)
+    public Vehicle(bool isUnlocked, float speed, string name, string description, int price)
     {
-        this.id = id;
         this.isUnlocked = isUnlocked;
         this.speed = speed;
         this.name = name;

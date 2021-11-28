@@ -9,18 +9,17 @@ public class Item
     public string name;
     public string description;
     public int price;
+    public int count;
     [SerializeField] private bool isUnlocked;
+    [System.NonSerialized] public int maxCount;
 
-    private Sprite ItemSprite;
-
-    public Item(int id, bool isUnlocked, string name, string description, int price)
+    public Item(bool isUnlocked, string name, string description, int price, int count)
     {
-        this.id = id;
         this.isUnlocked = isUnlocked;
         this.name = name;
         this.description = description;
         this.price = price;
-        ItemSprite = Resources.Load<Sprite>("ItemSprites/" + name);
+        this.count = count;
     }
 
     public bool GetUnlockedStatus()

@@ -17,6 +17,8 @@ public class TriviaManager : MonoBehaviour
     private GameObject triviaAnswer3Object;
     private GameObject triviaAnswer4Object;
     [SerializeField] private GameObject triviaResult;
+    [SerializeField] private GameObject wrongOK;
+    [SerializeField] private GameObject Ok;
     private Trivia trivia;
 
     private void Awake()
@@ -83,6 +85,8 @@ public class TriviaManager : MonoBehaviour
             return;
         }
 
+
+
         UpdateUIWithTriviaQuestion();
     }
     
@@ -93,12 +97,16 @@ public class TriviaManager : MonoBehaviour
         {
             Debug.Log(trivia.GetCorrectAnswer());
             Debug.Log(trivia.AnswerList[answerNum - 1]);
-            triviaResult.GetComponentInChildren<Text>().text = "Correct";
+            wrongOK.SetActive(false);
+            Ok.SetActive(true);
+            triviaResult.GetComponentInChildren<Text>().text = "Correct!";
             fuel.AddEnergy(1);
         }
         else
         {
-            triviaResult.GetComponentInChildren<Text>().text = "Wrong";
+            wrongOK.SetActive(true);
+            Ok.SetActive(false);
+            triviaResult.GetComponentInChildren<Text>().text = "Wrong! Checkout Liberty Water's Website to Help Answer our Trivia!";
             UpdateUIWithTriviaQuestion();
         }
     }

@@ -35,6 +35,8 @@ TagManager:
   - finalScore
   - ScoreMultiplyer
   - Cash
+  - Event
+  - EventText
   layers:
   - Default
   - TransparentFX
