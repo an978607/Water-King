@@ -139,7 +139,7 @@ public class Serialization
 
     public static void Serialize(Location location)
     {
-        string json = "{\"locationName\":\"" + location.name + "\",\"score\":\"" + location.score + "\",\"isUnlocked\":\"" + Convert.ToInt32(location.isUnlocked) + "\"}";
+        string json = "{" + "\"player_id\":\"" + PlayerDataManager.player.player_id + "\","+"\"locationName\":\"" + location.name + "\",\"score\":\"" + location.score + "\",\"isUnlocked\":\"" + Convert.ToInt32(location.isUnlocked) + "\"}";
         Debug.Log("Serializing location");
         PutAPIDatabase.UpdateLocations(json);
     }
