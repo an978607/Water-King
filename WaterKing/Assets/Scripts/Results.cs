@@ -51,7 +51,7 @@ public class Results : MonoBehaviour
         //update banner information
         if (player.GetScoreAtLocation(locationName) < finalscore)
         {
-            Score.UpdateTotalScore();
+            Score.UpdateTotalScore(finalscore, locationName);
             player.UpdateScoreAtLocation(finalscore, locationName);
         }
     }
