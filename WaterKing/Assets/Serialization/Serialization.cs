@@ -124,7 +124,6 @@ public class Serialization
             string json = "{" + "\"player_id\":\"" + player.player_id + "\"" +
                 "\"currency\":\"" + player.currency + 
                 "\",\"totalScore\":\"" + player.totalScore + 
-                "\",\"lastEnergyUpdateTime\":\"" + player.lastEnergyUpdateTime.ToString("yyyy-MM-dd HH:mm:ss") +
                 "\",\"fuelAmount\":\"" + player.fuelAmount +
                 "\",\"protection\":\"" + player.protection +
                 "\",\"upgrade\":\"" + player.upgrade + 
