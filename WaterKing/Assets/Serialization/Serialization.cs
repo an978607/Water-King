@@ -119,6 +119,8 @@ public class Serialization
     // TODO: UPDATE VALUES PASSED *****************
     public static void Serialize(Player player)
     {
+        Debug.LogError("Total Score:" + player.totalScore);
+
         if (player != null)
         {
             string json = "{" + "\"player_id\":\"" + player.player_id + "\"," +
@@ -133,7 +135,6 @@ public class Serialization
             Debug.Log("Serializing player");
             PutAPIDatabase.UpdatePlayer(json);
         }
-
     }
 
     public static void Serialize(Location location)
