@@ -119,13 +119,13 @@ public class Serialization
     // TODO: UPDATE VALUES PASSED *****************
     public static void Serialize(Player player)
     {
-        Debug.LogError("Total Score:" + player.totalScore);
+        Debug.LogError("Total Score:" + PlayerDataManager.player.totalScore);
 
         if (player != null)
         {
             string json = "{" + "\"player_id\":\"" + player.player_id + "\"," +
                 "\"currency\":\"" + player.currency + 
-                "\",\"totalScore\":\"" + player.totalScore + 
+                "\",\"totalScore\":\"" + PlayerDataManager.player.totalScore + 
                 "\",\"fuelAmount\":\"" + player.fuelAmount +
                 "\",\"protection\":\"" + player.protection +
                 "\",\"upgrade\":\"" + player.upgrade + 
