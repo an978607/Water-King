@@ -21,7 +21,7 @@ public class ShopEvent : MonoBehaviour
         //always beneficial players gets 2.5% of their current cash (CAN ONLY BE BOUGHT ONCE)
         //player.AddToCurrency(player.);
         instance.Result.SetActive(true);
-        ResultText.text = "WOW Everything went great and you got a ton of cash!";
+        ResultText.text = "Congrats! You've earned alot of coins!";
        
 
         int bonus = (int)(PlayerDataManager.GetCurrency() * 0.1);
@@ -39,7 +39,7 @@ public class ShopEvent : MonoBehaviour
             PlayerDataManager.AddToCurrency(bonus);
             Debug.Log("Advertisment Positive");
             Result.SetActive(true);
-            ResultText.text = "WOW Everything went great and you got a ton of cash!";
+            ResultText.text = "Congrats! You've earned alot of coins!";
         }
 
         else
@@ -48,7 +48,7 @@ public class ShopEvent : MonoBehaviour
             PlayerDataManager.SubtractFromCurrency(deduction);
             Debug.Log("Advertisment Negative");
             Result.SetActive(true);
-            ResultText.text = "OH NO! They did a bad job and now you look bad.";
+            ResultText.text = "OH NO! The ad was recieved poorly and you lost business";
         }
     }
 
@@ -58,6 +58,6 @@ public class ShopEvent : MonoBehaviour
         PlayerDataManager.AddToCurrency(bonus);
         Debug.Log("RivalShutdown");
         Result.SetActive(true);
-        ResultText.text = "WOW Everything went great and you got a ton of cash!";
+        ResultText.text = "Congrats! You've earned alot of coins!";
     }
 }
