@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class player_hit_detection : MonoBehaviour
 {
+    [SerializeField] ParticleSystem hitParticle;
     private float time = 0;
     public Text life;
     public GameObject failScreen;
@@ -60,6 +61,7 @@ public class player_hit_detection : MonoBehaviour
         }
 
         this.gameObject.GetComponent<Renderer>().material.color = Color.red;
+        playParticle();
         time = 1;
         lives = lives - 1;
         life.text = lives.ToString();
@@ -80,5 +82,10 @@ public class player_hit_detection : MonoBehaviour
 
         //update UI 
         life.text = lives.ToString();
+    }
+
+    public void playParticle()
+    {
+        hitParticle.Play();
     }
 }
