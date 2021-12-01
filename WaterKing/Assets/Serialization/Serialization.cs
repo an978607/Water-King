@@ -119,12 +119,13 @@ public class Serialization
     // TODO: UPDATE VALUES PASSED *****************
     public static void Serialize(Player player)
     {
+        Debug.LogError("Total Score:" + PlayerDataManager.player.totalScore);
+
         if (player != null)
         {
-            string json = "{" + "\"player_id\":\"" + player.player_id +
+            string json = "{" + "\"player_id\":\"" + player.player_id + "\"," +
                 "\"currency\":\"" + player.currency + 
-                "\",\"totalScore\":\"" + player.totalScore + 
-                "\",\"lastEnergyUpdateTime\":\"" + player.lastEnergyUpdateTime.ToString("yyyy-MM-dd HH:mm:ss") +
+                "\",\"totalScore\":\"" + PlayerDataManager.player.totalScore + 
                 "\",\"fuelAmount\":\"" + player.fuelAmount +
                 "\",\"protection\":\"" + player.protection +
                 "\",\"upgrade\":\"" + player.upgrade + 
@@ -134,18 +135,17 @@ public class Serialization
             Debug.Log("Serializing player");
             PutAPIDatabase.UpdatePlayer(json);
         }
-
     }
 
     public static void Serialize(Location location)
     {
-        string json = "{\"locationName\":\"" + location.name + "\",\"score\":\"" + location.score + "\",\"isUnlocked\":\"" + Convert.ToInt32(location.isUnlocked) + "\"}";
+        string json = "{" + "\"player_id\":\"" + PlayerDataManager.player.player_id + "\","+"\"locationName\":\"" + location.name + "\",\"score\":\"" + location.score + "\",\"isUnlocked\":\"" + Convert.ToInt32(location.isUnlocked) + "\"}";
         Debug.Log("Serializing location");
         PutAPIDatabase.UpdateLocations(json);
     }
     public static void Serialize(Vehicle vehicle)
     {
-        string json = "{"+ "\"player_id\":\"" + PlayerDataManager.player.player_id + "\"vehicleName\":\"" + vehicle.name + "\",\"isUnlocked\":\"" + Convert.ToInt32(vehicle.GetUnlockedStatus()) + "\",\"selectedVehicle\":\"" + vehicle.name + "\"}";
+        string json = "{\"vehicleName\":\"" + vehicle.name + "\",\"isUnlocked\":\"" + Convert.ToInt32(vehicle.GetUnlockedStatus()) + "\",\"selectedVehicle\":\"" + vehicle.name + "\"}";
         Debug.Log(json);
         Debug.Log("Serializing vehicle");
         PutAPIDatabase.UpdatePlayerVehicles(json);
@@ -153,8 +153,7 @@ public class Serialization
 
     public static void Serialize(Item item)
     {
-        string json = "{"+ "\"player_id\":\"" + PlayerDataManager.player.player_id +
-            "\"count\":\"" + item.count + 
+        string json = "{\"count\":\"" + item.count + 
             "\",\"isUnlocked\":\"" + 
             Convert.ToInt32(item.GetUnlockedStatus()) +
              "\",\"itemName\":\"" + item.name + "\"}";
@@ -165,7 +164,7 @@ public class Serialization
 
     public static void Serialize(Event eventObj)
     {
-        string json = "{" + "\"player_id\":\"" + PlayerDataManager.player.player_id + "\"eventName\":\"" + eventObj.Name + "\",\"isUnlocked\":\"" + Convert.ToInt32(eventObj.GetUnlockedStatus()) + "\"}";
+        string json = "{\"eventName\":\"" + eventObj.Name + "\",\"isUnlocked\":\"" + Convert.ToInt32(eventObj.GetUnlockedStatus()) + "\"}";
         Debug.Log(json);
         Debug.Log("Serializing event");
         PutAPIDatabase.UpdatePlayerEvents(json);

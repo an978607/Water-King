@@ -89,12 +89,12 @@ public class score : MonoBehaviour
         Debug.Log(cashMultiplyer);
     }
 
-    public void UpdateTotalScore()
+    public void UpdateTotalScore(int scoreAtLocation, string locationName)
     {
-        int scoreAtLocation = playerDataManager.GetScoreAtLocation("Central Park");
-        if (scoreAtLocation < player_score)
+        int previousScore = playerDataManager.GetScoreAtLocation(locationName);
+        if (previousScore < scoreAtLocation)
         {
-            int scoreOffset = player_score - scoreAtLocation;
+            int scoreOffset = scoreAtLocation - previousScore;
             playerDataManager.AddToTotalScore(scoreOffset);
         }
     }
