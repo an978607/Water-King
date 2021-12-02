@@ -4,5 +4,15 @@ using UnityEngine;
 
 public class particle : MonoBehaviour
 {
-    [SerializeField] ParticleSystem collectParticle = null;
+    [SerializeField] AudioSource effect;
+
+    private void Start()
+    {
+        onPlay();
+    }
+
+    void onPlay()
+    {
+        effect.Play();
+    }
 }

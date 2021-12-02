@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 8852757570068414114}
   - component: {fileID: 8852757570068414115}
   - component: {fileID: 1527004785617088177}
-  - component: {fileID: 2421057767471408818}
   m_Layer: 10
   m_Name: Bike
   m_TagString: VehicleInfo
@@ -171,6 +170,7 @@ MonoBehaviour:
   duck: {fileID: 0}
   rush: {fileID: 0}
   anim: {fileID: 8852757570068414115}
+  effect: {fileID: 0}
 --- !u!95 &8852757570068414115
 Animator:
   serializedVersion: 3
@@ -204,19 +204,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cashBonus: 1
   baseStorage: 5
---- !u!114 &2421057767471408818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8852757570068414116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3becb462348ed60488d7db5ed94c9436, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collectParticle: {fileID: 0}
 --- !u!1001 &4481304708976090161
 PrefabInstance:
   m_ObjectHideFlags: 0

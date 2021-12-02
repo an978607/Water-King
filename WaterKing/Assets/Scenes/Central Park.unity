@@ -597,6 +597,19 @@ PrefabInstance:
       propertyPath: musicSlider
       value: 
       objectReference: {fileID: 2846252410274507819}
+    - target: {fileID: 1516477144, guid: 75690c3ff2f35e64290f5ad2d06c5156, type: 3}
+      propertyPath: sfxAudio.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1516477144, guid: 75690c3ff2f35e64290f5ad2d06c5156, type: 3}
+      propertyPath: sfxAudio.Array.data[2]
+      value: 
+      objectReference: {fileID: 2021518513}
+    - target: {fileID: 6595156274357766981, guid: 75690c3ff2f35e64290f5ad2d06c5156,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8194431382944360808, guid: 75690c3ff2f35e64290f5ad2d06c5156,
         type: 3}
       propertyPath: m_audioClip
@@ -691,6 +704,12 @@ GameObject:
 --- !u!82 &1990373548 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 8194431383284799001, guid: 75690c3ff2f35e64290f5ad2d06c5156,
+    type: 3}
+  m_PrefabInstance: {fileID: 1990373544}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &2021518513 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6595156274357766981, guid: 75690c3ff2f35e64290f5ad2d06c5156,
     type: 3}
   m_PrefabInstance: {fileID: 1990373544}
   m_PrefabAsset: {fileID: 0}
@@ -1467,6 +1486,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1319726230136900913, guid: 3dd89642e5580134a9012ea8e782bb44,
+        type: 3}
+      propertyPath: effect
+      value: 
+      objectReference: {fileID: 2021518513}
+    - target: {fileID: 3731741595726031713, guid: 3dd89642e5580134a9012ea8e782bb44,
+        type: 3}
+      propertyPath: effect
+      value: 
+      objectReference: {fileID: 2021518513}
     - target: {fileID: 3731741595726031714, guid: 3dd89642e5580134a9012ea8e782bb44,
         type: 3}
       propertyPath: life
@@ -1492,6 +1521,11 @@ PrefabInstance:
       propertyPath: failScreen
       value: 
       objectReference: {fileID: 835455420}
+    - target: {fileID: 3731741596898724962, guid: 3dd89642e5580134a9012ea8e782bb44,
+        type: 3}
+      propertyPath: effect
+      value: 
+      objectReference: {fileID: 2021518513}
     - target: {fileID: 3731741596898724964, guid: 3dd89642e5580134a9012ea8e782bb44,
         type: 3}
       propertyPath: m_IsActive
@@ -1557,6 +1591,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5265445938164782369, guid: 3dd89642e5580134a9012ea8e782bb44,
+        type: 3}
+      propertyPath: effect
+      value: 
+      objectReference: {fileID: 2021518513}
     - target: {fileID: 5265445938164782370, guid: 3dd89642e5580134a9012ea8e782bb44,
         type: 3}
       propertyPath: life
@@ -1582,6 +1621,11 @@ PrefabInstance:
       propertyPath: failScreen
       value: 
       objectReference: {fileID: 835455420}
+    - target: {fileID: 5426244116209894019, guid: 3dd89642e5580134a9012ea8e782bb44,
+        type: 3}
+      propertyPath: effect
+      value: 
+      objectReference: {fileID: 2021518513}
     - target: {fileID: 7872718283525197946, guid: 3dd89642e5580134a9012ea8e782bb44,
         type: 3}
       propertyPath: m_Name

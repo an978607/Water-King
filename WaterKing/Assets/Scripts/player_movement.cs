@@ -16,6 +16,7 @@ public class player_movement : MonoBehaviour
     public Sprite duck;
     public Sprite rush;
     public Animator anim;
+    public AudioSource effect;
 
     private float moveSpeed = 10;
     private Vector3 targetPos;
@@ -181,6 +182,7 @@ public class player_movement : MonoBehaviour
                 state = "jump";
                 time = 1;
                 anim.SetTrigger("Jumping");
+                effect.Play();
                 
                 //ChangeSprite(jump);
             }

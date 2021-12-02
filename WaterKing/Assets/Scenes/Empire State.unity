@@ -694,6 +694,12 @@ AudioSource:
     type: 3}
   m_PrefabInstance: {fileID: 1990373544}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &1990373549 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6595156274357766981, guid: 75690c3ff2f35e64290f5ad2d06c5156,
+    type: 3}
+  m_PrefabInstance: {fileID: 1990373544}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2057798365 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2846252409617192924, guid: adb7c903a73e10f438d172cfb7739fd3,
@@ -1372,6 +1378,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3731741595726031713, guid: 3dd89642e5580134a9012ea8e782bb44,
+        type: 3}
+      propertyPath: effect
+      value: 
+      objectReference: {fileID: 1990373549}
     - target: {fileID: 3731741595726031714, guid: 3dd89642e5580134a9012ea8e782bb44,
         type: 3}
       propertyPath: life
@@ -1397,6 +1408,11 @@ PrefabInstance:
       propertyPath: failScreen
       value: 
       objectReference: {fileID: 835455420}
+    - target: {fileID: 3731741596898724962, guid: 3dd89642e5580134a9012ea8e782bb44,
+        type: 3}
+      propertyPath: effect
+      value: 
+      objectReference: {fileID: 1990373549}
     - target: {fileID: 3731741596898724964, guid: 3dd89642e5580134a9012ea8e782bb44,
         type: 3}
       propertyPath: m_IsActive
@@ -1462,6 +1478,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5265445938164782369, guid: 3dd89642e5580134a9012ea8e782bb44,
+        type: 3}
+      propertyPath: effect
+      value: 
+      objectReference: {fileID: 1990373549}
     - target: {fileID: 5265445938164782370, guid: 3dd89642e5580134a9012ea8e782bb44,
         type: 3}
       propertyPath: life
@@ -1482,6 +1503,11 @@ PrefabInstance:
       propertyPath: failScreen
       value: 
       objectReference: {fileID: 835455420}
+    - target: {fileID: 5426244116209894019, guid: 3dd89642e5580134a9012ea8e782bb44,
+        type: 3}
+      propertyPath: effect
+      value: 
+      objectReference: {fileID: 1990373549}
     - target: {fileID: 7872718283525197946, guid: 3dd89642e5580134a9012ea8e782bb44,
         type: 3}
       propertyPath: m_Name
